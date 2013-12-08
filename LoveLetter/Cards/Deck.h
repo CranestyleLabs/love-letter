@@ -8,13 +8,35 @@
 
 #import <Foundation/Foundation.h>
 
+@class Card;
+
 @interface Deck : NSObject
 {
     //
 }
 
-@property NSArray* cards;
 
+// enums
+typedef NS_ENUM(NSInteger, CardValue)
+{
+    kCardValue_Guard    = 1,
+    kCardValue_Priest   = 2,
+    kCardValue_Baron    = 3,
+    kCardValue_Handmaid = 4,
+    kCardValue_Prince   = 5,
+    kCardValue_King     = 6,
+    kCardValue_Countess = 7,
+    kCardValue_Princess = 8
+};
+
+
+// properties
+@property (readonly) NSArray* cards;
+
+
+// selectors
+-(Card*)drawCard;
+-(void)refresh;
 -(NSArray*)shuffle:(NSArray*)cardsToShuffle;
 
 @end

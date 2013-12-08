@@ -170,6 +170,8 @@
 		70BCBA83185417E800B99B7D /* priest-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA79185417E800B99B7D /* priest-card.png */; };
 		70BCBA84185417E800B99B7D /* prince-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA7A185417E800B99B7D /* prince-card.png */; };
 		70BCBA85185417E800B99B7D /* princess-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA7B185417E800B99B7D /* princess-card.png */; };
+		70BCBA8918542A5C00B99B7D /* AIUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA8818542A5C00B99B7D /* AIUtilities.m */; };
+		70BCBA8D18542DEC00B99B7D /* GameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA8C18542DEC00B99B7D /* GameModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -489,6 +491,10 @@
 		70BCBA79185417E800B99B7D /* priest-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "priest-card.png"; sourceTree = "<group>"; };
 		70BCBA7A185417E800B99B7D /* prince-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prince-card.png"; sourceTree = "<group>"; };
 		70BCBA7B185417E800B99B7D /* princess-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "princess-card.png"; sourceTree = "<group>"; };
+		70BCBA8718542A5C00B99B7D /* AIUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIUtilities.h; sourceTree = "<group>"; };
+		70BCBA8818542A5C00B99B7D /* AIUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIUtilities.m; sourceTree = "<group>"; };
+		70BCBA8B18542DEC00B99B7D /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameModel.h; sourceTree = "<group>"; };
+		70BCBA8C18542DEC00B99B7D /* GameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -567,8 +573,10 @@
 		70AE9A1E18540B14003017C2 /* LoveLetter */ = {
 			isa = PBXGroup;
 			children = (
+				70BCBA8618542A4800B99B7D /* AI */,
 				70458291185410A9006E4E24 /* AppDelegate */,
 				70BCBA48185415D900B99B7D /* Cards */,
+				70BCBA8A18542DD700B99B7D /* GameModel */,
 				70BCBA681854173B00B99B7D /* IntroLayer */,
 				70BCBA5B1854167400B99B7D /* Players */,
 				70AE9A1F18540B14003017C2 /* Resources */,
@@ -1063,6 +1071,24 @@
 			path = cards;
 			sourceTree = "<group>";
 		};
+		70BCBA8618542A4800B99B7D /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				70BCBA8718542A5C00B99B7D /* AIUtilities.h */,
+				70BCBA8818542A5C00B99B7D /* AIUtilities.m */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
+		70BCBA8A18542DD700B99B7D /* GameModel */ = {
+			isa = PBXGroup;
+			children = (
+				70BCBA8B18542DEC00B99B7D /* GameModel.h */,
+				70BCBA8C18542DEC00B99B7D /* GameModel.m */,
+			);
+			path = GameModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1188,6 +1214,7 @@
 				70AE9B0D18540B15003017C2 /* CCTransition.m in Sources */,
 				70AE9AB518540B14003017C2 /* CCParticleExamples.m in Sources */,
 				70AE9AB218540B14003017C2 /* CCParticleBatchNode.m in Sources */,
+				70BCBA8918542A5C00B99B7D /* AIUtilities.m in Sources */,
 				70AE9AF518540B15003017C2 /* CCTextureAtlas.m in Sources */,
 				70AE9BA318540B15003017C2 /* utility.c in Sources */,
 				70AE9B4F18540B15003017C2 /* CCVertex.m in Sources */,
@@ -1255,6 +1282,7 @@
 				70AE9AC118540B14003017C2 /* CCPhysicsSprite.mm in Sources */,
 				70AE9BA518540B15003017C2 /* vec2.c in Sources */,
 				70AE9B9518540B15003017C2 /* matrix.c in Sources */,
+				70BCBA8D18542DEC00B99B7D /* GameModel.m in Sources */,
 				70AE9A7B18540B14003017C2 /* CCDrawingPrimitives.m in Sources */,
 				70AE9AE318540B14003017C2 /* ccShaders.m in Sources */,
 				70BCBA641854167400B99B7D /* Secret.m in Sources */,

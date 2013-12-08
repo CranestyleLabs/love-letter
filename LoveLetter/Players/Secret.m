@@ -12,24 +12,24 @@
 @interface Secret ()
 
 @property (readwrite) LLPlayer* player;
-@property (readwrite) Card* card;
+@property (readwrite) NSInteger cardValue;
 
 @end
 
 
 @implementation Secret
 
-+(id)secretForPlayer:(LLPlayer*)player andCard:(Card*)card
++(id)secretForPlayer:(LLPlayer*)player andCardValue:(NSInteger)cardValue
 {
-    return [[self alloc] initWithPlayer:(LLPlayer*)player andCard:(id)card];
+    return [[self alloc] initWithPlayer:player andCard:cardValue];
 }
 
--(id)initWithPlayer:(LLPlayer*)player andCard:(Card*)card
+-(id)initWithPlayer:(LLPlayer*)player andCard:(NSInteger)cardValue
 {
     if (self = [super init])
     {
         [self setPlayer:player];
-        [self setCard:card];
+        [self setCardValue:cardValue];
     }
     return self;
 }

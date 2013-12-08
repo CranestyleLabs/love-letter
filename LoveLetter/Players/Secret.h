@@ -18,10 +18,10 @@
 
 // properties
 @property (readonly) LLPlayer* player;
-@property (readonly) Card* card;
+@property (readonly) NSInteger cardValue;
 
 
 // selectors
-+(id)secretForPlayer:(LLPlayer*)player andCard:(Card*)card;
++(id)secretForPlayer:(LLPlayer*)player andCardValue:(NSInteger)cardValue;
 
 @end

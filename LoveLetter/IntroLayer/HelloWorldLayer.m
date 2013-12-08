@@ -54,7 +54,9 @@
         
         [self addChild:cardDisplay];
         [self addChild:cardLabel];
+        
 	}
+    
 	return self;
 }
 
