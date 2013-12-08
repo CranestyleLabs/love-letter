@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class LLPlayer;
+@class Card;
 
 @interface Play : NSObject
 {
@@ -17,13 +18,13 @@
 
 
 // properties
-@property (readonly) id card;
+@property (readonly) Card* card;
 @property (readonly) LLPlayer* target;
 @property (readonly) NSDictionary* options;
 
 
 // selectors
-+(id)playWithCard:(id)card andTarget:(LLPlayer*)target andOptions:(NSDictionary*)options;
++(id)playWithCard:(Card*)card andTarget:(LLPlayer*)target andOptions:(NSDictionary*)options;
 
 
 @end

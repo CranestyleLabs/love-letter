@@ -12,19 +12,19 @@
 @interface Secret ()
 
 @property (readwrite) LLPlayer* player;
-@property (readwrite) id card;
+@property (readwrite) Card* card;
 
 @end
 
 
 @implementation Secret
 
-+(id)secretForPlayer:(LLPlayer*)player andCard:(id)card
++(id)secretForPlayer:(LLPlayer*)player andCard:(Card*)card
 {
     return [[self alloc] initWithPlayer:(LLPlayer*)player andCard:(id)card];
 }
 
--(id)initWithPlayer:(LLPlayer*)player andCard:(id)card
+-(id)initWithPlayer:(LLPlayer*)player andCard:(Card*)card
 {
     if (self = [super init])
     {

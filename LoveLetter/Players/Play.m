@@ -8,11 +8,12 @@
 
 #import "Play.h"
 #import "LLPlayer.h"
+#import "Card.h"
 
 
 @interface Play ()
 
-@property (readwrite) id card;
+@property (readwrite) Card* card;
 @property (readwrite) LLPlayer* target;
 @property (readwrite) NSDictionary* options;
 
@@ -21,14 +22,14 @@
 
 @implementation Play
 
-+(id)playWithCard:(id)card andTarget:(LLPlayer*)target andOptions:(NSDictionary*)options
++(id)playWithCard:(Card*)card andTarget:(LLPlayer*)target andOptions:(NSDictionary*)options
 {
     return [[self alloc] initWithCard:card andTarget:target andOptions:options];
 }
 
 
 
--(id)initWithCard:(id)card andTarget:(LLPlayer*)target andOptions:(NSDictionary*)options
+-(id)initWithCard:(Card*)card andTarget:(LLPlayer*)target andOptions:(NSDictionary*)options
 {
     if (self = [super init])
     {

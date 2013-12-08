@@ -15,8 +15,9 @@
 
 // properties
 @property (readonly) NSString* playerid;
-@property (readwrite) id cardInHand;
-@property (readwrite) id drawnCard;
 @property (readonly) NSArray* secrets;
+@property (readonly) NSArray* cardsInHand;
+@property (readonly) NSArray* cardsPlayed;
+
 
 @end
