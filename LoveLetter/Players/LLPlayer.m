@@ -11,6 +11,7 @@
 #import "Secret.h"
 #import "GameModel.h"
 #import "Deck.h"
+#import "AIUtilities.h"
 
 
 @interface LLPlayer ()
@@ -112,17 +113,39 @@
 #pragma mark
 #pragma mark Turns
 
--(void)turnStart
+-(void)startTurn
+{
+    
+    // start turn
+    
+}
+
+-(void)endTurn
+{
+    
+    // end turn
+    
+}
+
+-(void)startRound
 {
     
     [self addCard:[[GameModel sharedInstance].deck drawCard]];
     
 }
 
--(void)turnEnd
+-(void)endRound
 {
     
-    // end turn clean up
+    // ditch cards in hand
+    NSMutableArray* ditchCardsInHand = [self.cardsInHand mutableCopy];
+    [ditchCardsInHand removeAllObjects];
+    [self setCardsInHand:[NSArray arrayWithArray:ditchCardsInHand]];
+    
+    // ditch cards played
+    NSMutableArray* ditchCardsPlayed = [self.cardsPlayed mutableCopy];
+    [ditchCardsPlayed removeAllObjects];
+    [self setCardsPlayed:[NSArray arrayWithArray:ditchCardsPlayed]];
     
 }
 
@@ -133,11 +156,7 @@
 -(Play*)makePlay
 {
     
-    Play* play = nil;
-    
-    //
-    
-    return play;
+    return [AIUtilities makePlayForPlayer:self];
     
 }
 

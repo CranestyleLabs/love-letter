@@ -13,7 +13,7 @@
 
 @interface GameModel : NSObject
 {
-    
+    NSInteger winningScore;
 }
 
 
@@ -22,6 +22,8 @@
 @property (readonly) NSArray* players;
 @property (readonly) Deck* deck;
 @property (readonly) Card* burnedCard;
+@property (readonly) NSInteger roundNumber;
+@property (readonly) BOOL isGameOver;
 
 
 // selectors

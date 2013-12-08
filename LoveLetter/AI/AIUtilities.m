@@ -30,8 +30,8 @@
         
         
         // setup play properties
-        LLPlayer* target = nil;
-        Card* card = nil;
+        __block LLPlayer* target = nil;
+        __block Card* card = nil;
         NSMutableDictionary* options = [[NSMutableDictionary alloc] init];
         
         
@@ -59,7 +59,7 @@
                 }];
                 
                 // find top scoring players in that list and set one as the target
-                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[NSArray arrayWithArray:secretedPlayers]]];
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[NSArray arrayWithArray:secretedPlayers] excluding:player]];
                 
                 // get the target's secret cardValue and store it in the options
                 [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
@@ -76,7 +76,8 @@
             {
                 
                 // find top scoring players and set one as the target
-                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players]];
+                
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
                 
                 // pick most likely card to guard
                 NSInteger* mostLikelyCardValue = [self randomMostLikelyCard:player];
@@ -90,7 +91,61 @@
         if ([cardPattern isEqualToString:@"11000000"])
         {
             
-            //
+            // first find any guard secrets and remove them since you can't guard a guard
+            NSArray* secrets = [self removeGuardSecretsFrom:player.secrets];
+            
+            if (secrets.count > 0)      // secrets known, play guard
+            {
+                
+                // set card
+                [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                    
+                    if (cardInHand.cardValue == kCardValue_Guard)
+                    {
+                        card = cardInHand;
+                    }
+                    
+                }];
+                
+                // get a list of all players with non-guard secrets
+                NSMutableArray* secretedPlayers = [[NSMutableArray alloc] init];
+                [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    [secretedPlayers addObject:secret.player];
+                    
+                }];
+                
+                // find top scoring players in that list and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[NSArray arrayWithArray:secretedPlayers] excluding:player]];
+                
+                // get the target's secret cardValue and store it in the options
+                [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if ([secret.player.playerid isEqualToString:target.playerid])
+                    {
+                        [options setObject:[NSNumber numberWithInteger:secret.cardValue] forKey:@"guardCardTarget"];
+                    }
+                    
+                }];
+                
+            }
+            else  // no secrets left, play priest
+            {
+                
+                // set card
+                [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                    
+                    if (cardInHand.cardValue == kCardValue_Priest)
+                    {
+                        card = cardInHand;
+                    }
+                    
+                }];
+                
+                // find non-secreted top scoring players and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[player nonSecretedPlayers] excluding:player]];
+                
+            }
             
         }
         
@@ -98,7 +153,48 @@
         if ([cardPattern isEqualToString:@"10100000"])
         {
             
-            //
+            // never baron with a guard
+            card = (Card*)[player.cardsInHand lastObject];
+            
+            // first find any guard secrets and remove them since you can't guard a guard
+            NSArray* secrets = [self removeGuardSecretsFrom:player.secrets];
+            
+            if (secrets.count > 0)
+            {
+                
+                // get a list of all players with non-guard secrets
+                NSMutableArray* secretedPlayers = [[NSMutableArray alloc] init];
+                [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    [secretedPlayers addObject:secret.player];
+                    
+                }];
+                
+                // find top scoring players in that list and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[NSArray arrayWithArray:secretedPlayers] excluding:player]];
+                
+                // get the target's secret cardValue and store it in the options
+                [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if ([secret.player.playerid isEqualToString:target.playerid])
+                    {
+                        [options setObject:[NSNumber numberWithInteger:secret.cardValue] forKey:@"guardCardTarget"];
+                    }
+                    
+                }];
+                
+            }
+            else  // no secrets left
+            {
+                
+                // find top scoring players and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                
+                // pick most likely card to guard
+                NSInteger* mostLikelyCardValue = [self randomMostLikelyCard:player];
+                [options setObject:[NSNumber numberWithInteger:mostLikelyCardValue] forKey:@"guardCardTarget"];
+                
+            }
             
         }
         
@@ -106,7 +202,61 @@
         if ([cardPattern isEqualToString:@"10010000"])
         {
             
-            //
+            // first find any guard secrets and remove them since you can't guard a guard
+            NSArray* secrets = [self removeGuardSecretsFrom:player.secrets];
+            
+            if (secrets.count > 0)      // secrets known, play guard
+            {
+                
+                // set card
+                [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                    
+                    if (cardInHand.cardValue == kCardValue_Guard)
+                    {
+                        card = cardInHand;
+                    }
+                    
+                }];
+                
+                // get a list of all players with non-guard secrets
+                NSMutableArray* secretedPlayers = [[NSMutableArray alloc] init];
+                [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    [secretedPlayers addObject:secret.player];
+                    
+                }];
+                
+                // find top scoring players in that list and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[NSArray arrayWithArray:secretedPlayers] excluding:player]];
+                
+                // get the target's secret cardValue and store it in the options
+                [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if ([secret.player.playerid isEqualToString:target.playerid])
+                    {
+                        [options setObject:[NSNumber numberWithInteger:secret.cardValue] forKey:@"guardCardTarget"];
+                    }
+                    
+                }];
+                
+            }
+            else  // no secrets left, play handmaid
+            {
+                
+                // set card
+                [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                    
+                    if (cardInHand.cardValue == kCardValue_Handmaid)
+                    {
+                        card = cardInHand;
+                    }
+                    
+                }];
+                
+                // can only play handmaid on self
+                target = player;
+                
+            }
             
         }
         
@@ -114,7 +264,86 @@
         if ([cardPattern isEqualToString:@"10001000"])
         {
             
-            //
+            // do you know that someone has the princess? If so, prince that player
+            __block BOOL somoneHasPrincess = NO;
+            if (player.secrets.count > 0)
+            {
+                
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue == kCardValue_Princess)
+                    {
+                        somoneHasPrincess = YES;
+                        target = secret.player;
+                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                            
+                            if (cardInHand.cardValue == kCardValue_Prince)
+                            {
+                                card = cardInHand;
+                            }
+                            
+                        }];
+                        
+                    }
+                    
+                }];
+                
+            }
+            
+            if (somoneHasPrincess == NO)
+            {
+                
+                // play guard
+                [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                    
+                    if (cardInHand.cardValue == kCardValue_Guard)
+                    {
+                        card = cardInHand;
+                    }
+                    
+                }];
+                
+                // first find any guard secrets and remove them since you can't guard a guard
+                NSArray* secrets = [self removeGuardSecretsFrom:player.secrets];
+                
+                if (secrets.count > 0)
+                {
+                    
+                    // get a list of all players with non-guard secrets
+                    NSMutableArray* secretedPlayers = [[NSMutableArray alloc] init];
+                    [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                        
+                        [secretedPlayers addObject:secret.player];
+                        
+                    }];
+                    
+                    // find top scoring players in that list and set one as the target
+                    target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[NSArray arrayWithArray:secretedPlayers] excluding:player]];
+                    
+                    // get the target's secret cardValue and store it in the options
+                    [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                        
+                        if ([secret.player.playerid isEqualToString:target.playerid])
+                        {
+                            [options setObject:[NSNumber numberWithInteger:secret.cardValue] forKey:@"guardCardTarget"];
+                        }
+                        
+                    }];
+                    
+                }
+                else  // no secrets left
+                {
+                    
+                    // find top scoring players and set one as the target
+                    target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                    
+                    // pick most likely card to guard
+                    NSInteger* mostLikelyCardValue = [self randomMostLikelyCard:player];
+                    [options setObject:[NSNumber numberWithInteger:mostLikelyCardValue] forKey:@"guardCardTarget"];
+                    
+                }
+                
+            }
             
         }
         
@@ -122,7 +351,55 @@
         if ([cardPattern isEqualToString:@"10000100"])
         {
             
-            //
+            // play guard - never king with a guard
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Guard)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
+            
+            // first find any guard secrets and remove them since you can't guard a guard
+            NSArray* secrets = [self removeGuardSecretsFrom:player.secrets];
+            
+            if (secrets.count > 0)
+            {
+                
+                // get a list of all players with non-guard secrets
+                NSMutableArray* secretedPlayers = [[NSMutableArray alloc] init];
+                [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    [secretedPlayers addObject:secret.player];
+                    
+                }];
+                
+                // find top scoring players in that list and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[NSArray arrayWithArray:secretedPlayers] excluding:player]];
+                
+                // get the target's secret cardValue and store it in the options
+                [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if ([secret.player.playerid isEqualToString:target.playerid])
+                    {
+                        [options setObject:[NSNumber numberWithInteger:secret.cardValue] forKey:@"guardCardTarget"];
+                    }
+                    
+                }];
+                
+            }
+            else  // no secrets left
+            {
+                
+                // find top scoring players and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                
+                // pick most likely card to guard
+                NSInteger* mostLikelyCardValue = [self randomMostLikelyCard:player];
+                [options setObject:[NSNumber numberWithInteger:mostLikelyCardValue] forKey:@"guardCardTarget"];
+                
+            }
             
         }
         
@@ -130,7 +407,55 @@
         if ([cardPattern isEqualToString:@"10000010"])
         {
             
-            //
+            // play guard
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Guard)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
+            
+            // first find any guard secrets and remove them since you can't guard a guard
+            NSArray* secrets = [self removeGuardSecretsFrom:player.secrets];
+            
+            if (secrets.count > 0)
+            {
+                
+                // get a list of all players with non-guard secrets
+                NSMutableArray* secretedPlayers = [[NSMutableArray alloc] init];
+                [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    [secretedPlayers addObject:secret.player];
+                    
+                }];
+                
+                // find top scoring players in that list and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[NSArray arrayWithArray:secretedPlayers] excluding:player]];
+                
+                // get the target's secret cardValue and store it in the options
+                [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if ([secret.player.playerid isEqualToString:target.playerid])
+                    {
+                        [options setObject:[NSNumber numberWithInteger:secret.cardValue] forKey:@"guardCardTarget"];
+                    }
+                    
+                }];
+                
+            }
+            else  // no secrets left
+            {
+                
+                // find top scoring players and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                
+                // pick most likely card to guard
+                NSInteger* mostLikelyCardValue = [self randomMostLikelyCard:player];
+                [options setObject:[NSNumber numberWithInteger:mostLikelyCardValue] forKey:@"guardCardTarget"];
+                
+            }
             
         }
         
@@ -138,7 +463,55 @@
         if ([cardPattern isEqualToString:@"10000001"])
         {
             
-            //
+            // play guard - can't play princess
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Guard)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
+            
+            // first find any guard secrets and remove them since you can't guard a guard
+            NSArray* secrets = [self removeGuardSecretsFrom:player.secrets];
+            
+            if (secrets.count > 0)
+            {
+                
+                // get a list of all players with non-guard secrets
+                NSMutableArray* secretedPlayers = [[NSMutableArray alloc] init];
+                [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    [secretedPlayers addObject:secret.player];
+                    
+                }];
+                
+                // find top scoring players in that list and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[NSArray arrayWithArray:secretedPlayers] excluding:player]];
+                
+                // get the target's secret cardValue and store it in the options
+                [secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if ([secret.player.playerid isEqualToString:target.playerid])
+                    {
+                        [options setObject:[NSNumber numberWithInteger:secret.cardValue] forKey:@"guardCardTarget"];
+                    }
+                    
+                }];
+                
+            }
+            else  // no secrets left
+            {
+                
+                // find top scoring players and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                
+                // pick most likely card to guard
+                NSInteger* mostLikelyCardValue = [self randomMostLikelyCard:player];
+                [options setObject:[NSNumber numberWithInteger:mostLikelyCardValue] forKey:@"guardCardTarget"];
+                
+            }
             
         }
         
@@ -146,7 +519,11 @@
         if ([cardPattern isEqualToString:@"02000000"])
         {
             
-            //
+            // have to play a priest
+            card = (Card*)[player.cardsInHand lastObject];
+            
+            // find non-secreted top scoring players and set one as the target
+            target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[player nonSecretedPlayers] excluding:player]];
             
         }
         
@@ -154,7 +531,46 @@
         if ([cardPattern isEqualToString:@"01100000"])
         {
             
-            //
+            if (player.secrets.count > 0)
+            {
+                
+                // if someone has a guard, then baron them and win with my priest
+                __block BOOL someoneHasGuard = NO;
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue < kCardValue_Priest)
+                    {
+                        someoneHasGuard = YES;
+                        target = secret.player;
+                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                            
+                            if (cardInHand.cardValue == kCardValue_Baron)
+                            {
+                                card = cardInHand;
+                            }
+                            
+                        }];
+                    }
+                    
+                }];
+                
+                // if I don't know someone has a guard then priest someone
+                if (someoneHasGuard == NO)
+                {
+                    [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                        
+                        if (cardInHand.cardValue == kCardValue_Priest)
+                        {
+                            card = cardInHand;
+                        }
+                        
+                    }];
+                    
+                    // find non-secreted top scoring players and set one as the target
+                    target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[player nonSecretedPlayers] excluding:player]];
+                }
+                
+            }
             
         }
         
@@ -162,7 +578,39 @@
         if ([cardPattern isEqualToString:@"01010000"])
         {
             
-            //
+            if (player.secrets.count > 0)
+            {
+                // play priest
+                [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                    
+                    if (cardInHand.cardValue == kCardValue_Priest)
+                    {
+                        card = cardInHand;
+                    }
+                    
+                }];
+                
+                // find non-secreted top scoring players and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[player nonSecretedPlayers] excluding:player]];
+                
+            }
+            else
+            {
+                
+                // set card
+                [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                    
+                    if (cardInHand.cardValue == kCardValue_Handmaid)
+                    {
+                        card = cardInHand;
+                    }
+                    
+                }];
+                
+                // can only play handmaid on self
+                target = player;
+                
+            }
             
         }
         
@@ -170,7 +618,49 @@
         if ([cardPattern isEqualToString:@"01001000"])
         {
             
-            //
+            // do you know that someone has the princess? If so, prince that player
+            __block BOOL somoneHasPrincess = NO;
+            if (player.secrets.count > 0)
+            {
+                
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue == kCardValue_Princess)
+                    {
+                        somoneHasPrincess = YES;
+                        target = secret.player;
+                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                            
+                            if (cardInHand.cardValue == kCardValue_Prince)
+                            {
+                                card = cardInHand;
+                            }
+                            
+                        }];
+                        
+                    }
+                    
+                }];
+                
+            }
+            
+            if (somoneHasPrincess == NO)
+            {
+                
+                // play priest
+                [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                    
+                    if (cardInHand.cardValue == kCardValue_Priest)
+                    {
+                        card = cardInHand;
+                    }
+                    
+                }];
+                
+                // find non-secreted top scoring players and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[player nonSecretedPlayers] excluding:player]];
+                
+            }
             
         }
         
@@ -178,7 +668,18 @@
         if ([cardPattern isEqualToString:@"01000100"])
         {
             
-            //
+            // play priest
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Priest)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
+            
+            // find non-secreted top scoring players and set one as the target
+            target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[player nonSecretedPlayers] excluding:player]];
             
         }
         
@@ -186,7 +687,18 @@
         if ([cardPattern isEqualToString:@"01000010"])
         {
             
-            //
+            // play priest
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Priest)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
+            
+            // find non-secreted top scoring players and set one as the target
+            target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[player nonSecretedPlayers] excluding:player]];
             
         }
         
@@ -194,7 +706,18 @@
         if ([cardPattern isEqualToString:@"01000001"])
         {
             
-            //
+            // play priest
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Priest)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
+            
+            // find non-secreted top scoring players and set one as the target
+            target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[player nonSecretedPlayers] excluding:player]];
             
         }
         
@@ -202,7 +725,34 @@
         if ([cardPattern isEqualToString:@"00200000"])
         {
             
-            //
+            // have to play a baron
+            card = (Card*)[player.cardsInHand lastObject];
+            
+            if (player.secrets.count > 0)
+            {
+                
+                // if someone has a lower card than second card, then baron them and win with my priest
+                __block BOOL someoneHasLowerCard = NO;
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue < kCardValue_Baron)
+                    {
+                        someoneHasLowerCard = YES;
+                        target = secret.player;
+                        
+                    }
+                    
+                }];
+                
+                // if I don't know someone has a lower card
+                if (someoneHasLowerCard == NO)
+                {
+                    
+                    target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                    
+                }
+                
+            }
             
         }
         
@@ -210,7 +760,49 @@
         if ([cardPattern isEqualToString:@"00110000"])
         {
             
-            //
+            if (player.secrets.count > 0)
+            {
+                
+                // if someone has a lower card than second card, then baron them and win with my priest
+                __block BOOL someoneHasLowerCard = NO;
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue < kCardValue_Handmaid)
+                    {
+                        someoneHasLowerCard = YES;
+                        target = secret.player;
+                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                            
+                            if (cardInHand.cardValue == kCardValue_Baron)
+                            {
+                                card = cardInHand;
+                            }
+                            
+                        }];
+                    }
+                    
+                }];
+                
+                // if I don't know someone has a lower card
+                if (someoneHasLowerCard == NO)
+                {
+                    
+                    // play handmaid
+                    [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                        
+                        if (cardInHand.cardValue == kCardValue_Handmaid)
+                        {
+                            card = cardInHand;
+                        }
+                        
+                    }];
+                    
+                    // can only play handmaid on self
+                    target = player;
+                    
+                }
+                
+            }
             
         }
         
@@ -218,7 +810,74 @@
         if ([cardPattern isEqualToString:@"00101000"])
         {
             
-            //
+            // do you know that someone has the princess? If so, prince that player
+            __block BOOL somoneHasPrincess = NO;
+            if (player.secrets.count > 0)
+            {
+                
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue == kCardValue_Princess)
+                    {
+                        somoneHasPrincess = YES;
+                        target = secret.player;
+                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                            
+                            if (cardInHand.cardValue == kCardValue_Prince)
+                            {
+                                card = cardInHand;
+                            }
+                            
+                        }];
+                        
+                    }
+                    
+                }];
+                
+            }
+            
+            if (somoneHasPrincess == NO)
+            {
+                    
+                // if someone has a lower card than second card, then baron them and win with my priest
+                __block BOOL someoneHasLowerCard = NO;
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue < kCardValue_Prince)
+                    {
+                        someoneHasLowerCard = YES;
+                        target = secret.player;
+                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                            
+                            if (cardInHand.cardValue == kCardValue_Baron)
+                            {
+                                card = cardInHand;
+                            }
+                            
+                        }];
+                    }
+                    
+                }];
+                
+                // if I don't know someone has a lower card
+                if (someoneHasLowerCard == NO)
+                {
+                    
+                    // prince a random player
+                    [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                        
+                        if (cardInHand.cardValue == kCardValue_Prince)
+                        {
+                            card = cardInHand;
+                        }
+                        
+                    }];
+                    
+                    target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                    
+                }
+                
+            }
             
         }
         
@@ -226,7 +885,48 @@
         if ([cardPattern isEqualToString:@"00100100"])
         {
             
-            //
+            if (player.secrets.count > 0)
+            {
+                
+                // if someone has a lower card than second card, then baron them and win with my priest
+                __block BOOL someoneHasLowerCard = NO;
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue < kCardValue_King)
+                    {
+                        someoneHasLowerCard = YES;
+                        target = secret.player;
+                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                            
+                            if (cardInHand.cardValue == kCardValue_Baron)
+                            {
+                                card = cardInHand;
+                            }
+                            
+                        }];
+                    }
+                    
+                }];
+                
+                // if I don't know someone has a lower card
+                if (someoneHasLowerCard == NO)
+                {
+                    
+                    // baron a random person
+                    [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                        
+                        if (cardInHand.cardValue == kCardValue_Baron)
+                        {
+                            card = cardInHand;
+                        }
+                        
+                    }];
+                    
+                    target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                    
+                }
+                
+            }
             
         }
         
@@ -234,7 +934,48 @@
         if ([cardPattern isEqualToString:@"00100010"])
         {
             
-            //
+            if (player.secrets.count > 0)
+            {
+                
+                // if someone has a lower card than second card, then baron them and win with my priest
+                __block BOOL someoneHasLowerCard = NO;
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue < kCardValue_Countess)
+                    {
+                        someoneHasLowerCard = YES;
+                        target = secret.player;
+                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                            
+                            if (cardInHand.cardValue == kCardValue_Baron)
+                            {
+                                card = cardInHand;
+                            }
+                            
+                        }];
+                    }
+                    
+                }];
+                
+                // if I don't know someone has a lower card
+                if (someoneHasLowerCard == NO)
+                {
+                    
+                    // baron a random person
+                    [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                        
+                        if (cardInHand.cardValue == kCardValue_Baron)
+                        {
+                            card = cardInHand;
+                        }
+                        
+                    }];
+                    
+                    target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                    
+                }
+                
+            }
             
         }
         
@@ -242,7 +983,48 @@
         if ([cardPattern isEqualToString:@"00100001"])
         {
             
-            //
+            if (player.secrets.count > 0)
+            {
+                
+                // if someone has a lower card than second card, then baron them and win with my priest
+                __block BOOL someoneHasLowerCard = NO;
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue < kCardValue_Princess)
+                    {
+                        someoneHasLowerCard = YES;
+                        target = secret.player;
+                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                            
+                            if (cardInHand.cardValue == kCardValue_Baron)
+                            {
+                                card = cardInHand;
+                            }
+                            
+                        }];
+                    }
+                    
+                }];
+                
+                // if I don't know someone has a lower card
+                if (someoneHasLowerCard == NO)
+                {
+                    
+                    // baron a random person
+                    [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                        
+                        if (cardInHand.cardValue == kCardValue_Baron)
+                        {
+                            card = cardInHand;
+                        }
+                        
+                    }];
+                    
+                    target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                    
+                }
+                
+            }
             
         }
         
@@ -250,7 +1032,11 @@
         if ([cardPattern isEqualToString:@"00020000"])
         {
             
-            //
+            // play handmaid
+            card = (Card*)[player.cardsInHand lastObject];
+            
+            // can only play handmaid on self
+            target = player;
             
         }
         
@@ -258,7 +1044,42 @@
         if ([cardPattern isEqualToString:@"00011000"])
         {
             
-            //
+            // do you know that someone has the princess? If so, prince that player
+            __block BOOL somoneHasPrincess = NO;
+            if (player.secrets.count > 0)
+            {
+                
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue == kCardValue_Princess)
+                    {
+                        somoneHasPrincess = YES;
+                        target = secret.player;
+                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                            
+                            if (cardInHand.cardValue == kCardValue_Prince)
+                            {
+                                card = cardInHand;
+                            }
+                            
+                        }];
+                        
+                    }
+                    
+                }];
+                
+            }
+            
+            if (somoneHasPrincess == NO)
+            {
+                
+                // play handmaid
+                card = (Card*)[player.cardsInHand lastObject];
+                
+                // can only play handmaid on self
+                target = player;
+                
+            }
             
         }
         
@@ -266,7 +1087,11 @@
         if ([cardPattern isEqualToString:@"00010100"])
         {
             
-            //
+            // play handmaid
+            card = (Card*)[player.cardsInHand lastObject];
+            
+            // can only play handmaid on self
+            target = player;
             
         }
         
@@ -274,7 +1099,11 @@
         if ([cardPattern isEqualToString:@"00010010"])
         {
             
-            //
+            // play handmaid
+            card = (Card*)[player.cardsInHand lastObject];
+            
+            // can only play handmaid on self
+            target = player;
             
         }
         
@@ -282,7 +1111,11 @@
         if ([cardPattern isEqualToString:@"00010001"])
         {
             
-            //
+            // play handmaid
+            card = (Card*)[player.cardsInHand lastObject];
+            
+            // can only play handmaid on self
+            target = player;
             
         }
         
@@ -290,7 +1123,34 @@
         if ([cardPattern isEqualToString:@"00002000"])
         {
             
-            //
+            // have to play prince
+            card = (Card*)[player.cardsInHand lastObject];
+            
+            // do you know that someone has the princess? If so, prince that player
+            __block BOOL somoneHasPrincess = NO;
+            if (player.secrets.count > 0)
+            {
+                
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue == kCardValue_Princess)
+                    {
+                        
+                        somoneHasPrincess = YES;
+                        target = secret.player;
+                        
+                    }
+                    
+                }];
+                
+            }
+            
+            if (somoneHasPrincess == NO)
+            {
+                
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                
+            }
             
         }
         
@@ -298,7 +1158,39 @@
         if ([cardPattern isEqualToString:@"00001100"])
         {
             
-            //
+            // do you know that someone has the princess? If so, prince that player
+            __block BOOL somoneHasPrincess = NO;
+            if (player.secrets.count > 0)
+            {
+                
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue == kCardValue_Princess)
+                    {
+                        
+                        somoneHasPrincess = YES;
+                        target = secret.player;
+                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                            
+                            if (cardInHand.cardValue == kCardValue_Prince)
+                            {
+                                card = cardInHand;
+                            }
+                            
+                        }];
+                        
+                    }
+                    
+                }];
+                
+            }
+            
+            if (somoneHasPrincess == NO)
+            {
+                
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                
+            }
             
         }
         
@@ -306,7 +1198,18 @@
         if ([cardPattern isEqualToString:@"00001010"])
         {
             
-            //
+            // have to play countess
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Countess)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
+            
+            // countess has no target, but target self
+            target = player;
             
         }
         
@@ -314,7 +1217,39 @@
         if ([cardPattern isEqualToString:@"00001001"])
         {
             
-            //
+            // do you know that someone has the princess? If so, prince that player
+            __block BOOL somoneHasPrincess = NO;
+            if (player.secrets.count > 0)
+            {
+                
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue == kCardValue_Princess)
+                    {
+                        
+                        somoneHasPrincess = YES;
+                        target = secret.player;
+                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                            
+                            if (cardInHand.cardValue == kCardValue_Prince)
+                            {
+                                card = cardInHand;
+                            }
+                            
+                        }];
+                        
+                    }
+                    
+                }];
+                
+            }
+            
+            if (somoneHasPrincess == NO)
+            {
+                
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                
+            }
             
         }
         
@@ -322,7 +1257,18 @@
         if ([cardPattern isEqualToString:@"00000110"])
         {
             
-            //
+            // have to play countess
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Countess)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
+            
+            // countess has no target, but target self
+            target = player;
             
         }
         
@@ -330,7 +1276,54 @@
         if ([cardPattern isEqualToString:@"00000101"])
         {
             
-            //
+            // have to play king
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_King)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
+            
+            // target a random player
+            target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+            
+            // do you know that someone has a guard or a prince? then change target to that player
+            if (player.secrets.count > 0)
+            {
+                
+                __block BOOL somoneHasPrince = NO;
+                
+                [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                    
+                    if (secret.cardValue == kCardValue_Prince)
+                    {
+                        
+                        somoneHasPrince = YES;
+                        target = secret.player;
+                        
+                    }
+
+                }];
+                
+                __block BOOL somoneHasGuard  = NO;
+                if (somoneHasPrince == NO)
+                {
+                    [player.secrets enumerateObjectsUsingBlock:^(Secret* secret, NSUInteger idx, BOOL *stop) {
+                        
+                        if (secret.cardValue == kCardValue_Guard)
+                        {
+                    
+                            somoneHasGuard = YES;
+                            target = secret.player;
+                    
+                        }
+                        
+                    }];
+                }
+                
+            }
             
         }
         
@@ -338,11 +1331,22 @@
         if ([cardPattern isEqualToString:@"00000011"])
         {
             
-            //
+            // have to play countess
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Countess)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
+            
+            // countess has no target, but target self
+            target = player;
             
         }
         
-        
+        // create play object from target, card, and (optionally)options
         play = [Play playWithCard:card andTarget:target andOptions:[NSDictionary dictionaryWithDictionary:options]];
         
     }
@@ -573,14 +1577,19 @@
     
 }
 
-+(NSArray*)playersWithMostPointsFromList:(NSArray*)playersList
+//+(NSArray*)playersWithMostPointsFromList:(NSArray*)playersList
+//{
+//    //
+//}
+
++(NSArray*)playersWithMostPointsFromList:(NSArray*)playersList excluding:(LLPlayer*)excludedPlayer
 {
     
     // find the top score value
     __block NSInteger topScore = 0;
     [playersList enumerateObjectsUsingBlock:^(LLPlayer* player, NSUInteger idx, BOOL *stop) {
         
-        if (player.score > topScore)
+        if (player.score > topScore && ![player.playerid isEqualToString:excludedPlayer.playerid])
         {
             topScore = player.score;
         }

@@ -32,15 +32,17 @@
 -(NSInteger)removeCard:(Card*)card;
 -(NSInteger)removeCardByNumber:(NSInteger)cardNumber;
 -(void)invalidateAllCards;
--(void)turnStart;
--(void)turnEnd;
+-(void)startTurn;
+-(void)endTurn;
+-(void)startRound;
+-(void)endRound;
 -(Play*)makePlay;
 -(NSInteger)ScoreUp;
 -(NSInteger)addSecretForPlayer:(LLPlayer*)player andCardValue:(NSInteger)cardValue;
 -(NSInteger)removeSecretForPlayer:(LLPlayer*)player andCard:(NSInteger)cardValue;
 -(NSInteger)removeAnySecretsForPlayer:(LLPlayer*)player;
 -(NSArray*)getAnySecretsForPlayer:(LLPlayer*)player;
-
+-(NSArray*)nonSecretedPlayers;
 
 
 @end

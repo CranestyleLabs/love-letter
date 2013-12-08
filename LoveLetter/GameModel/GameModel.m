@@ -18,6 +18,8 @@
 @property (readwrite) NSArray* players;
 @property (readwrite) Deck* deck;
 @property (readwrite) Card* burnedCard;
+@property (readwrite) NSInteger roundNumber;
+@property (readwrite) BOOL isGameOver;
 
 @end
 
@@ -39,11 +41,12 @@ static GameModel* gameModel = nil;
     if (self = [super init])
     {
         
-        // create new deck instance
-        [self setDeck:[[Deck alloc] init]];
+        // defaults
+        winningScore = 4;
+        [self setIsGameOver:NO];
         
-        // burn a card
-        [self setBurnedCard:[self.deck drawCard]];
+        // set roundNumber = 0
+        [self setRoundNumber:0];
         
         // create players
         [self setPlayerCount:4];
@@ -56,7 +59,7 @@ static GameModel* gameModel = nil;
 
                 // Human player
                 LLPlayer* player = [LLPlayer playerWithPlayerId:@"Human"];
-                [player setIsAI:NO];
+                //[player setIsAI:NO];
                 [newPlayers addObject:player];
                 
             }
@@ -69,8 +72,103 @@ static GameModel* gameModel = nil;
             }
             
         }
+        
+        // start the first round
+        [self startRound];
+        
     }
     return self;
+}
+
+-(void)startRound
+{
+    
+    // set round number
+    [self setRoundNumber:self.roundNumber++];
+    
+    // refresh the deck
+    if (self.deck == nil)
+    {
+        [self setDeck:[[Deck alloc] init]];
+    }
+    else
+    {
+        [self.deck refresh];
+    }
+    
+    // burn a card
+    [self setBurnedCard:[self.deck drawCard]];
+    
+    // call startRound for each player
+    [self.players enumerateObjectsUsingBlock:^(LLPlayer* player, NSUInteger idx, BOOL *stop) {
+        
+        [player startRound];
+        
+    }];
+    
+}
+
+-(void)endRound
+{
+    
+    // see who still has cards in their hand
+    NSMutableArray* playersWithCards = [self.players mutableCopy];
+    NSMutableArray* playersWithoutCards = [[NSMutableArray alloc] init];
+    [playersWithCards enumerateObjectsUsingBlock:^(LLPlayer* player, NSUInteger idx, BOOL *stop) {
+        
+        if (player.cardsInHand.count == 0)
+        {
+            [playersWithoutCards addObject:player];
+        }
+        
+    }];
+    [playersWithCards removeObjectsInArray:playersWithoutCards];
+    
+    // see who has the highest card
+    __block NSInteger highestHand = 0;
+    __block LLPlayer* roundWinner = nil;
+    [playersWithCards enumerateObjectsUsingBlock:^(LLPlayer* player, NSUInteger idx, BOOL *stop) {
+        
+        Card* cardInHand = (Card*)[player.cardsInHand lastObject];
+        if (cardInHand.cardValue > highestHand)
+        {
+            highestHand = cardInHand.cardValue;
+            roundWinner = player;
+        }
+        
+    }];
+    
+    // give the round winner a token
+    if (roundWinner != nil)
+    {
+        [roundWinner ScoreUp];
+    }
+    
+    // call endRound for each player
+    [self.players enumerateObjectsUsingBlock:^(LLPlayer* player, NSUInteger idx, BOOL *stop) {
+        
+        [player endRound];
+        
+    }];
+    
+    // see if someone has won the game
+    [self.players enumerateObjectsUsingBlock:^(LLPlayer* player, NSUInteger idx, BOOL *stop) {
+        
+        if (player.score == winningScore)
+        {
+            [self  setIsGameOver:YES];
+            [self gameOver:player];
+        }
+        
+    }];
+
+}
+
+-(void)gameOver:(LLPlayer*)winner
+{
+    
+    //
+    
 }
 
 @end
