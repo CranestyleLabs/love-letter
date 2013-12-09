@@ -49,6 +49,8 @@
     
     [[GameModel sharedInstance] startRound];
     
+    [self layoutPlayerSprites];
+    
     CCLabelBMFont* labelInHand = [CCLabelBMFont labelWithString:@"In Hand" fntFile:FONT_BIG];
     [labelInHand setPosition:ccp(WIN_CENTER.x, 190)];
     [self addChild:labelInHand];
@@ -57,16 +59,12 @@
     [labelPlayed setAnchorPoint:CGPointZero];
     [labelPlayed setPosition:ccp(10, 340)];
     [self addChild:labelPlayed];
-    
-    [self layoutPlayerSprites];
     [self updateCardsUI];
     
     [self layoutDrawDeck];
-    [self layoutPlayerSprites];
     drawDeckCount = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"%i", 0] fntFile:FONT_BIG];
     [self addChild:drawDeckCount];
     [self updateDrawDeckCardCount];
-    
     [[GameModel sharedInstance] addObserver:self forKeyPath:@"deck" options:0 context:nil];
 }
 

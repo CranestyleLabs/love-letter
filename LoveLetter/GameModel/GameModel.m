@@ -71,7 +71,7 @@ static GameModel* gameModel = nil;
                 [newPlayers addObject:[LLPlayer playerWithPlayerId:[NSString stringWithFormat:@"AI%d", i]]];
                 
             }
-            
+            self.players = [NSArray arrayWithArray:newPlayers];
         }
         
     }
