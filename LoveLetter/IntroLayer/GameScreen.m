@@ -13,6 +13,7 @@
 #import "GameModel.h"
 #import "HumanPlayerSprite.h"
 #import "LLPlayer.h"
+#import "Deck.h"
 
 @implementation GameScreen
 
@@ -45,6 +46,7 @@
 {
     [super onEnterTransitionDidFinish];
     [self layoutAIPlayerSprites];
+    [self layoutDrawDeck];
 }
 
 -(void)layoutAIPlayerSprites
@@ -66,6 +68,24 @@
         }
     }
 }
+
+-(void) layoutDrawDeck
+{
+    const int cardStackCount = 3;
+    
+    for (int i = 0; i < cardStackCount; i++)
+    {
+        CCSprite* card = [Deck getBackCardSprite];
+        card.scale = 0.2f;
+        float pointX = self.contentSize.width - (card.contentSize.width * card.scale / 2.0f) - 20.0f + ((float)i * 5.0f);
+        float pointY = (card.contentSize.height * card.scale / 2.0f) + 20.0f - ((float)i * 5.0f);
+        CGPoint cardPos = ccp(pointX, pointY);
+        card.position = cardPos;
+        
+        [self addChild:card];
+    }
+}
+
 
 //-(void)layoutHumanPlayerSprite
 //{
