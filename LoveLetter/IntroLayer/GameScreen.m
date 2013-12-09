@@ -236,7 +236,7 @@
     }];
     
     CCMenu* cardMenu = [CCMenu menuWithItems:buttonPlay, buttonCancel, nil];
-    [cardMenu setPosition:CGPointMake(0, -cardSprite.contentSize.height/2 * cardSprite.scale - 50.0f)];
+    [cardMenu setPosition:CGPointMake(0, -cardSprite.contentSize.height/2 * cardSprite.scale - 40.0f)];
     [buttonCancel setPosition:CGPointMake(-buttonCancelNormal.contentSize.width/2 - 20.0f, 0)];
     [buttonPlay setPosition:CGPointMake(buttonPlayNormal.contentSize.width/2 + 20.0f, 0)];
     [self.chosenCardSprite addChild:cardMenu];
