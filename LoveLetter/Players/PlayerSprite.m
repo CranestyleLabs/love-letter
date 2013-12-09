@@ -33,8 +33,8 @@
         [self.label           setAnchorPoint:ccp(0, 0)];
         [self.labelBackground setAnchorPoint:ccp(0, 0)];
         
-        [self.label             setPosition:ccp(25, 80)];
-        [self.labelBackground   setPosition:ccp(15, 70)];
+        [self.label             setPosition:ccp(25, 70)];
+        [self.labelBackground   setPosition:ccpAdd(self.label.position, ccp(-10, -10))];
         
         // add sprites
         [self addChild:self.label];
@@ -49,7 +49,7 @@
 {
     CCSprite* sprite = [CCSprite spriteWithFile:@"playername-background.png"];
     [sprite setColor:cyan];
-    [sprite setScaleX:1.1f];
+    [sprite setScaleX:0.65f];
     [sprite setScaleY:0.4f];
     return sprite;
 }
@@ -77,7 +77,7 @@
 {
     if (self.player.score > 0)
     {
-        CGPoint startingPosition =  ccpAdd(self.label.position, ccp(self.label.contentSize.width + 20, -3));
+        CGPoint startingPosition =  ccpAdd(self.label.position, ccp((self.labelBackground.contentSize.width * self.labelBackground.scaleX), -3));
         CGPoint offset = ccp(50, 0);
         
         for (int i = 0; i < self.player.score; i++)

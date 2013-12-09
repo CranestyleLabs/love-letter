@@ -51,11 +51,11 @@
 {
     CCSprite* glow = [CCSprite spriteWithFile:@"background-badge.png"];
     [glow setColor:ccc3(150, 0, 150)];
-    float scale    = 0.5 * CC_CONTENT_SCALE_FACTOR();
+    float scale    = 0.6 * CC_CONTENT_SCALE_FACTOR();
     [glow setScale:scale];
     
     CCSprite* sprite = [self createBadgeSpriteNormal];
-    [sprite setScale:1];
+    [sprite setScale:0.8];
     [sprite setPosition:ccp(glow.contentSize.width/2, glow.contentSize.height/2)];
     [glow addChild:sprite];
     

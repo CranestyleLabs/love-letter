@@ -164,6 +164,7 @@
 -(void)startTurn
 {
     
+    
     // start turn
     [self setIsProtected:NO];
     

@@ -19,12 +19,14 @@
     CGPoint playButtonPos;
     
     CCLabelBMFont* drawDeckCount;
+    CCMenuItemToggle* toggle;
     float indent;
 }
 
 @property CCMenu*   cardButtonOld;
 @property CCMenu*   cardButtonNew;
 @property CCSprite* chosenCardSprite;
+@property NSArray*  playerSprites;
 
 
 +(CCScene*)scene;
