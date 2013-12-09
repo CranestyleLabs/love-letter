@@ -47,7 +47,19 @@
     
     [self layoutDrawDeck];
     [self layoutPlayerSprites];
+    drawDeckCount = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"%i", 0] fntFile:FONT_BIG];
+    [self addChild:drawDeckCount];
+    [self updateDrawDeckCardCount];
 //    [self layoutHumanPlayerSprite];
+    
+    [[GameModel sharedInstance] addObserver:self forKeyPath:@"deck" options:0 context:nil];
+}
+
+-(void)onExit
+{
+    [super onExit];
+    
+    [[[GameModel sharedInstance] deck] removeObserver:self forKeyPath:@"deck"];
 }
 
 -(void)layoutPlayerSprites
@@ -77,6 +89,7 @@
 
 -(void) layoutDrawDeck
 {
+    // Grab card sprites
     const int cardStackCount = 3;
     
     for (int i = 0; i < cardStackCount; i++)
@@ -92,10 +105,29 @@
     }
 }
 
+-(void)updateDrawDeckCardCount
+{
+    int cardCount = [[GameModel sharedInstance] deck].cards.count;
+    float cardCountScale = 5.0f;
+    [drawDeckCount setString:[NSString stringWithFormat:@"%i", cardCount]];
+    drawDeckCount.scale = cardCountScale;
+    float pointX = self.contentSize.width - (drawDeckCount.contentSize.width * drawDeckCount.scale / 2.0f) - 40.0f;
+    float pointY = (drawDeckCount.contentSize.height * drawDeckCount.scale / 2.0f) + 20.0f;
+    CGPoint countPos = ccp(pointX, pointY);
+    
+    drawDeckCount.position = countPos;
+}
 
 //-(void)layoutHumanPlayerSprite
 //{
 //    HumanPlayerSprite* humanPlayerSprite = [HumanPlayerSprite alloc] initWithPlayer:<#(LLPlayer *)#>
 //}
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"deck"])
+    {
+        [self updateDrawDeckCardCount];
+    }
+}
 @end
