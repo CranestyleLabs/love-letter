@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class LLPlayer;
+@class Play;
+
 @interface PlayResult : NSObject
+
++(void)player:(LLPlayer*)player makesPlay:(Play*)play;
 
 @end

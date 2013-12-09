@@ -31,12 +31,53 @@
         return;
     }
     
+    // play
+    switch (card.cardValue)
+    {
+
+        case kCardValue_Guard:
+            [self playGuard:player playsCard:card onPlayer:target withOptions:options];
+            break;
+            
+        case kCardValue_Priest:
+            [self playGuard:player playsCard:card onPlayer:target withOptions:options];
+            break;
+            
+        case kCardValue_Baron:
+            [self playBaron:player playsCard:card onPlayer:target withOptions:options];
+            break;
+            
+        case kCardValue_Handmaid:
+            [self playHandmaid:player playsCard:card onPlayer:target withOptions:options];
+            break;
+            
+        case kCardValue_Prince:
+            [self playPrince:player playsCard:card onPlayer:target withOptions:options];
+            break;
+            
+        case kCardValue_King:
+            [self playKing:player playsCard:card onPlayer:target withOptions:options];
+            break;
+            
+        case kCardValue_Countess:
+            [self playCountess:player playsCard:card onPlayer:target withOptions:options];
+            break;
+            
+        default:
+            break;
+    }
     
     
     // remove played card from players hand and into theit played cards
     [player playCard:card];
     
 }
+
+
+
+#pragma mark
+#pragma mark Play Cards
+
 
 +(void)playGuard:(LLPlayer*)player playsCard:(Card*)card onPlayer:(LLPlayer*)target withOptions:(NSDictionary*)options
 {
@@ -106,6 +147,7 @@
 
 }
 
+
 +(void)playHandmaid:(LLPlayer*)player playsCard:(Card*)card onPlayer:(LLPlayer*)target withOptions:(NSDictionary*)options
 {
     
@@ -117,6 +159,7 @@
     [player protectWithHandmaid];
     
 }
+
 
 +(void)playPrince:(LLPlayer*)player playsCard:(Card*)card onPlayer:(LLPlayer*)target withOptions:(NSDictionary*)options
 {
@@ -149,6 +192,7 @@
     
 }
 
+
 +(void)playKing:(LLPlayer*)player playsCard:(Card*)card onPlayer:(LLPlayer*)target withOptions:(NSDictionary*)options
 {
 
@@ -175,12 +219,18 @@
     
 }
 
+
 +(void)playCountess:(LLPlayer*)player playsCard:(Card*)card onPlayer:(LLPlayer*)target withOptions:(NSDictionary*)options
 {
     
     // nothing to do here (for now)
     
 }
+
+
+
+#pragma mark
+#pragma mark Misc
 
 +(BOOL)isValidPlay:(LLPlayer*)player playsCard:(Card*)card onPlayer:(LLPlayer*)target withOptions:(NSDictionary*)options
 {
