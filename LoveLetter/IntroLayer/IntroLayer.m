@@ -38,7 +38,14 @@
 {
 	if( (self=[super init]) )
     {
-        //
+        CCSprite* cardBack = [CCSprite spriteWithFile:@"back-card.png"];
+        [cardBack setScale:0.9];
+        [cardBack setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
+        [self addChild:cardBack];
+        
+        CCLabelBMFont* name = [CCLabelBMFont labelWithString:@"Love Letter" fntFile:@"avenirnext60_bold.fnt"];
+        [name setPosition:ccpAdd(cardBack.position, ccp(0, -200))];
+        [self addChild:name];
 	}
 	
 	return self;
@@ -47,6 +54,11 @@
 -(void) onEnter
 {
 	[super onEnter];
-	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] ]];
+    id delay = [CCDelayTime actionWithDuration:2];
+    id go    = [CCCallBlock actionWithBlock:^{
+        [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] ]];
+    }];
+    id seq   = [CCSequence actionOne:delay two:go];
+    [self runAction:seq];
 }
 @end

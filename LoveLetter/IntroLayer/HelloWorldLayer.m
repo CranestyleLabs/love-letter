@@ -48,10 +48,10 @@
         
         cardDisplay  = [CCSprite node];
         badgeDisplay = [CCSprite node];
-        cardLabel    = [CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:20.0f];
+        cardLabel    = [CCLabelBMFont labelWithString:@"" fntFile:@"avenirnext48_bold.fnt"];
         
         [cardDisplay    setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
-        [badgeDisplay   setPosition:ccpAdd(cardDisplay.position, ccp(0, -160))];
+        [badgeDisplay   setPosition:ccpAdd(cardDisplay.position, ccp(0, -200))];
         [cardLabel      setPosition:ccpAdd(cardDisplay.position, ccp(0, -120))];
         
         [self addChild:cardDisplay];

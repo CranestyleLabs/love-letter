@@ -41,7 +41,7 @@
 {
     NSString* fileName = [NSString stringWithFormat:@"%@-badge.png", [self.name lowercaseString]];
     CCSprite* sprite   = [CCSprite spriteWithFile:fileName];
-    float scale        = 0.2 * CC_CONTENT_SCALE_FACTOR();
+    float scale        = 0.5 * CC_CONTENT_SCALE_FACTOR();
     [sprite setScale:scale];
     return sprite;
 }
