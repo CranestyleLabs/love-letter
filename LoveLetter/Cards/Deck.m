@@ -81,6 +81,7 @@
         }
         
     }
+    [self shuffle];
     
 }
 
@@ -114,7 +115,12 @@
     return rows;
 }
 
--(NSArray*)shuffle:(NSArray*)cardsToShuffle
+-(void)shuffle
+{
+    self.cards = [self shuffleCards:self.cards];
+}
+
+-(NSArray*)shuffleCards:(NSArray*)cardsToShuffle
 {
     //	http://en.wikipedia.org/wiki/Fisher-Yates_shuffle
     NSMutableArray* sortedArray = [NSMutableArray arrayWithArray:cardsToShuffle];

@@ -38,7 +38,8 @@ typedef NS_ENUM(NSInteger, CardValue)
 // selectors
 -(Card*)drawCard;
 -(void)refresh;
--(NSArray*)shuffle:(NSArray*)cardsToShuffle;
+//-(void)shuffle;
+//-(NSArray*)shuffle:(NSArray*)cardsToShuffle;
 +(CCSprite*)getBackCardSprite;
 
 @end

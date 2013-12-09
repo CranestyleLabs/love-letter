@@ -132,7 +132,7 @@
     }
 }
 
--(void) layoutDrawDeck
+-(void)layoutDrawDeck
 {
     // Grab card sprites
     const int cardStackCount = 3;
@@ -153,7 +153,7 @@
 -(void)updateDrawDeckCardCount
 {
     int cardCount = [[GameModel sharedInstance] deck].cards.count;
-    float cardCountScale = 5.0f;
+    float cardCountScale = 2.0f;
     [drawDeckCount setString:[NSString stringWithFormat:@"%i", cardCount]];
     drawDeckCount.scale = cardCountScale;
     float pointX = self.contentSize.width - (drawDeckCount.contentSize.width * drawDeckCount.scale / 2.0f) - 40.0f;

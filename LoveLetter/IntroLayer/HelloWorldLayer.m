@@ -75,19 +75,19 @@
 
 -(void)showRandomCard
 {
-    [cardDisplay  removeAllChildrenWithCleanup:YES];
-    [badgeDisplay removeAllChildrenWithCleanup:YES];
-    
-    NSArray* shuffledCards = [deck shuffle:deck.cards];
-    Card* cardToShow = [shuffledCards objectAtIndex:0];
-    NSString* cardString  = [NSString stringWithFormat:@"Card#%d: %@ (%d)",
-                             cardToShow.cardNumber,
-                             cardToShow.name,
-                             cardToShow.cardValue];
-    [cardLabel setString:cardString];
-    
-    [cardDisplay  addChild:cardToShow.cardSprite];
-    [badgeDisplay addChild:cardToShow.badgeSprite];
+//    [cardDisplay  removeAllChildrenWithCleanup:YES];
+//    [badgeDisplay removeAllChildrenWithCleanup:YES];
+//    
+//    NSArray* shuffledCards = [deck shuffle:deck.cards];
+//    Card* cardToShow = [shuffledCards objectAtIndex:0];
+//    NSString* cardString  = [NSString stringWithFormat:@"Card#%d: %@ (%d)",
+//                             cardToShow.cardNumber,
+//                             cardToShow.name,
+//                             cardToShow.cardValue];
+//    [cardLabel setString:cardString];
+//    
+//    [cardDisplay  addChild:cardToShow.cardSprite];
+//    [badgeDisplay addChild:cardToShow.badgeSprite];
 }
 
 #pragma mark GameKit delegate
