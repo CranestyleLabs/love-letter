@@ -31,40 +31,46 @@
         return;
     }
     
-    // play
-    switch (card.cardValue)
+    // if you chose a protected player then its a wasted play
+    if (target.isProtected == NO)
     {
+    
+        // target is not protected, so proceed with the play
+        switch (card.cardValue)
+        {
 
-        case kCardValue_Guard:
-            [self playGuard:player playsCard:card onPlayer:target withOptions:options];
-            break;
-            
-        case kCardValue_Priest:
-            [self playGuard:player playsCard:card onPlayer:target withOptions:options];
-            break;
-            
-        case kCardValue_Baron:
-            [self playBaron:player playsCard:card onPlayer:target withOptions:options];
-            break;
-            
-        case kCardValue_Handmaid:
-            [self playHandmaid:player playsCard:card onPlayer:target withOptions:options];
-            break;
-            
-        case kCardValue_Prince:
-            [self playPrince:player playsCard:card onPlayer:target withOptions:options];
-            break;
-            
-        case kCardValue_King:
-            [self playKing:player playsCard:card onPlayer:target withOptions:options];
-            break;
-            
-        case kCardValue_Countess:
-            [self playCountess:player playsCard:card onPlayer:target withOptions:options];
-            break;
-            
-        default:
-            break;
+            case kCardValue_Guard:
+                [self playGuard:player playsCard:card onPlayer:target withOptions:options];
+                break;
+                
+            case kCardValue_Priest:
+                [self playGuard:player playsCard:card onPlayer:target withOptions:options];
+                break;
+                
+            case kCardValue_Baron:
+                [self playBaron:player playsCard:card onPlayer:target withOptions:options];
+                break;
+                
+            case kCardValue_Handmaid:
+                [self playHandmaid:player playsCard:card onPlayer:target withOptions:options];
+                break;
+                
+            case kCardValue_Prince:
+                [self playPrince:player playsCard:card onPlayer:target withOptions:options];
+                break;
+                
+            case kCardValue_King:
+                [self playKing:player playsCard:card onPlayer:target withOptions:options];
+                break;
+                
+            case kCardValue_Countess:
+                [self playCountess:player playsCard:card onPlayer:target withOptions:options];
+                break;
+                
+            default:
+                break;
+        }
+        
     }
     
     

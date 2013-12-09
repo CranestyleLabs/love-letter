@@ -42,6 +42,10 @@
         chosenCardPos    = ccp(WIN_CENTER.x, WIN_CENTER.y + 100);
         cancelButtonPos  = ccp(WIN_CENTER.x - 120, 300);
         playButtonPos    = ccp(WIN_CENTER.x + 120, 300);
+        
+        CCSprite* bg = [CCSprite spriteWithFile:@"llbg.png"];
+        [bg setPosition:WIN_CENTER];
+        [self addChild:bg z:0];
     }
     return self;
 }
@@ -144,8 +148,8 @@
     {
         CCSprite* card = [Deck getBackCardSprite];
         card.scale = 0.2f;
-        float pointX = self.contentSize.width - (card.contentSize.width * card.scale / 2.0f) - 20.0f + ((float)i * 5.0f);
-        float pointY = (card.contentSize.height * card.scale / 2.0f) + 20.0f - ((float)i * 5.0f);
+        float pointX = self.contentSize.width - (card.contentSize.width * card.scale / 2.0f) - 35.0f + ((float)i * 5.0f);
+        float pointY = (card.contentSize.height * card.scale / 2.0f) + 35.0f - ((float)i * 5.0f);
         CGPoint cardPos = ccp(pointX, pointY);
         card.position = cardPos;
         
@@ -159,8 +163,8 @@
     float cardCountScale = 2.0f;
     [drawDeckCount setString:[NSString stringWithFormat:@"%i", cardCount]];
     drawDeckCount.scale = cardCountScale;
-    float pointX = self.contentSize.width - (drawDeckCount.contentSize.width * drawDeckCount.scale / 2.0f) - 40.0f;
-    float pointY = (drawDeckCount.contentSize.height * drawDeckCount.scale / 2.0f) + 20.0f;
+    float pointX = self.contentSize.width - (drawDeckCount.contentSize.width * drawDeckCount.scale / 2.0f) - 55.0f;
+    float pointY = (drawDeckCount.contentSize.height * drawDeckCount.scale / 2.0f) + 35.0f;
     CGPoint countPos = ccp(pointX, pointY);
     
     drawDeckCount.position = countPos;
