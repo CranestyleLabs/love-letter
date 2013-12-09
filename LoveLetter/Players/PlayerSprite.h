@@ -20,6 +20,7 @@
 @property CCSprite*      tokenSprites;
 @property CCSprite*      playedCardSprites;
 @property LLPlayer*      player;
+@property NSArray*       cardBadgePositions;
 
 -(id)initWithPlayer:(LLPlayer*)player;
 

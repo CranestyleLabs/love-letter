@@ -21,6 +21,17 @@
         
         self.player = player;
         [self setAnchorPoint:CGPointZero];
+        [self setCardBadgePositions:[self determineCardBadgePositions]];
+        
+
+//        for (NSValue* val in self.cardBadgePositions)
+//        {
+//            CGPoint pos = [val CGPointValue];
+//            CCSprite* sprite = [CCSprite spriteWithFile:@"guard-badge.png"];
+//            [sprite setScale:0.5];
+//            [sprite setPosition:pos];
+//            [self addChild:sprite];
+//        }
         
         // colors
         cyan = ccc3(0, 150, 150);
@@ -43,6 +54,18 @@
         [self setTokens];
     }
     return self;
+}
+
+-(NSArray*)determineCardBadgePositions
+{
+    return [NSArray arrayWithObjects:
+            [NSValue valueWithCGPoint:ccpAdd(ccpAdd(self.label.position, ccp(80, 0)), ccpMult(ccp(115, 0), 0))],
+            [NSValue valueWithCGPoint:ccpAdd(ccpAdd(self.label.position, ccp(80, 0)), ccpMult(ccp(115, 0), 1))],
+            [NSValue valueWithCGPoint:ccpAdd(ccpAdd(self.label.position, ccp(80, 0)), ccpMult(ccp(115, 0), 2))],
+            [NSValue valueWithCGPoint:ccpAdd(ccpAdd(self.label.position, ccp(80, 0)), ccpMult(ccp(115, 0), 3))],
+            [NSValue valueWithCGPoint:ccpAdd(ccpAdd(self.label.position, ccp(80, 0)), ccpMult(ccp(115, 0), 4))],
+            [NSValue valueWithCGPoint:ccpAdd(ccpAdd(self.label.position, ccp(80, 0)), ccpMult(ccp(115, 0), 5))],
+            nil];
 }
 
 -(CCSprite*)createLabelBackground
