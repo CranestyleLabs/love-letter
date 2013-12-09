@@ -10,7 +10,7 @@
 
 @class LLPlayer;
 
-@interface PlayerSprite : CCLayerColor
+@interface PlayerSprite : CCSprite
 {
     //
 }

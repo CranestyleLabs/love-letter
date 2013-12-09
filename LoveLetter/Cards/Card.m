@@ -23,7 +23,8 @@
         self.cardValue   = [[cardData objectAtIndex:2] intValue];
         
         self.cardSprite  = [self createCardSprite];
-        self.badegSprite = [self createBadgeSprite];
+        self.badgeSprite = [self createBadgeSprite];
+        self.badgeButton = [self createBadgeButton];
     }
     return self;
 }
@@ -44,6 +45,17 @@
     float scale        = 0.5 * CC_CONTENT_SCALE_FACTOR();
     [sprite setScale:scale];
     return sprite;
+}
+
+-(CCMenu*)createBadgeButton
+{
+    CCMenuItemSprite* sprite = [CCMenuItemSprite itemWithNormalSprite:[self createBadgeSprite]
+                                                       selectedSprite:[self createBadgeSprite]
+                                                                block:^(id sender) {
+                                                                    CCLOG(@"%@ tapped", self.name);
+                                                                }];
+    
+    return [CCMenu menuWithItems:sprite, nil];
 }
 
 @end

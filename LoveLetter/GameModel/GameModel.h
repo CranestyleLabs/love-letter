@@ -28,5 +28,6 @@
 
 // selectors
 +(GameModel*)sharedInstance;
+-(void)startRound;
 
 @end

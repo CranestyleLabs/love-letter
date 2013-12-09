@@ -9,6 +9,7 @@
 #import "GameScreen.h"
 
 #import "PlayerSprite.h"
+#import "Card.h"
 #import "Constants.h"
 #import "GameModel.h"
 #import "LLPlayer.h"
@@ -35,7 +36,8 @@
 {
     if (self = [super init])
     {
-        //
+        cardButtonOldPos = ccp(WIN_CENTER.x + 120, 150);
+        cardButtonNewPos = ccp(WIN_CENTER.x - 120, 150);
     }
     return self;
 }
@@ -43,8 +45,20 @@
 -(void)onEnterTransitionDidFinish
 {
     [super onEnterTransitionDidFinish];
+    
+    [[GameModel sharedInstance] startRound];
+    
+    CCLabelBMFont* labelInHand = [CCLabelBMFont labelWithString:@"In Hand" fntFile:FONT_BIG];
+    [labelInHand setPosition:ccp(WIN_CENTER.x, 190)];
+    [self addChild:labelInHand];
+    
+    CCLabelBMFont* labelPlayed = [CCLabelBMFont labelWithString:@"Played" fntFile:FONT_BIG];
+    [labelPlayed setAnchorPoint:CGPointZero];
+    [labelPlayed setPosition:ccp(10, 340)];
+    [self addChild:labelPlayed];
+    
     [self layoutPlayerSprites];
-//    [self layoutHumanPlayerSprite];
+    [self updateCardsUI];
 }
 
 -(void)layoutPlayerSprites
@@ -68,7 +82,39 @@
         {
             [playerSprite setPosition:ccp(0, 300)];
             [self addChild:playerSprite];
+            CCLOG(@"created sprite for human player %@", player.playerid);
         }
+    }
+}
+
+-(void)updateCardsUI
+{
+    [self.cardButtonNew removeFromParentAndCleanup:YES];
+    [self.cardButtonOld removeFromParentAndCleanup:YES];
+    
+    LLPlayer* humanPlayer;
+    for (LLPlayer* player in [GameModel sharedInstance].players)
+    {
+        if (!player.isAI)
+        {
+            humanPlayer = player;
+        }
+    }
+    
+    if (humanPlayer.cardsInHand.count > 1)
+    {
+        Card* new = (Card*)[humanPlayer.cardsInHand objectAtIndex:1];
+        self.cardButtonNew = new.badgeButton;
+        [self.cardButtonNew setPosition:cardButtonNewPos];
+        [self addChild:self.cardButtonNew];
+    }
+    
+    if (humanPlayer.cardsInHand.count > 0)
+    {
+        Card* old = (Card*)[humanPlayer.cardsInHand objectAtIndex:0];
+        self.cardButtonOld = old.badgeButton;
+        [self.cardButtonOld setPosition:cardButtonOldPos];
+        [self addChild:self.cardButtonOld];
     }
 }
 

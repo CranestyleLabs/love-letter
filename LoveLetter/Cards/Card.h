@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Randall Nickerson. All rights reserved.
 //
 
-#import "CCSprite.h"
+#import "cocos2d.h"
 
 @interface Card : CCSprite
 {
@@ -15,10 +15,11 @@
 
 -(id)initWithCardData:(NSArray*)cardData;
 
-@property NSString* name;
+@property CCMenu*   badgeButton;
+@property CCSprite* cardSprite;
+@property CCSprite* badgeSprite;
 @property int       cardNumber;
 @property int       cardValue;
-@property CCSprite* cardSprite;
-@property CCSprite* badegSprite;
+@property NSString* name;
 
 @end

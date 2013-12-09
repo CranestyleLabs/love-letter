@@ -87,7 +87,7 @@
     [cardLabel setString:cardString];
     
     [cardDisplay  addChild:cardToShow.cardSprite];
-    [badgeDisplay addChild:cardToShow.badegSprite];
+    [badgeDisplay addChild:cardToShow.badgeSprite];
 }
 
 #pragma mark GameKit delegate

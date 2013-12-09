@@ -17,7 +17,7 @@
 {
     if (self = [super init])
     {
-        [self setColor:ccBLUE];
+//        [self setColor:ccBLUE];
         [self setContentSize:CGSizeMake(WIN_SIZE.width, 200)];
         
         self.player = player;
@@ -26,6 +26,7 @@
         self.label = [self createLabel];
         
         // position sprites
+        [self setAnchorPoint:CGPointZero];
         [self.label setPosition:ccp(10, 80)];
         
         // add sprites

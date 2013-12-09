@@ -12,8 +12,12 @@
 
 @interface GameScreen : CCLayer
 {
-    //
+    CGPoint cardButtonOldPos;
+    CGPoint cardButtonNewPos;
 }
+
+@property CCMenu* cardButtonOld;
+@property CCMenu* cardButtonNew;
 
 
 +(CCScene*)scene;
