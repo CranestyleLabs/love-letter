@@ -14,11 +14,16 @@
 {
     CGPoint cardButtonOldPos;
     CGPoint cardButtonNewPos;
+    CGPoint chosenCardPos;
+    CGPoint cancelButtonPos;
+    CGPoint playButtonPos;
+    
     CCLabelBMFont* drawDeckCount;
 }
 
-@property CCMenu* cardButtonOld;
-@property CCMenu* cardButtonNew;
+@property CCMenu*   cardButtonOld;
+@property CCMenu*   cardButtonNew;
+@property CCSprite* chosenCardSprite;
 
 
 +(CCScene*)scene;
