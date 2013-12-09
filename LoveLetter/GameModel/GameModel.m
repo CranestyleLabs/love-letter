@@ -27,6 +27,7 @@
 @implementation GameModel
 
 static GameModel* gameModel = nil;
+
 +(GameModel*)sharedInstance
 {
     if (gameModel == nil)
@@ -59,7 +60,7 @@ static GameModel* gameModel = nil;
 
                 // Human player
                 LLPlayer* player = [LLPlayer playerWithPlayerId:@"Human"];
-                //[player setIsAI:NO];
+                [player setIsAI:NO];
                 [newPlayers addObject:player];
                 
             }
@@ -70,11 +71,13 @@ static GameModel* gameModel = nil;
                 [newPlayers addObject:[LLPlayer playerWithPlayerId:[NSString stringWithFormat:@"AI%d", i]]];
                 
             }
-            
+            CCLOG(@"game model created player #%d", i);
         }
+        // add players to array property
+        self.players = [NSArray arrayWithArray:newPlayers];
         
         // start the first round
-        [self startRound];
+//        [self startRound];
         
     }
     return self;

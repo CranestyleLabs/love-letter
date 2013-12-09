@@ -13,6 +13,7 @@
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 #import "Card.h"
+#import "Constants.h"
 #import "Deck.h"
 
 #pragma mark - HelloWorldLayer
@@ -48,7 +49,7 @@
         
         cardDisplay  = [CCSprite node];
         badgeDisplay = [CCSprite node];
-        cardLabel    = [CCLabelBMFont labelWithString:@"" fntFile:@"avenirnext48_bold.fnt"];
+        cardLabel    = [CCLabelBMFont labelWithString:@"" fntFile:FONT_SMALL];
         
         [cardDisplay    setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
         [badgeDisplay   setPosition:ccpAdd(cardDisplay.position, ccp(0, -200))];
