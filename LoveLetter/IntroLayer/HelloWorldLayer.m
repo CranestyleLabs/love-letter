@@ -13,6 +13,7 @@
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 #import "Card.h"
+#import "Constants.h"
 #import "Deck.h"
 
 #pragma mark - HelloWorldLayer
@@ -46,13 +47,16 @@
 	    CCLOG(@"reading deck data...");
         deck = [[Deck alloc] init];
         
-        cardDisplay = [CCSprite node];
-        cardLabel   = [CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:20.0f];
+        cardDisplay  = [CCSprite node];
+        badgeDisplay = [CCSprite node];
+        cardLabel    = [CCLabelBMFont labelWithString:@"" fntFile:FONT_SMALL];
         
-        [cardDisplay setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
-        [cardLabel setPosition:ccpAdd(cardDisplay.position, ccp(0, -120))];
+        [cardDisplay    setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
+        [badgeDisplay   setPosition:ccpAdd(cardDisplay.position, ccp(0, -200))];
+        [cardLabel      setPosition:ccpAdd(cardDisplay.position, ccp(0, -120))];
         
         [self addChild:cardDisplay];
+        [self addChild:badgeDisplay];
         [self addChild:cardLabel];
         
 	}
@@ -71,7 +75,8 @@
 
 -(void)showRandomCard
 {
-    [cardDisplay removeAllChildrenWithCleanup:YES];
+    [cardDisplay  removeAllChildrenWithCleanup:YES];
+    [badgeDisplay removeAllChildrenWithCleanup:YES];
     
     NSArray* shuffledCards = [deck shuffle:deck.cards];
     Card* cardToShow = [shuffledCards objectAtIndex:0];
@@ -81,7 +86,8 @@
                              cardToShow.cardValue];
     [cardLabel setString:cardString];
     
-    [cardDisplay addChild:cardToShow.sprite];
+    [cardDisplay  addChild:cardToShow.cardSprite];
+    [badgeDisplay addChild:cardToShow.badegSprite];
 }
 
 #pragma mark GameKit delegate

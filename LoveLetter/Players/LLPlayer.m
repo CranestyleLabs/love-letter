@@ -40,6 +40,20 @@
         [self setPlayerid:playerid];
         [self setIsAI:YES];
         [self setScore:0];
+        
+        // make a score for testing
+        NSString* playerID = self.playerid;
+        NSString* playerIDNumber = [playerID substringFromIndex:[playerID length] -1];
+        CCLOG(@"player id number = %@", playerIDNumber);
+        int max = playerIDNumber.intValue + 2;
+        CCLOG(@"max = %d", max);
+        for (int i = 0; i < max; i++)
+        {
+            [self ScoreUp];
+            CCLOG(@"updated player %@'s score", playerid);
+        }
+        CCLOG(@"player %@'s score is %d", self.playerid, self.score);
+        
     }
     return self;
 }
@@ -269,7 +283,7 @@
 
 -(NSInteger)ScoreUp
 {
-    [self setScore:self.score++];
+    [self setScore:self.score+1];
     return self.score;
 }
 

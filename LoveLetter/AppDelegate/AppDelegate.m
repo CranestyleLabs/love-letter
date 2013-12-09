@@ -6,8 +6,6 @@
 //  Copyright Threadbare Games 2013. All rights reserved.
 //
 
-#import "cocos2d.h"
-
 #import "AppDelegate.h"
 #import "IntroLayer.h"
 

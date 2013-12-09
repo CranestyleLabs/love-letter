@@ -27,6 +27,7 @@
 @implementation GameModel
 
 static GameModel* gameModel = nil;
+
 +(GameModel*)sharedInstance
 {
     if (gameModel == nil)
@@ -59,7 +60,7 @@ static GameModel* gameModel = nil;
 
                 // Human player
                 LLPlayer* player = [LLPlayer playerWithPlayerId:@"Human"];
-                //[player setIsAI:NO];
+                [player setIsAI:NO];
                 [newPlayers addObject:player];
                 
             }

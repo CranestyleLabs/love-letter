@@ -20,9 +20,9 @@
 
 // properties
 @property (readonly) NSString* playerid;
-@property (readonly) NSArray* secrets;
-@property (readonly) NSArray* cardsInHand;
-@property (readonly) NSArray* cardsPlayed;
+@property (readonly) NSArray*  secrets;
+@property (readonly) NSArray*  cardsInHand;
+@property (readonly) NSArray*  cardsPlayed;
 @property (readonly) NSInteger score;
 @property (readonly) BOOL isProtected;
 @property (readwrite) BOOL isAI;
