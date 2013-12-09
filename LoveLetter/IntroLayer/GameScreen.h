@@ -15,6 +15,7 @@
     CGPoint cardButtonOldPos;
     CGPoint cardButtonNewPos;
     CCLabelBMFont* drawDeckCount;
+    float indent;
 }
 
 @property CCMenu* cardButtonOld;

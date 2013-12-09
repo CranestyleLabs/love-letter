@@ -37,6 +37,8 @@
 {
     if (self = [super init])
     {
+        indent = 20.0f;
+        
         cardButtonOldPos = ccp(WIN_CENTER.x + 120, 150);
         cardButtonNewPos = ccp(WIN_CENTER.x - 120, 150);
         
@@ -62,7 +64,7 @@
     
     CCLabelBMFont* labelPlayed = [CCLabelBMFont labelWithString:@"Played" fntFile:FONT_BIG];
     [labelPlayed setAnchorPoint:CGPointZero];
-    [labelPlayed setPosition:ccp(10, 340)];
+    [labelPlayed setPosition:ccp(indent + 10, 340)];
     [self addChild:labelPlayed];
     [self updateCardsUI];
     
@@ -82,8 +84,8 @@
 
 -(void)layoutPlayerSprites
 {
-    CGPoint startingPosition = ccp(0, 900);
-    CGPoint offset = ccp(0, -200);
+    CGPoint startingPosition = ccp(indent, 900 - indent);
+    CGPoint offset = ccp(0, -190);
     
     int counter = 0;
     CCLOG(@"game model contains %d players", [GameModel sharedInstance].players.count);
@@ -99,7 +101,7 @@
         }
         else
         {
-            [playerSprite setPosition:ccp(0, 300)];
+            [playerSprite setPosition:ccp(indent, 300)];
             [self addChild:playerSprite];
             CCLOG(@"created sprite for human player %@", player.playerid);
         }
