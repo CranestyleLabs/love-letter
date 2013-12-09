@@ -39,6 +39,11 @@
     {
         cardButtonOldPos = ccp(WIN_CENTER.x + 120, 150);
         cardButtonNewPos = ccp(WIN_CENTER.x - 120, 150);
+        
+        CCSprite* bg = [CCSprite spriteWithFile:@"llbg.png"];
+        [bg setPosition:WIN_CENTER];
+        [self addChild:bg z:0];
+        
     }
     return self;
 }
