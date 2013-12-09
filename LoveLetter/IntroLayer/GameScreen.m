@@ -13,6 +13,7 @@
 #import "Constants.h"
 #import "GameModel.h"
 #import "LLPlayer.h"
+#import "Deck.h"
 
 @implementation GameScreen
 
@@ -59,6 +60,21 @@
     
     [self layoutPlayerSprites];
     [self updateCardsUI];
+    
+    [self layoutDrawDeck];
+    [self layoutPlayerSprites];
+    drawDeckCount = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"%i", 0] fntFile:FONT_BIG];
+    [self addChild:drawDeckCount];
+    [self updateDrawDeckCardCount];
+    
+    [[GameModel sharedInstance] addObserver:self forKeyPath:@"deck" options:0 context:nil];
+}
+
+-(void)onExit
+{
+    [super onExit];
+    
+    [[[GameModel sharedInstance] deck] removeObserver:self forKeyPath:@"deck"];
 }
 
 -(void)layoutPlayerSprites
@@ -118,4 +134,42 @@
     }
 }
 
+-(void) layoutDrawDeck
+{
+    // Grab card sprites
+    const int cardStackCount = 3;
+    
+    for (int i = 0; i < cardStackCount; i++)
+    {
+        CCSprite* card = [Deck getBackCardSprite];
+        card.scale = 0.2f;
+        float pointX = self.contentSize.width - (card.contentSize.width * card.scale / 2.0f) - 20.0f + ((float)i * 5.0f);
+        float pointY = (card.contentSize.height * card.scale / 2.0f) + 20.0f - ((float)i * 5.0f);
+        CGPoint cardPos = ccp(pointX, pointY);
+        card.position = cardPos;
+        
+        [self addChild:card];
+    }
+}
+
+-(void)updateDrawDeckCardCount
+{
+    int cardCount = [[GameModel sharedInstance] deck].cards.count;
+    float cardCountScale = 5.0f;
+    [drawDeckCount setString:[NSString stringWithFormat:@"%i", cardCount]];
+    drawDeckCount.scale = cardCountScale;
+    float pointX = self.contentSize.width - (drawDeckCount.contentSize.width * drawDeckCount.scale / 2.0f) - 40.0f;
+    float pointY = (drawDeckCount.contentSize.height * drawDeckCount.scale / 2.0f) + 20.0f;
+    CGPoint countPos = ccp(pointX, pointY);
+    
+    drawDeckCount.position = countPos;
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"deck"])
+    {
+        [self updateDrawDeckCardCount];
+    }
+}
 @end

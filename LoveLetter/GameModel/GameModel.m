@@ -71,13 +71,8 @@ static GameModel* gameModel = nil;
                 [newPlayers addObject:[LLPlayer playerWithPlayerId:[NSString stringWithFormat:@"AI%d", i]]];
                 
             }
-            CCLOG(@"game model created player #%d", i);
+            
         }
-        // add players to array property
-        self.players = [NSArray arrayWithArray:newPlayers];
-        
-        // start the first round
-//        [self startRound];
         
     }
     return self;
@@ -165,6 +160,14 @@ static GameModel* gameModel = nil;
         
     }];
 
+}
+
+-(Card*)drawBurnedCard
+{
+    
+    [self setBurnedCard:nil];
+    return self.burnedCard;
+    
 }
 
 -(void)gameOver:(LLPlayer*)winner

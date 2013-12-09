@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CCSprite.h"
 
 @class Card;
 
@@ -38,5 +39,6 @@ typedef NS_ENUM(NSInteger, CardValue)
 -(Card*)drawCard;
 -(void)refresh;
 -(NSArray*)shuffle:(NSArray*)cardsToShuffle;
++(CCSprite*)getBackCardSprite;
 
 @end

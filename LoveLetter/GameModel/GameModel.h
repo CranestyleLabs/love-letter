@@ -30,4 +30,6 @@
 +(GameModel*)sharedInstance;
 -(void)startRound;
 
+-(Card*)drawBurnedCard;
+
 @end

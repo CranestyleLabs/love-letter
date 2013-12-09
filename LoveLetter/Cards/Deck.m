@@ -9,7 +9,7 @@
 #import "Deck.h"
 #import "Card.h"
 #import "CHCSVParser.h"
-
+#import "cocos2d.h"
 
 @interface Deck ()
 
@@ -127,6 +127,13 @@
         [sortedArray exchangeObjectAtIndex:i withObjectAtIndex:n];
     }
     return sortedArray;
+}
+
++(CCSprite*)getBackCardSprite
+{
+    CCSprite* sprite = [CCSprite spriteWithFile:@"back-card.png"];
+    
+    return sprite;
 }
 
 @end

@@ -14,6 +14,7 @@
 {
     CGPoint cardButtonOldPos;
     CGPoint cardButtonNewPos;
+    CCLabelBMFont* drawDeckCount;
 }
 
 @property CCMenu* cardButtonOld;
@@ -21,5 +22,6 @@
 
 
 +(CCScene*)scene;
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
 
 @end

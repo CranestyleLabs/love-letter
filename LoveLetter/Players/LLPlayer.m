@@ -21,6 +21,7 @@
 @property (readwrite) NSArray* cardsInHand;
 @property (readwrite) NSArray* cardsPlayed;
 @property (readwrite) NSInteger score;
+@property (readwrite) BOOL isProtected;
 
 @end
 
@@ -60,6 +61,38 @@
 
 #pragma mark
 #pragma mark Cards
+
+-(void)playCard:(Card*)playedCard
+{
+    
+    // this is ugly, but call this to move a card from the player's hand
+    // to thier played cards array
+    
+    // find the card in cardsInHand
+    __block Card* card = nil;
+    [self.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+       
+        if (cardInHand.cardNumber == playedCard.cardNumber)
+        {
+            card = cardInHand;
+        }
+        
+    }];
+    
+    // remove the card from cardsInHand
+    if (card != nil)
+    {
+        NSMutableArray* copyCardsInHand = [self.cardsInHand mutableCopy];
+        [copyCardsInHand removeObject:card];
+        [self setCardsInHand:[NSArray arrayWithArray:copyCardsInHand]];
+    }
+    
+    // put card into cards played
+    NSMutableArray* copyCardsPlayed = [self.cardsPlayed mutableCopy];
+    [copyCardsPlayed addObject:card];
+    [self setCardsPlayed:[NSArray arrayWithArray:copyCardsPlayed]];
+    
+}
 
 -(NSInteger)addCard:(Card*)card
 {
@@ -131,6 +164,7 @@
 {
     
     // start turn
+    [self setIsProtected:NO];
     
 }
 
@@ -256,6 +290,14 @@
 
 #pragma mark
 #pragma mark Secrets
+
+-(NSInteger)addSecret:(Secret*)secret
+{
+    NSMutableArray* copySecrets = [self.secrets mutableCopy];
+    [copySecrets addObject:secret];
+    [self setSecrets:[NSArray arrayWithArray:copySecrets]];
+    return self.secrets.count;
+}
 
 -(NSInteger)addSecretForPlayer:(LLPlayer*)player andCardValue:(NSInteger)cardValue
 {
@@ -410,5 +452,14 @@
     return [NSArray arrayWithArray:allPlayers];
     
 }
+
+#pragma mark
+#pragma mark Misc
+
+-(void)protectWithHandmaid
+{
+    [self setIsProtected:YES];
+}
+
 
 @end

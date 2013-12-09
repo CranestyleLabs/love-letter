@@ -163,6 +163,7 @@
 		70BCBA7C185417E800B99B7D /* love_letter_deck.csv in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA70185417E800B99B7D /* love_letter_deck.csv */; };
 		70BCBA8918542A5C00B99B7D /* AIUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA8818542A5C00B99B7D /* AIUtilities.m */; };
 		70BCBA8D18542DEC00B99B7D /* GameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA8C18542DEC00B99B7D /* GameModel.m */; };
+		70BCBA90185632A500B99B7D /* PlayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA8F185632A500B99B7D /* PlayResult.m */; };
 		B770FE1518561CE100F138FE /* back-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE0C18561CE100F138FE /* back-card.png */; };
 		B770FE1618561CE100F138FE /* baron-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE0D18561CE100F138FE /* baron-card.png */; };
 		B770FE1718561CE100F138FE /* countess-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE0E18561CE100F138FE /* countess-card.png */; };
@@ -510,6 +511,8 @@
 		70BCBA8818542A5C00B99B7D /* AIUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIUtilities.m; sourceTree = "<group>"; };
 		70BCBA8B18542DEC00B99B7D /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameModel.h; sourceTree = "<group>"; };
 		70BCBA8C18542DEC00B99B7D /* GameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameModel.m; sourceTree = "<group>"; };
+		70BCBA8E185632A500B99B7D /* PlayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayResult.h; sourceTree = "<group>"; };
+		70BCBA8F185632A500B99B7D /* PlayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayResult.m; sourceTree = "<group>"; };
 		B770FE0C18561CE100F138FE /* back-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-card.png"; sourceTree = "<group>"; };
 		B770FE0D18561CE100F138FE /* baron-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baron-card.png"; sourceTree = "<group>"; };
 		B770FE0E18561CE100F138FE /* countess-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "countess-card.png"; sourceTree = "<group>"; };
@@ -1077,6 +1080,8 @@
 				70BCBA5F1854167400B99B7D /* Play.m */,
 				70BCBA601854167400B99B7D /* Secret.h */,
 				70BCBA611854167400B99B7D /* Secret.m */,
+				70BCBA8E185632A500B99B7D /* PlayResult.h */,
+				70BCBA8F185632A500B99B7D /* PlayResult.m */,
 			);
 			path = Players;
 			sourceTree = "<group>";
@@ -1431,6 +1436,7 @@
 				70BCBA6D1854173B00B99B7D /* HelloWorldLayer.m in Sources */,
 				70AE9A6218540B14003017C2 /* CCAnimation.m in Sources */,
 				70AE9B8D18540B15003017C2 /* aabb.c in Sources */,
+				70BCBA90185632A500B99B7D /* PlayResult.m in Sources */,
 				70AE9B0418540B15003017C2 /* CCTMXObjectGroup.m in Sources */,
 				70AE9B6618540B15003017C2 /* CDAudioManager.m in Sources */,
 				70AE9B1318540B15003017C2 /* CCTransitionProgress.m in Sources */,
