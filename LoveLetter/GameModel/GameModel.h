@@ -29,4 +29,6 @@
 // selectors
 +(GameModel*)sharedInstance;
 
+-(Card*)drawBurnedCard;
+
 @end

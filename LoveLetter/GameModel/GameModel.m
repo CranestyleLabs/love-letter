@@ -73,9 +73,6 @@ static GameModel* gameModel = nil;
             
         }
         
-        // start the first round
-        [self startRound];
-        
     }
     return self;
 }
@@ -162,6 +159,14 @@ static GameModel* gameModel = nil;
         
     }];
 
+}
+
+-(Card*)drawBurnedCard
+{
+    
+    [self setBurnedCard:nil];
+    return self.burnedCard;
+    
 }
 
 -(void)gameOver:(LLPlayer*)winner

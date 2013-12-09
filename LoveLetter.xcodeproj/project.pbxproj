@@ -172,6 +172,7 @@
 		70BCBA85185417E800B99B7D /* princess-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA7B185417E800B99B7D /* princess-card.png */; };
 		70BCBA8918542A5C00B99B7D /* AIUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA8818542A5C00B99B7D /* AIUtilities.m */; };
 		70BCBA8D18542DEC00B99B7D /* GameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA8C18542DEC00B99B7D /* GameModel.m */; };
+		70BCBA90185632A500B99B7D /* PlayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA8F185632A500B99B7D /* PlayResult.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -495,6 +496,8 @@
 		70BCBA8818542A5C00B99B7D /* AIUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIUtilities.m; sourceTree = "<group>"; };
 		70BCBA8B18542DEC00B99B7D /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameModel.h; sourceTree = "<group>"; };
 		70BCBA8C18542DEC00B99B7D /* GameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameModel.m; sourceTree = "<group>"; };
+		70BCBA8E185632A500B99B7D /* PlayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayResult.h; sourceTree = "<group>"; };
+		70BCBA8F185632A500B99B7D /* PlayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayResult.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1022,6 +1025,8 @@
 				70BCBA5F1854167400B99B7D /* Play.m */,
 				70BCBA601854167400B99B7D /* Secret.h */,
 				70BCBA611854167400B99B7D /* Secret.m */,
+				70BCBA8E185632A500B99B7D /* PlayResult.h */,
+				70BCBA8F185632A500B99B7D /* PlayResult.m */,
 			);
 			path = Players;
 			sourceTree = "<group>";
@@ -1264,6 +1269,7 @@
 				70BCBA6D1854173B00B99B7D /* HelloWorldLayer.m in Sources */,
 				70AE9A6218540B14003017C2 /* CCAnimation.m in Sources */,
 				70AE9B8D18540B15003017C2 /* aabb.c in Sources */,
+				70BCBA90185632A500B99B7D /* PlayResult.m in Sources */,
 				70AE9B0418540B15003017C2 /* CCTMXObjectGroup.m in Sources */,
 				70AE9B6618540B15003017C2 /* CDAudioManager.m in Sources */,
 				70AE9B1318540B15003017C2 /* CCTransitionProgress.m in Sources */,
