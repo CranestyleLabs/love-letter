@@ -9,7 +9,9 @@
 #import "Play.h"
 #import "LLPlayer.h"
 #import "Card.h"
+#import "Deck.h"
 #import "Constants.h"
+#import "GameModel.h"
 
 
 @interface Play ()
@@ -52,8 +54,11 @@
         case PlayState_Start:
             // Allow the player to confirm a card
             self.state = PlayState_ConfirmCard;
-            return [self getConfirmCard];
+            node = [self getConfirmCard];
+            break;
         case PlayState_ConfirmCard:
+            // State is set by method
+            node = [self processConfirmCard];
             break;
         case PlayState_ChooseTarget:
             break;
@@ -63,7 +68,7 @@
             break;
     }
     
-    return nil;
+    return node;
 }
 
 -(CCNode*)previousStep
@@ -144,5 +149,38 @@
     return sprite;
 }
 
+// Processes confirm card and returns the select target, if applicable
+-(CCNode*)processConfirmCard
+{
+    CCNode* node = nil;
+    
+    switch (self.card.cardValue)
+    {
+        case kCardValue_Guard:
+        case kCardValue_Priest:
+        case kCardValue_Baron:
+        case kCardValue_Prince:
+        case kCardValue_King:
+        case kCardValue_Countess:
+            node = [self getSelectTarget];
+            self.state = PlayState_ChooseTarget;
+            break;
+
+        case kCardValue_Handmaid:
+            self.target = [GameModel sharedInstance].players[0];
+            break;
+            
+        default:
+            CCLOG(@"Card not found!");
+            break;
+    }
+    
+    return node;
+}
+
+-(CCNode*)getSelectTarget
+{
+    return nil;
+}
 
 @end
