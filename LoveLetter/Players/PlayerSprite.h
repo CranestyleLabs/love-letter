@@ -12,10 +12,11 @@
 
 @interface PlayerSprite : CCSprite
 {
-    //
+    ccColor3B cyan;
 }
 
 @property CCLabelBMFont* label;
+@property CCSprite*      labelBackground;
 @property CCSprite*      tokenSprites;
 @property CCSprite*      playedCardSprites;
 @property LLPlayer*      player;

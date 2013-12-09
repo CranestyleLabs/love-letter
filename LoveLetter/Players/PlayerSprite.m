@@ -20,16 +20,25 @@
         [self setContentSize:CGSizeMake(WIN_SIZE.width, 200)];
         
         self.player = player;
+        [self setAnchorPoint:CGPointZero];
+        
+        // colors
+        cyan = ccc3(0, 150, 150);
         
         // create sprites
         self.label = [self createLabel];
+        self.labelBackground = [self createLabelBackground];
         
         // position sprites
-        [self setAnchorPoint:CGPointZero];
-        [self.label setPosition:ccp(10, 80)];
+        [self.label           setAnchorPoint:ccp(0, 0)];
+        [self.labelBackground setAnchorPoint:ccp(0, 0)];
+        
+        [self.label             setPosition:ccp(25, 80)];
+        [self.labelBackground   setPosition:ccp(15, 70)];
         
         // add sprites
         [self addChild:self.label];
+        [self addChild:self.labelBackground z:self.label.zOrder-1];
         
         [self setTokens];
     }
@@ -39,8 +48,9 @@
 -(CCSprite*)createLabelBackground
 {
     CCSprite* sprite = [CCSprite spriteWithFile:@"playername-background.png"];
-    [sprite setColor:ccc3(0, 50, 200)];
-    
+    [sprite setColor:cyan];
+    [sprite setScaleX:1.1f];
+    [sprite setScaleY:0.4f];
     return sprite;
 }
 
