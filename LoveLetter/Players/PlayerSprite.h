@@ -1,5 +1,5 @@
 //
-//  HumanPlayerSprite.h
+//  PlayerSprite.h
 //  LoveLetter
 //
 //  Created by Fisher on 12/9/13.
@@ -10,7 +10,7 @@
 
 @class LLPlayer;
 
-@interface HumanPlayerSprite : CCSprite
+@interface PlayerSprite : CCLayerColor
 {
     //
 }

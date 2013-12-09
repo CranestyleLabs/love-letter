@@ -194,9 +194,8 @@
 		B770FE4C1856216800F138FE /* avenirnext60_bold-ipadhd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = B770FE441856216800F138FE /* avenirnext60_bold-ipadhd.fnt */; };
 		B770FE4D1856216800F138FE /* avenirnext60_bold-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE451856216800F138FE /* avenirnext60_bold-ipadhd.png */; };
 		B770FE501856243600F138FE /* GameScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = B770FE4F1856243600F138FE /* GameScreen.m */; };
-		B770FE53185625EC00F138FE /* AIPlayerSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = B770FE52185625EC00F138FE /* AIPlayerSprite.m */; };
+		B770FE53185625EC00F138FE /* PlayerSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = B770FE52185625EC00F138FE /* PlayerSprite.m */; };
 		B770FE5A1856277C00F138FE /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = B770FE591856277C00F138FE /* Constants.m */; };
-		B770FE5D185642DE00F138FE /* HumanPlayerSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = B770FE5C185642DE00F138FE /* HumanPlayerSprite.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -543,12 +542,10 @@
 		B770FE451856216800F138FE /* avenirnext60_bold-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avenirnext60_bold-ipadhd.png"; sourceTree = "<group>"; };
 		B770FE4E1856243600F138FE /* GameScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScreen.h; sourceTree = "<group>"; };
 		B770FE4F1856243600F138FE /* GameScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScreen.m; sourceTree = "<group>"; };
-		B770FE51185625EC00F138FE /* AIPlayerSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIPlayerSprite.h; sourceTree = "<group>"; };
-		B770FE52185625EC00F138FE /* AIPlayerSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIPlayerSprite.m; sourceTree = "<group>"; };
+		B770FE51185625EC00F138FE /* PlayerSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSprite.h; sourceTree = "<group>"; };
+		B770FE52185625EC00F138FE /* PlayerSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSprite.m; sourceTree = "<group>"; };
 		B770FE581856277C00F138FE /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		B770FE591856277C00F138FE /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		B770FE5B185642DE00F138FE /* HumanPlayerSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HumanPlayerSprite.h; sourceTree = "<group>"; };
-		B770FE5C185642DE00F138FE /* HumanPlayerSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HumanPlayerSprite.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1072,10 +1069,8 @@
 		70BCBA5B1854167400B99B7D /* Players */ = {
 			isa = PBXGroup;
 			children = (
-				B770FE51185625EC00F138FE /* AIPlayerSprite.h */,
-				B770FE52185625EC00F138FE /* AIPlayerSprite.m */,
-				B770FE5B185642DE00F138FE /* HumanPlayerSprite.h */,
-				B770FE5C185642DE00F138FE /* HumanPlayerSprite.m */,
+				B770FE51185625EC00F138FE /* PlayerSprite.h */,
+				B770FE52185625EC00F138FE /* PlayerSprite.m */,
 				70BCBA5C1854167400B99B7D /* LLPlayer.h */,
 				70BCBA5D1854167400B99B7D /* LLPlayer.m */,
 				70BCBA5E1854167400B99B7D /* Play.h */,
@@ -1380,7 +1375,7 @@
 				B770FE5A1856277C00F138FE /* Constants.m in Sources */,
 				70AE9B1018540B15003017C2 /* CCTransitionPageTurn.m in Sources */,
 				70AE9A4118540B14003017C2 /* CCActionCatmullRom.m in Sources */,
-				B770FE53185625EC00F138FE /* AIPlayerSprite.m in Sources */,
+				B770FE53185625EC00F138FE /* PlayerSprite.m in Sources */,
 				70AE9AB818540B14003017C2 /* CCParticleSystem.m in Sources */,
 				70AE9B0D18540B15003017C2 /* CCTransition.m in Sources */,
 				70AE9AB518540B14003017C2 /* CCParticleExamples.m in Sources */,
@@ -1449,7 +1444,6 @@
 				70AE9AC818540B14003017C2 /* CCRenderTexture.m in Sources */,
 				70AE9A5018540B14003017C2 /* CCActionInterval.m in Sources */,
 				70AE9ABE18540B14003017C2 /* CCPhysicsDebugNode.m in Sources */,
-				B770FE5D185642DE00F138FE /* HumanPlayerSprite.m in Sources */,
 				70AE9A4418540B14003017C2 /* CCActionEase.m in Sources */,
 				70AE9A8118540B14003017C2 /* CCFontDefinition.m in Sources */,
 				70AE9AC118540B14003017C2 /* CCPhysicsSprite.mm in Sources */,

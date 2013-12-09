@@ -44,7 +44,7 @@
         NSString* playerID = self.playerid;
         NSString* playerIDNumber = [playerID substringFromIndex:[playerID length] -1];
         CCLOG(@"player id number = %@", playerIDNumber);
-        int max = playerIDNumber.intValue;
+        int max = playerIDNumber.intValue + 2;
         CCLOG(@"max = %d", max);
         for (int i = 0; i < max; i++)
         {

@@ -8,10 +8,9 @@
 
 #import "GameScreen.h"
 
-#import "AIPlayerSprite.h"
+#import "PlayerSprite.h"
 #import "Constants.h"
 #import "GameModel.h"
-#import "HumanPlayerSprite.h"
 #import "LLPlayer.h"
 
 @implementation GameScreen
@@ -44,32 +43,33 @@
 -(void)onEnterTransitionDidFinish
 {
     [super onEnterTransitionDidFinish];
-    [self layoutAIPlayerSprites];
+    [self layoutPlayerSprites];
+//    [self layoutHumanPlayerSprite];
 }
 
--(void)layoutAIPlayerSprites
+-(void)layoutPlayerSprites
 {
-    CGPoint startingPosition = ccp(WIN_SIZE.width/2, 900);
+    CGPoint startingPosition = ccp(0, 900);
     CGPoint offset = ccp(0, -200);
     
     int counter = 0;
     CCLOG(@"game model contains %d players", [GameModel sharedInstance].players.count);
     for (LLPlayer* player in [GameModel sharedInstance].players)
     {
+        PlayerSprite* playerSprite = [[PlayerSprite alloc] initWithPlayer:player];
         if (player.isAI)
         {
-            AIPlayerSprite* aiPlayerSprite = [[AIPlayerSprite alloc] initWithPlayer:player];
-            [aiPlayerSprite setPosition:ccpAdd(startingPosition, ccpMult(offset, counter))];
-            [self addChild:aiPlayerSprite];
+            [playerSprite setPosition:ccpAdd(startingPosition, ccpMult(offset, counter))];
+            [self addChild:playerSprite];
             CCLOG(@"created sprite for ai player %@", player.playerid);
             counter++;
         }
+        else
+        {
+            [playerSprite setPosition:ccp(0, 300)];
+            [self addChild:playerSprite];
+        }
     }
 }
-
-//-(void)layoutHumanPlayerSprite
-//{
-//    HumanPlayerSprite* humanPlayerSprite = [HumanPlayerSprite alloc] initWithPlayer:<#(LLPlayer *)#>
-//}
 
 @end
