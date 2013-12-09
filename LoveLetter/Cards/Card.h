@@ -14,13 +14,13 @@
 }
 
 @property CCMenu*   badgeButton;
-@property CCSprite* cardSprite;
 @property CCSprite* badgeSprite;
 @property int       cardNumber;
 @property int       cardValue;
 @property NSString* name;
 
 -(id)initWithCardData:(NSArray*)cardData;
+-(CCSprite*)createCardSprite;
 -(CCSprite*)createBadgeSpriteNormal;
 -(CCSprite*)createBadgeSpriteSelected;
 

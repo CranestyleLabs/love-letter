@@ -200,61 +200,68 @@
     CCMenuItemToggle* toggle = [CCMenuItemToggle itemWithItems:
                                 [NSArray arrayWithObjects:normal, selected, nil]
                                                          block:^(CCMenuItemToggle* sender) {
+                                                             
                                                          [self.chosenCardSprite removeFromParentAndCleanup:YES];
                                                          if (sender.selectedItem == selected)
                                                          {
-                                                             self.chosenCardSprite = [card cardSprite];
-                                                             [self.chosenCardSprite setPosition:chosenCardPos];
-                                                             [self addChild:self.chosenCardSprite];
-                                                             
-                                                             CCMenu* cancelButton = [self cancelButton];
-                                                             [cancelButton setPosition:[self.chosenCardSprite convertToNodeSpace:cancelButtonPos]];
-                                                             [self.chosenCardSprite addChild:cancelButton];
-                                                             
-                                                             CCMenu* playButton = [self playButton];
-                                                             [playButton setPosition:[self.chosenCardSprite convertToNodeSpace:playButtonPos]];
-                                                             [self.chosenCardSprite addChild:playButton];
+                                                             [self showSelectedCard:card];
                                                          }
                                                      }];
     return [CCMenu menuWithItems:toggle, nil];
 }
 
--(CCMenu*)cancelButton
+-(void)showSelectedCard:(Card*)card
 {
-    CCSprite* normal     = [self buttonSprite:@"Cancel"];
-    CCSprite* selected   = [self buttonSprite:@"Cancel"];
+    CCSprite* cardSprite = [card createCardSprite];
+    self.chosenCardSprite = [CCSprite node];
+    [self.chosenCardSprite addChild:cardSprite];
+    [self.chosenCardSprite setPosition:chosenCardPos];
+    [self addChild:self.chosenCardSprite];
     
-    CCMenuItemSprite* button = [CCMenuItemSprite itemWithNormalSprite:normal
-                                                       selectedSprite:selected
-                                                                block:^(id sender) {
-                                                                    CCLOG(@"cancel button clicked");
-                                                                }];
-    return [CCMenu menuWithItems:button, nil];
+    CCSprite* buttonPlayNormal   = [self buttonSprite:@"Play" selected:NO];
+    CCSprite* buttonPlaySelected = [self buttonSprite:@"Play" selected:YES];
+    CCSprite* buttonCancelNormal   = [self buttonSprite:@"Cancel" selected:NO];
+    CCSprite* buttonCancelSelected = [self buttonSprite:@"Cancel" selected:YES];
+    
+    CCMenuItemSprite* buttonPlay = [CCMenuItemSprite itemWithNormalSprite:buttonPlayNormal selectedSprite:buttonPlaySelected block:^(id sender) {
+        
+        NSLog(@"PLAY!");
+        
+    }];
+    
+    CCMenuItemSprite* buttonCancel = [CCMenuItemSprite itemWithNormalSprite:buttonCancelNormal selectedSprite:buttonCancelSelected block:^(id sender) {
+        
+        NSLog(@"CANCEL");
+        
+    }];
+    
+    CCMenu* cardMenu = [CCMenu menuWithItems:buttonPlay, buttonCancel, nil];
+    [cardMenu setPosition:CGPointMake(0, -cardSprite.contentSize.height/2 * cardSprite.scale - 50.0f)];
+    [buttonCancel setPosition:CGPointMake(-buttonCancelNormal.contentSize.width/2 - 20.0f, 0)];
+    [buttonPlay setPosition:CGPointMake(buttonPlayNormal.contentSize.width/2 + 20.0f, 0)];
+    [self.chosenCardSprite addChild:cardMenu];
+    
 }
 
--(CCMenu*)playButton
+-(CCSprite*)buttonSprite:(NSString*)text selected:(BOOL)isSelected
 {
-    CCSprite* normal     = [self buttonSprite:@"Play"];
-    CCSprite* selected   = [self buttonSprite:@"Play"];
-    
-    CCMenuItemSprite* button = [CCMenuItemSprite itemWithNormalSprite:normal
-                                                       selectedSprite:selected
-                                                                block:^(id sender) {
-                                                                    CCLOG(@"play button clicked");
-                                                                }];
-    return [CCMenu menuWithItems:button, nil];
-}
-
--(CCSprite*)buttonSprite:(NSString*)text
-{
-    CCSprite* buttonBG   = [CCSprite spriteWithFile:@"button.png"];
-    [buttonBG setScale:0.5f];
+    CCSprite* sprite = [CCSprite spriteWithFile:@"card-button.png"];
     CCLabelBMFont* label = [CCLabelBMFont labelWithString:text fntFile:FONT_BIG];
     
-    CCSprite* sprite     = [CCSprite node];
-    [sprite setScale:2.0f];
-    [sprite addChild:buttonBG];
+    if (isSelected)
+    {
+        [sprite setColor:ccGRAY];
+        [label setColor:ccBLACK];
+    }
+    else
+    {
+        [sprite setColor:ccBLACK];
+        [label setColor:ccWHITE];
+    }
+    
+    [label setPosition:CGPointMake(sprite.contentSize.width/2, sprite.contentSize.height/2)];
     [sprite addChild:label];
+    
     return sprite;
 }
 
