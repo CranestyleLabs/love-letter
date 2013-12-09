@@ -203,7 +203,7 @@
 		B770FE3618561CEE00F138FE /* prince-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2718561CEE00F138FE /* prince-badge.png */; };
 		B770FE3718561CEE00F138FE /* princess-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2818561CEE00F138FE /* princess-badge.png */; };
 		B770FE3818561CEE00F138FE /* alertbox-background-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2B18561CEE00F138FE /* alertbox-background-ipadhd.png */; };
-		B770FE3918561CEE00F138FE /* button-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2C18561CEE00F138FE /* button-ipadhd.png */; };
+		B770FE3918561CEE00F138FE /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2C18561CEE00F138FE /* button.png */; };
 		B770FE3A18561CEE00F138FE /* playername-background-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2D18561CEE00F138FE /* playername-background-ipadhd.png */; };
 		B770FE3B18561CEE00F138FE /* token.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2E18561CEE00F138FE /* token.png */; };
 		B770FE461856216800F138FE /* avenirnext48_bold-ipad.fnt in Resources */ = {isa = PBXBuildFile; fileRef = B770FE3E1856216800F138FE /* avenirnext48_bold-ipad.fnt */; };
@@ -217,6 +217,7 @@
 		B770FE501856243600F138FE /* GameScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = B770FE4F1856243600F138FE /* GameScreen.m */; };
 		B770FE53185625EC00F138FE /* PlayerSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = B770FE52185625EC00F138FE /* PlayerSprite.m */; };
 		B770FE5A1856277C00F138FE /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = B770FE591856277C00F138FE /* Constants.m */; };
+		B770FE661856686B00F138FE /* CCRadioMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B770FE651856686B00F138FE /* CCRadioMenu.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -572,7 +573,7 @@
 		B770FE2718561CEE00F138FE /* prince-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prince-badge.png"; sourceTree = "<group>"; };
 		B770FE2818561CEE00F138FE /* princess-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "princess-badge.png"; sourceTree = "<group>"; };
 		B770FE2B18561CEE00F138FE /* alertbox-background-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alertbox-background-ipadhd.png"; sourceTree = "<group>"; };
-		B770FE2C18561CEE00F138FE /* button-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-ipadhd.png"; sourceTree = "<group>"; };
+		B770FE2C18561CEE00F138FE /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		B770FE2D18561CEE00F138FE /* playername-background-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playername-background-ipadhd.png"; sourceTree = "<group>"; };
 		B770FE2E18561CEE00F138FE /* token.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = token.png; sourceTree = "<group>"; };
 		B770FE3E1856216800F138FE /* avenirnext48_bold-ipad.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "avenirnext48_bold-ipad.fnt"; sourceTree = "<group>"; };
@@ -589,6 +590,8 @@
 		B770FE52185625EC00F138FE /* PlayerSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSprite.m; sourceTree = "<group>"; };
 		B770FE581856277C00F138FE /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		B770FE591856277C00F138FE /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		B770FE641856686B00F138FE /* CCRadioMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRadioMenu.h; sourceTree = "<group>"; };
+		B770FE651856686B00F138FE /* CCRadioMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCRadioMenu.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -634,6 +637,7 @@
 			isa = PBXGroup;
 			children = (
 				70AE9A1E18540B14003017C2 /* LoveLetter */,
+				B770FE631856686B00F138FE /* Utilities */,
 				70AE9A0918540B14003017C2 /* Frameworks */,
 				70AE9A0818540B14003017C2 /* Products */,
 			);
@@ -1274,7 +1278,7 @@
 			isa = PBXGroup;
 			children = (
 				B770FE2B18561CEE00F138FE /* alertbox-background-ipadhd.png */,
-				B770FE2C18561CEE00F138FE /* button-ipadhd.png */,
+				B770FE2C18561CEE00F138FE /* button.png */,
 				B770FE2D18561CEE00F138FE /* playername-background-ipadhd.png */,
 				B770FE2E18561CEE00F138FE /* token.png */,
 			);
@@ -1312,6 +1316,16 @@
 				B770FE591856277C00F138FE /* Constants.m */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		B770FE631856686B00F138FE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B770FE641856686B00F138FE /* CCRadioMenu.h */,
+				B770FE651856686B00F138FE /* CCRadioMenu.m */,
+			);
+			name = Utilities;
+			path = LoveLetter/Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1433,7 +1447,7 @@
 				70BCBA34185414F700B99B7D /* Default-Landscape~ipad.png in Resources */,
 				B770FE4D1856216800F138FE /* avenirnext60_bold-ipadhd.png in Resources */,
 				70BCBA3E185414F700B99B7D /* Icon-76@2x.png in Resources */,
-				B770FE3918561CEE00F138FE /* button-ipadhd.png in Resources */,
+				B770FE3918561CEE00F138FE /* button.png in Resources */,
 				70BCBA46185414F700B99B7D /* iTunesArtwork in Resources */,
 				B770FE3A18561CEE00F138FE /* playername-background-ipadhd.png in Resources */,
 				B770FE3118561CEE00F138FE /* countess-badge.png in Resources */,
@@ -1503,6 +1517,7 @@
 				70AE9B9718540B15003017C2 /* mat3.c in Sources */,
 				70BCBA6E1854173B00B99B7D /* IntroLayer.m in Sources */,
 				70458299185410A9006E4E24 /* AppDelegate.m in Sources */,
+				B770FE661856686B00F138FE /* CCRadioMenu.m in Sources */,
 				70AE9B2118540B15003017C2 /* CCES2Renderer.m in Sources */,
 				70BCBA591854163400B99B7D /* CHCSVParser.m in Sources */,
 				70AE9A9318540B14003017C2 /* CCLabelAtlas.m in Sources */,

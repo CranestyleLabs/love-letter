@@ -37,13 +37,19 @@
 {
     if (self = [super init])
     {
+        indent = 20.0f;
+        
         cardButtonOldPos = ccp(WIN_CENTER.x + 120, 150);
         cardButtonNewPos = ccp(WIN_CENTER.x - 120, 150);
+        cardButtonOldPos = ccp(WIN_CENTER.x + 100, 150);
+        cardButtonNewPos = ccp(WIN_CENTER.x - 100, 150);
+        chosenCardPos    = ccp(WIN_CENTER.x, WIN_CENTER.y + 100);
+        cancelButtonPos  = ccp(WIN_CENTER.x - 120, 300);
+        playButtonPos    = ccp(WIN_CENTER.x + 120, 300);
         
         CCSprite* bg = [CCSprite spriteWithFile:@"llbg.png"];
         [bg setPosition:WIN_CENTER];
         [self addChild:bg z:0];
-        
     }
     return self;
 }
@@ -62,7 +68,7 @@
     
     CCLabelBMFont* labelPlayed = [CCLabelBMFont labelWithString:@"Played" fntFile:FONT_BIG];
     [labelPlayed setAnchorPoint:CGPointZero];
-    [labelPlayed setPosition:ccp(10, 340)];
+    [labelPlayed setPosition:ccp(indent + 10, 340)];
     [self addChild:labelPlayed];
     [self updateCardsUI];
     
@@ -82,8 +88,8 @@
 
 -(void)layoutPlayerSprites
 {
-    CGPoint startingPosition = ccp(0, 900);
-    CGPoint offset = ccp(0, -200);
+    CGPoint startingPosition = ccp(indent, 900 - indent);
+    CGPoint offset = ccp(0, -190);
     
     int counter = 0;
     CCLOG(@"game model contains %d players", [GameModel sharedInstance].players.count);
@@ -99,7 +105,7 @@
         }
         else
         {
-            [playerSprite setPosition:ccp(0, 300)];
+            [playerSprite setPosition:ccp(indent, 300)];
             [self addChild:playerSprite];
             CCLOG(@"created sprite for human player %@", player.playerid);
         }
@@ -123,7 +129,7 @@
     if (humanPlayer.cardsInHand.count > 1)
     {
         Card* new = (Card*)[humanPlayer.cardsInHand objectAtIndex:1];
-        self.cardButtonNew = new.badgeButton;
+        self.cardButtonNew = [self createBadgeButton:new];
         [self.cardButtonNew setPosition:cardButtonNewPos];
         [self addChild:self.cardButtonNew];
     }
@@ -131,7 +137,7 @@
     if (humanPlayer.cardsInHand.count > 0)
     {
         Card* old = (Card*)[humanPlayer.cardsInHand objectAtIndex:0];
-        self.cardButtonOld = old.badgeButton;
+        self.cardButtonOld = [self createBadgeButton:old];
         [self.cardButtonOld setPosition:cardButtonOldPos];
         [self addChild:self.cardButtonOld];
     }
@@ -146,8 +152,8 @@
     {
         CCSprite* card = [Deck getBackCardSprite];
         card.scale = 0.2f;
-        float pointX = self.contentSize.width - (card.contentSize.width * card.scale / 2.0f) - 20.0f + ((float)i * 5.0f);
-        float pointY = (card.contentSize.height * card.scale / 2.0f) + 20.0f - ((float)i * 5.0f);
+        float pointX = self.contentSize.width - (card.contentSize.width * card.scale / 2.0f) - 35.0f + ((float)i * 5.0f);
+        float pointY = (card.contentSize.height * card.scale / 2.0f) + 35.0f - ((float)i * 5.0f);
         CGPoint cardPos = ccp(pointX, pointY);
         card.position = cardPos;
         
@@ -161,8 +167,8 @@
     float cardCountScale = 2.0f;
     [drawDeckCount setString:[NSString stringWithFormat:@"%i", cardCount]];
     drawDeckCount.scale = cardCountScale;
-    float pointX = self.contentSize.width - (drawDeckCount.contentSize.width * drawDeckCount.scale / 2.0f) - 40.0f;
-    float pointY = (drawDeckCount.contentSize.height * drawDeckCount.scale / 2.0f) + 20.0f;
+    float pointX = self.contentSize.width - (drawDeckCount.contentSize.width * drawDeckCount.scale / 2.0f) - 55.0f;
+    float pointY = (drawDeckCount.contentSize.height * drawDeckCount.scale / 2.0f) + 35.0f;
     CGPoint countPos = ccp(pointX, pointY);
     
     drawDeckCount.position = countPos;
@@ -175,4 +181,82 @@
         [self updateDrawDeckCardCount];
     }
 }
+
+-(CCMenu*)createBadgeButton:(Card*)card
+{
+    CCMenuItemSprite* normal = [CCMenuItemSprite itemWithNormalSprite:[card createBadgeSpriteNormal]
+                                                       selectedSprite:[card createBadgeSpriteNormal]
+                                                                block:^(id sender) {
+                                                                    //
+                                                                }];
+    
+    CCMenuItemSprite* selected = [CCMenuItemSprite itemWithNormalSprite:[card createBadgeSpriteSelected]
+                                                         selectedSprite:[card createBadgeSpriteSelected]
+                                                                  block:^(id sender) {
+                                                                      //
+                                                                }];
+    
+    
+    CCMenuItemToggle* toggle = [CCMenuItemToggle itemWithItems:
+                                [NSArray arrayWithObjects:normal, selected, nil]
+                                                         block:^(CCMenuItemToggle* sender) {
+                                                         [self.chosenCardSprite removeFromParentAndCleanup:YES];
+                                                         if (sender.selectedItem == selected)
+                                                         {
+                                                             self.chosenCardSprite = [card cardSprite];
+                                                             [self.chosenCardSprite setPosition:chosenCardPos];
+                                                             [self addChild:self.chosenCardSprite];
+                                                             
+                                                             CCMenu* cancelButton = [self cancelButton];
+                                                             [cancelButton setPosition:[self.chosenCardSprite convertToNodeSpace:cancelButtonPos]];
+                                                             [self.chosenCardSprite addChild:cancelButton];
+                                                             
+                                                             CCMenu* playButton = [self playButton];
+                                                             [playButton setPosition:[self.chosenCardSprite convertToNodeSpace:playButtonPos]];
+                                                             [self.chosenCardSprite addChild:playButton];
+                                                         }
+                                                     }];
+    return [CCMenu menuWithItems:toggle, nil];
+}
+
+-(CCMenu*)cancelButton
+{
+    CCSprite* normal     = [self buttonSprite:@"Cancel"];
+    CCSprite* selected   = [self buttonSprite:@"Cancel"];
+    
+    CCMenuItemSprite* button = [CCMenuItemSprite itemWithNormalSprite:normal
+                                                       selectedSprite:selected
+                                                                block:^(id sender) {
+                                                                    CCLOG(@"cancel button clicked");
+                                                                }];
+    return [CCMenu menuWithItems:button, nil];
+}
+
+-(CCMenu*)playButton
+{
+    CCSprite* normal     = [self buttonSprite:@"Play"];
+    CCSprite* selected   = [self buttonSprite:@"Play"];
+    
+    CCMenuItemSprite* button = [CCMenuItemSprite itemWithNormalSprite:normal
+                                                       selectedSprite:selected
+                                                                block:^(id sender) {
+                                                                    CCLOG(@"play button clicked");
+                                                                }];
+    return [CCMenu menuWithItems:button, nil];
+}
+
+-(CCSprite*)buttonSprite:(NSString*)text
+{
+    CCSprite* buttonBG   = [CCSprite spriteWithFile:@"button.png"];
+    [buttonBG setScale:0.5f];
+    CCLabelBMFont* label = [CCLabelBMFont labelWithString:text fntFile:FONT_BIG];
+    
+    CCSprite* sprite     = [CCSprite node];
+    [sprite setScale:2.0f];
+    [sprite addChild:buttonBG];
+    [sprite addChild:label];
+    return sprite;
+}
+
+
 @end
