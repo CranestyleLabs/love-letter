@@ -18,6 +18,7 @@
 @property NSString* name;
 @property int       cardNumber;
 @property int       cardValue;
-@property CCSprite* sprite;
+@property CCSprite* cardSprite;
+@property CCSprite* badegSprite;
 
 @end

@@ -17,9 +17,10 @@
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
 {
-    CCSprite* cardDisplay;
+    CCSprite*   cardDisplay;
+    CCSprite*   badgeDisplay;
     CCLabelTTF* cardLabel;
-    Deck* deck;
+    Deck*       deck;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child

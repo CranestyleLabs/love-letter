@@ -161,17 +161,30 @@
 		70BCBA6D1854173B00B99B7D /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA6A1854173B00B99B7D /* HelloWorldLayer.m */; };
 		70BCBA6E1854173B00B99B7D /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA6C1854173B00B99B7D /* IntroLayer.m */; };
 		70BCBA7C185417E800B99B7D /* love_letter_deck.csv in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA70185417E800B99B7D /* love_letter_deck.csv */; };
-		70BCBA7D185417E800B99B7D /* back-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA73185417E800B99B7D /* back-card.png */; };
-		70BCBA7E185417E800B99B7D /* baron-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA74185417E800B99B7D /* baron-card.png */; };
-		70BCBA7F185417E800B99B7D /* countess-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA75185417E800B99B7D /* countess-card.png */; };
-		70BCBA80185417E800B99B7D /* guard-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA76185417E800B99B7D /* guard-card.png */; };
-		70BCBA81185417E800B99B7D /* handmaid-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA77185417E800B99B7D /* handmaid-card.png */; };
-		70BCBA82185417E800B99B7D /* king-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA78185417E800B99B7D /* king-card.png */; };
-		70BCBA83185417E800B99B7D /* priest-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA79185417E800B99B7D /* priest-card.png */; };
-		70BCBA84185417E800B99B7D /* prince-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA7A185417E800B99B7D /* prince-card.png */; };
-		70BCBA85185417E800B99B7D /* princess-card.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA7B185417E800B99B7D /* princess-card.png */; };
 		70BCBA8918542A5C00B99B7D /* AIUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA8818542A5C00B99B7D /* AIUtilities.m */; };
 		70BCBA8D18542DEC00B99B7D /* GameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA8C18542DEC00B99B7D /* GameModel.m */; };
+		B770FE1518561CE100F138FE /* back-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE0C18561CE100F138FE /* back-card.png */; };
+		B770FE1618561CE100F138FE /* baron-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE0D18561CE100F138FE /* baron-card.png */; };
+		B770FE1718561CE100F138FE /* countess-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE0E18561CE100F138FE /* countess-card.png */; };
+		B770FE1818561CE100F138FE /* guard-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE0F18561CE100F138FE /* guard-card.png */; };
+		B770FE1918561CE100F138FE /* handmaid-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE1018561CE100F138FE /* handmaid-card.png */; };
+		B770FE1A18561CE100F138FE /* king-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE1118561CE100F138FE /* king-card.png */; };
+		B770FE1B18561CE100F138FE /* priest-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE1218561CE100F138FE /* priest-card.png */; };
+		B770FE1C18561CE100F138FE /* prince-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE1318561CE100F138FE /* prince-card.png */; };
+		B770FE1D18561CE100F138FE /* princess-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE1418561CE100F138FE /* princess-card.png */; };
+		B770FE2F18561CEE00F138FE /* background-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2018561CEE00F138FE /* background-badge.png */; };
+		B770FE3018561CEE00F138FE /* baron-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2118561CEE00F138FE /* baron-badge.png */; };
+		B770FE3118561CEE00F138FE /* countess-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2218561CEE00F138FE /* countess-badge.png */; };
+		B770FE3218561CEE00F138FE /* guard-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2318561CEE00F138FE /* guard-badge.png */; };
+		B770FE3318561CEE00F138FE /* handmaid-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2418561CEE00F138FE /* handmaid-badge.png */; };
+		B770FE3418561CEE00F138FE /* king-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2518561CEE00F138FE /* king-badge.png */; };
+		B770FE3518561CEE00F138FE /* priest-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2618561CEE00F138FE /* priest-badge.png */; };
+		B770FE3618561CEE00F138FE /* prince-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2718561CEE00F138FE /* prince-badge.png */; };
+		B770FE3718561CEE00F138FE /* princess-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2818561CEE00F138FE /* princess-badge.png */; };
+		B770FE3818561CEE00F138FE /* alertbox-background-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2B18561CEE00F138FE /* alertbox-background-ipadhd.png */; };
+		B770FE3918561CEE00F138FE /* button-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2C18561CEE00F138FE /* button-ipadhd.png */; };
+		B770FE3A18561CEE00F138FE /* playername-background-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2D18561CEE00F138FE /* playername-background-ipadhd.png */; };
+		B770FE3B18561CEE00F138FE /* token-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2E18561CEE00F138FE /* token-ipadhd.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -482,19 +495,32 @@
 		70BCBA6B1854173B00B99B7D /* IntroLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		70BCBA6C1854173B00B99B7D /* IntroLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		70BCBA70185417E800B99B7D /* love_letter_deck.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = love_letter_deck.csv; sourceTree = "<group>"; };
-		70BCBA73185417E800B99B7D /* back-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-card.png"; sourceTree = "<group>"; };
-		70BCBA74185417E800B99B7D /* baron-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baron-card.png"; sourceTree = "<group>"; };
-		70BCBA75185417E800B99B7D /* countess-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "countess-card.png"; sourceTree = "<group>"; };
-		70BCBA76185417E800B99B7D /* guard-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guard-card.png"; sourceTree = "<group>"; };
-		70BCBA77185417E800B99B7D /* handmaid-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handmaid-card.png"; sourceTree = "<group>"; };
-		70BCBA78185417E800B99B7D /* king-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "king-card.png"; sourceTree = "<group>"; };
-		70BCBA79185417E800B99B7D /* priest-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "priest-card.png"; sourceTree = "<group>"; };
-		70BCBA7A185417E800B99B7D /* prince-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prince-card.png"; sourceTree = "<group>"; };
-		70BCBA7B185417E800B99B7D /* princess-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "princess-card.png"; sourceTree = "<group>"; };
 		70BCBA8718542A5C00B99B7D /* AIUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIUtilities.h; sourceTree = "<group>"; };
 		70BCBA8818542A5C00B99B7D /* AIUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIUtilities.m; sourceTree = "<group>"; };
 		70BCBA8B18542DEC00B99B7D /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameModel.h; sourceTree = "<group>"; };
 		70BCBA8C18542DEC00B99B7D /* GameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameModel.m; sourceTree = "<group>"; };
+		B770FE0C18561CE100F138FE /* back-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-card.png"; sourceTree = "<group>"; };
+		B770FE0D18561CE100F138FE /* baron-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baron-card.png"; sourceTree = "<group>"; };
+		B770FE0E18561CE100F138FE /* countess-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "countess-card.png"; sourceTree = "<group>"; };
+		B770FE0F18561CE100F138FE /* guard-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guard-card.png"; sourceTree = "<group>"; };
+		B770FE1018561CE100F138FE /* handmaid-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handmaid-card.png"; sourceTree = "<group>"; };
+		B770FE1118561CE100F138FE /* king-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "king-card.png"; sourceTree = "<group>"; };
+		B770FE1218561CE100F138FE /* priest-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "priest-card.png"; sourceTree = "<group>"; };
+		B770FE1318561CE100F138FE /* prince-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prince-card.png"; sourceTree = "<group>"; };
+		B770FE1418561CE100F138FE /* princess-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "princess-card.png"; sourceTree = "<group>"; };
+		B770FE2018561CEE00F138FE /* background-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-badge.png"; sourceTree = "<group>"; };
+		B770FE2118561CEE00F138FE /* baron-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baron-badge.png"; sourceTree = "<group>"; };
+		B770FE2218561CEE00F138FE /* countess-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "countess-badge.png"; sourceTree = "<group>"; };
+		B770FE2318561CEE00F138FE /* guard-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guard-badge.png"; sourceTree = "<group>"; };
+		B770FE2418561CEE00F138FE /* handmaid-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handmaid-badge.png"; sourceTree = "<group>"; };
+		B770FE2518561CEE00F138FE /* king-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "king-badge.png"; sourceTree = "<group>"; };
+		B770FE2618561CEE00F138FE /* priest-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "priest-badge.png"; sourceTree = "<group>"; };
+		B770FE2718561CEE00F138FE /* prince-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prince-badge.png"; sourceTree = "<group>"; };
+		B770FE2818561CEE00F138FE /* princess-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "princess-badge.png"; sourceTree = "<group>"; };
+		B770FE2B18561CEE00F138FE /* alertbox-background-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alertbox-background-ipadhd.png"; sourceTree = "<group>"; };
+		B770FE2C18561CEE00F138FE /* button-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-ipadhd.png"; sourceTree = "<group>"; };
+		B770FE2D18561CEE00F138FE /* playername-background-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playername-background-ipadhd.png"; sourceTree = "<group>"; };
+		B770FE2E18561CEE00F138FE /* token-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "token-ipadhd.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1049,6 +1075,8 @@
 		70BCBA71185417E800B99B7D /* sprites */ = {
 			isa = PBXGroup;
 			children = (
+				B770FE1E18561CEE00F138FE /* badges */,
+				B770FE2918561CEE00F138FE /* buttons */,
 				70BCBA72185417E800B99B7D /* cards */,
 			);
 			name = sprites;
@@ -1058,15 +1086,7 @@
 		70BCBA72185417E800B99B7D /* cards */ = {
 			isa = PBXGroup;
 			children = (
-				70BCBA73185417E800B99B7D /* back-card.png */,
-				70BCBA74185417E800B99B7D /* baron-card.png */,
-				70BCBA75185417E800B99B7D /* countess-card.png */,
-				70BCBA76185417E800B99B7D /* guard-card.png */,
-				70BCBA77185417E800B99B7D /* handmaid-card.png */,
-				70BCBA78185417E800B99B7D /* king-card.png */,
-				70BCBA79185417E800B99B7D /* priest-card.png */,
-				70BCBA7A185417E800B99B7D /* prince-card.png */,
-				70BCBA7B185417E800B99B7D /* princess-card.png */,
+				B770FE0B18561CE100F138FE /* ipadhd */,
 			);
 			path = cards;
 			sourceTree = "<group>";
@@ -1087,6 +1107,65 @@
 				70BCBA8C18542DEC00B99B7D /* GameModel.m */,
 			);
 			path = GameModel;
+			sourceTree = "<group>";
+		};
+		B770FE0B18561CE100F138FE /* ipadhd */ = {
+			isa = PBXGroup;
+			children = (
+				B770FE0C18561CE100F138FE /* back-card.png */,
+				B770FE0D18561CE100F138FE /* baron-card.png */,
+				B770FE0E18561CE100F138FE /* countess-card.png */,
+				B770FE0F18561CE100F138FE /* guard-card.png */,
+				B770FE1018561CE100F138FE /* handmaid-card.png */,
+				B770FE1118561CE100F138FE /* king-card.png */,
+				B770FE1218561CE100F138FE /* priest-card.png */,
+				B770FE1318561CE100F138FE /* prince-card.png */,
+				B770FE1418561CE100F138FE /* princess-card.png */,
+			);
+			path = ipadhd;
+			sourceTree = "<group>";
+		};
+		B770FE1E18561CEE00F138FE /* badges */ = {
+			isa = PBXGroup;
+			children = (
+				B770FE1F18561CEE00F138FE /* ipadhd */,
+			);
+			path = badges;
+			sourceTree = "<group>";
+		};
+		B770FE1F18561CEE00F138FE /* ipadhd */ = {
+			isa = PBXGroup;
+			children = (
+				B770FE2018561CEE00F138FE /* background-badge.png */,
+				B770FE2118561CEE00F138FE /* baron-badge.png */,
+				B770FE2218561CEE00F138FE /* countess-badge.png */,
+				B770FE2318561CEE00F138FE /* guard-badge.png */,
+				B770FE2418561CEE00F138FE /* handmaid-badge.png */,
+				B770FE2518561CEE00F138FE /* king-badge.png */,
+				B770FE2618561CEE00F138FE /* priest-badge.png */,
+				B770FE2718561CEE00F138FE /* prince-badge.png */,
+				B770FE2818561CEE00F138FE /* princess-badge.png */,
+			);
+			path = ipadhd;
+			sourceTree = "<group>";
+		};
+		B770FE2918561CEE00F138FE /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				B770FE2A18561CEE00F138FE /* ipadhd */,
+			);
+			path = buttons;
+			sourceTree = "<group>";
+		};
+		B770FE2A18561CEE00F138FE /* ipadhd */ = {
+			isa = PBXGroup;
+			children = (
+				B770FE2B18561CEE00F138FE /* alertbox-background-ipadhd.png */,
+				B770FE2C18561CEE00F138FE /* button-ipadhd.png */,
+				B770FE2D18561CEE00F138FE /* playername-background-ipadhd.png */,
+				B770FE2E18561CEE00F138FE /* token-ipadhd.png */,
+			);
+			path = ipadhd;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1140,39 +1219,52 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B770FE1C18561CE100F138FE /* prince-card.png in Resources */,
+				B770FE1618561CE100F138FE /* baron-card.png in Resources */,
 				70BCBA42185414F700B99B7D /* Icon-spotlight.png in Resources */,
 				70BCBA35185414F700B99B7D /* Default-Portrait@2x~ipad.png in Resources */,
 				70BCBA3A185414F700B99B7D /* Icon-120.png in Resources */,
+				B770FE2F18561CEE00F138FE /* background-badge.png in Resources */,
 				70BCBA31185414F700B99B7D /* Default-568@2x.png in Resources */,
+				B770FE1518561CE100F138FE /* back-card.png in Resources */,
+				B770FE1718561CE100F138FE /* countess-card.png in Resources */,
 				70BCBA41185414F700B99B7D /* Icon-Small@2x.png in Resources */,
+				B770FE1D18561CE100F138FE /* princess-card.png in Resources */,
 				70BCBA45185414F700B99B7D /* Icon@2x.png in Resources */,
-				70BCBA7E185417E800B99B7D /* baron-card.png in Resources */,
 				70BCBA3D185414F700B99B7D /* Icon-76.png in Resources */,
 				70AE9B8F18540B15003017C2 /* ChangeLog in Resources */,
-				70BCBA80185417E800B99B7D /* guard-card.png in Resources */,
 				70BCBA3F185414F700B99B7D /* Icon-Small-50.png in Resources */,
-				70BCBA83185417E800B99B7D /* priest-card.png in Resources */,
+				B770FE3818561CEE00F138FE /* alertbox-background-ipadhd.png in Resources */,
 				70BCBA5A1854163400B99B7D /* LICENSE in Resources */,
+				B770FE1918561CE100F138FE /* handmaid-card.png in Resources */,
+				B770FE3318561CEE00F138FE /* handmaid-badge.png in Resources */,
+				B770FE1B18561CE100F138FE /* priest-card.png in Resources */,
+				B770FE1A18561CE100F138FE /* king-card.png in Resources */,
 				70BCBA38185414F700B99B7D /* Default@2x.png in Resources */,
-				70BCBA7D185417E800B99B7D /* back-card.png in Resources */,
-				70BCBA85185417E800B99B7D /* princess-card.png in Resources */,
+				B770FE3218561CEE00F138FE /* guard-badge.png in Resources */,
+				B770FE3018561CEE00F138FE /* baron-badge.png in Resources */,
 				70BCBA7C185417E800B99B7D /* love_letter_deck.csv in Resources */,
-				70BCBA81185417E800B99B7D /* handmaid-card.png in Resources */,
-				70BCBA82185417E800B99B7D /* king-card.png in Resources */,
-				70BCBA7F185417E800B99B7D /* countess-card.png in Resources */,
+				B770FE1818561CE100F138FE /* guard-card.png in Resources */,
 				70BCBA3B185414F700B99B7D /* Icon-72.png in Resources */,
+				B770FE3B18561CEE00F138FE /* token-ipadhd.png in Resources */,
+				B770FE3418561CEE00F138FE /* king-badge.png in Resources */,
+				B770FE3618561CEE00F138FE /* prince-badge.png in Resources */,
 				70BCBA37185414F700B99B7D /* Default.png in Resources */,
 				70BCBA47185414F700B99B7D /* iTunesArtwork@2x in Resources */,
+				B770FE3718561CEE00F138FE /* princess-badge.png in Resources */,
 				70BCBA36185414F700B99B7D /* Default-Portrait~ipad.png in Resources */,
 				70BCBA44185414F700B99B7D /* Icon.png in Resources */,
 				70BCBA40185414F700B99B7D /* Icon-Small.png in Resources */,
 				70BCBA32185414F700B99B7D /* Default-568h@2x.png in Resources */,
 				70BCBA33185414F700B99B7D /* Default-Landscape@2x~ipad.png in Resources */,
+				B770FE3518561CEE00F138FE /* priest-badge.png in Resources */,
 				70BCBA39185414F700B99B7D /* Icon-100.png in Resources */,
-				70BCBA84185417E800B99B7D /* prince-card.png in Resources */,
 				70BCBA34185414F700B99B7D /* Default-Landscape~ipad.png in Resources */,
 				70BCBA3E185414F700B99B7D /* Icon-76@2x.png in Resources */,
+				B770FE3918561CEE00F138FE /* button-ipadhd.png in Resources */,
 				70BCBA46185414F700B99B7D /* iTunesArtwork in Resources */,
+				B770FE3A18561CEE00F138FE /* playername-background-ipadhd.png in Resources */,
+				B770FE3118561CEE00F138FE /* countess-badge.png in Resources */,
 				70BCBA43185414F700B99B7D /* Icon-spotlight@2x.png in Resources */,
 				70BCBA3C185414F700B99B7D /* Icon-72@2x.png in Resources */,
 			);
