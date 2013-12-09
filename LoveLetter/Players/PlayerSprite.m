@@ -66,6 +66,7 @@
         for (int i = 0; i < self.player.score; i++)
         {
             CCSprite* token = [CCSprite spriteWithFile:@"token.png"];
+            [token setColor:ccc3(95, 10, 0)];
             CGPoint pos     = ccpAdd(startingPosition, ccpMult(offset, i));
             [token setPosition:pos];
             [token setAnchorPoint:CGPointZero];
