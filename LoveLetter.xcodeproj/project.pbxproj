@@ -128,6 +128,8 @@
 		70AE9BA718540B15003017C2 /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = 70AE9BA618540B15003017C2 /* vec3.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		70AE9BA918540B15003017C2 /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = 70AE9BA818540B15003017C2 /* vec4.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		70AE9BAE18540B15003017C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AE9BAD18540B15003017C2 /* main.m */; };
+		70B846B01856709C00C1BBBF /* llbg-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B846AE1856709C00C1BBBF /* llbg-ipad.png */; };
+		70B846B11856709C00C1BBBF /* llbg-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B846AF1856709C00C1BBBF /* llbg-ipadhd.png */; };
 		70BCBA31185414F700B99B7D /* Default-568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA1A185414F700B99B7D /* Default-568@2x.png */; };
 		70BCBA32185414F700B99B7D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA1B185414F700B99B7D /* Default-568h@2x.png */; };
 		70BCBA33185414F700B99B7D /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA1C185414F700B99B7D /* Default-Landscape@2x~ipad.png */; };
@@ -466,6 +468,8 @@
 		70AE9BAA18540B15003017C2 /* LICENSE_Kazmath.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_Kazmath.txt; path = libs/LICENSE_Kazmath.txt; sourceTree = "<group>"; };
 		70AE9BAC18540B15003017C2 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		70AE9BAD18540B15003017C2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		70B846AE1856709C00C1BBBF /* llbg-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "llbg-ipad.png"; sourceTree = "<group>"; };
+		70B846AF1856709C00C1BBBF /* llbg-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "llbg-ipadhd.png"; sourceTree = "<group>"; };
 		70BCBA1A185414F700B99B7D /* Default-568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568@2x.png"; sourceTree = "<group>"; };
 		70BCBA1B185414F700B99B7D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		70BCBA1C185414F700B99B7D /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
@@ -1016,6 +1020,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		70B846AD1856709C00C1BBBF /* background */ = {
+			isa = PBXGroup;
+			children = (
+				70B846AE1856709C00C1BBBF /* llbg-ipad.png */,
+				70B846AF1856709C00C1BBBF /* llbg-ipadhd.png */,
+			);
+			path = background;
+			sourceTree = "<group>";
+		};
 		70BCBA19185414F700B99B7D /* device-assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -1111,6 +1124,7 @@
 		70BCBA71185417E800B99B7D /* sprites */ = {
 			isa = PBXGroup;
 			children = (
+				70B846AD1856709C00C1BBBF /* background */,
 				B770FE1E18561CEE00F138FE /* badges */,
 				B770FE2918561CEE00F138FE /* buttons */,
 				70BCBA72185417E800B99B7D /* cards */,
@@ -1320,10 +1334,12 @@
 				B770FE4A1856216800F138FE /* avenirnext60_bold-ipad.fnt in Resources */,
 				B770FE481856216800F138FE /* avenirnext48_bold-ipadhd.fnt in Resources */,
 				B770FE1818561CE100F138FE /* guard-card.png in Resources */,
+				70B846B11856709C00C1BBBF /* llbg-ipadhd.png in Resources */,
 				70BCBA3B185414F700B99B7D /* Icon-72.png in Resources */,
 				B770FE3B18561CEE00F138FE /* token.png in Resources */,
 				B770FE3418561CEE00F138FE /* king-badge.png in Resources */,
 				B770FE3618561CEE00F138FE /* prince-badge.png in Resources */,
+				70B846B01856709C00C1BBBF /* llbg-ipad.png in Resources */,
 				70BCBA37185414F700B99B7D /* Default.png in Resources */,
 				70BCBA47185414F700B99B7D /* iTunesArtwork@2x in Resources */,
 				B770FE3718561CEE00F138FE /* princess-badge.png in Resources */,

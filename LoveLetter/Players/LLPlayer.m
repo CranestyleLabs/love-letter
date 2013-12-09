@@ -12,6 +12,7 @@
 #import "GameModel.h"
 #import "Deck.h"
 #import "AIUtilities.h"
+#import "PlayResult.h"
 
 
 @interface LLPlayer ()
@@ -166,6 +167,16 @@
     // start turn
     [self setIsProtected:NO];
     
+    // draw a card
+    [self addCard:[[GameModel sharedInstance].deck drawCard]];
+    
+    
+    if (self.isAI)
+    {
+        Play* play = [AIUtilities makePlayForPlayer:self];
+        [PlayResult player:self makesPlay:play];
+    }
+    
 }
 
 -(void)endTurn
@@ -178,6 +189,7 @@
 -(void)startRound
 {
     
+    // draw a card
     [self addCard:[[GameModel sharedInstance].deck drawCard]];
     
 }
