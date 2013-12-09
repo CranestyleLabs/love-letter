@@ -88,7 +88,7 @@
 -(CCNode*)getConfirmCard
 {
     CCSprite* chosenCardSprite;
-    chosenCardSprite = [self.card cardSprite];
+    chosenCardSprite = [self.card createCardSprite];
 //    [chosenCardSprite setPosition:chosenCardPos];
     
     CCMenu* cancelButton = [self cancelButton];

@@ -22,7 +22,7 @@
         self.name        = [cardData objectAtIndex:1];
         self.cardValue   = [[cardData objectAtIndex:2] intValue];
         
-        self.cardSprite  = [self createCardSprite];
+//        self.cardSprite  = [self createCardSprite];
 //        self.badgeSprite = [self createBadgeSprite];
 //        self.badgeButton = [self createBadgeButton];
     }
@@ -31,10 +31,10 @@
 
 -(CCSprite*)createCardSprite
 {
-    NSString* fileName = [NSString stringWithFormat:@"%@-card.png", [self.name lowercaseString]];
+//    NSString* fileName = [NSString stringWithFormat:@"%@-card.png", [self.name lowercaseString]];
+    NSString* fileName = [NSString stringWithFormat:@"%d_%@.png", self.cardValue, [self.name lowercaseString]];
     CCSprite* sprite   = [CCSprite spriteWithFile:fileName];
-    float scale        = 0.5 * CC_CONTENT_SCALE_FACTOR();
-    [sprite setScale:scale];
+    [sprite setScale:0.8f];
     return sprite;
 }
 
