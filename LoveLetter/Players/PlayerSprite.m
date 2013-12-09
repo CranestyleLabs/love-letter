@@ -17,7 +17,6 @@
 {
     if (self = [super init])
     {
-//        [self setColor:ccBLUE];
         [self setContentSize:CGSizeMake(WIN_SIZE.width, 200)];
         
         self.player = player;
@@ -35,6 +34,14 @@
         [self setTokens];
     }
     return self;
+}
+
+-(CCSprite*)createLabelBackground
+{
+    CCSprite* sprite = [CCSprite spriteWithFile:@"playername-background.png"];
+    [sprite setColor:ccc3(0, 50, 200)];
+    
+    return sprite;
 }
 
 -(CCLabelBMFont*)createLabel
