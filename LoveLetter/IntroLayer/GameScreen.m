@@ -45,7 +45,6 @@
 {
     [super onEnterTransitionDidFinish];
     
-    [self layoutAIPlayerSprites];
     [self layoutDrawDeck];
     [self layoutPlayerSprites];
 //    [self layoutHumanPlayerSprite];
