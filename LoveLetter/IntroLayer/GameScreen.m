@@ -134,7 +134,7 @@
     {
         [ps setTokens];
         [ps positionPlayedCards];
-        if (ps.player.cardsInHand == 0)
+        if (ps.player.cardsInHand.count == 0)
         {
             [ps.labelBackground setColor:ps.maroon];
         }
@@ -146,6 +146,9 @@
         
         NSString* s = [NSString stringWithFormat:@"%d, %d, %d, %d", p1.cardsInHand.count, p2.cardsInHand.count, p3.cardsInHand.count, p4.cardsInHand.count];
         [l setString:s];
+
+        [self updateDrawDeckCardCount];
+
     }
 }
 
