@@ -178,11 +178,29 @@
     // draw a card
     [self addCard:[[GameModel sharedInstance].deck drawCard]];
     
+    NSAssert(self.cardsInHand.count == 2, @"");
+    
+    __block NSString* cardsInHandString = @"";
+    __block NSString* cardsPlayedString = @"";
+    [self.cardsInHand enumerateObjectsUsingBlock:^(Card* c, NSUInteger idx, BOOL *stop) {
+       
+        cardsInHandString = [cardsInHandString stringByAppendingString:[NSString stringWithFormat:@"%d, ", c.cardValue]];
+        
+    }];
+    [self.cardsPlayed enumerateObjectsUsingBlock:^(Card* c, NSUInteger idx, BOOL *stop) {
+        
+        cardsPlayedString = [cardsPlayedString stringByAppendingString:[NSString stringWithFormat:@"%d, ", c.cardValue]];
+        
+    }];
+    
+    NSLog(@"%@ CardsInHand = %@", self.playerid, cardsInHandString);
+    NSLog(@"%@ CardsPlayed = %@", self.playerid, cardsPlayedString);
+    
     if (self.isAI)
     {
         Play* play = [AIUtilities makePlayForPlayer:self];
+        NSLog(@"%@ played %d", self.playerid, play.card.cardValue);
         [PlayResult player:self makesPlay:play];
-        NSLog(@"");
         [self endTurn];
     }
     else
