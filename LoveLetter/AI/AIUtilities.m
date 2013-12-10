@@ -154,7 +154,14 @@
         {
             
             // never baron with a guard
-            card = (Card*)[player.cardsInHand lastObject];
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Guard)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
             
             // first find any guard secrets and remove them since you can't guard a guard
             NSArray* secrets = [self removeGuardSecretsFrom:player.secrets];
