@@ -12,9 +12,7 @@
 
 @interface PlayerSprite : CCSprite
 {
-    ccColor3B cyan;
-    ccColor3B orange;
-    ccColor3B maroon;
+    //
 }
 
 @property CCLabelBMFont* label;
@@ -22,6 +20,10 @@
 @property CCSprite*      tokenSprites;
 @property LLPlayer*      player;
 @property NSArray*       cardBadgePositions;
+
+@property ccColor3B cyan;
+@property ccColor3B orange;
+@property ccColor3B maroon;
 
 -(id)initWithPlayer:(LLPlayer*)player;
 
