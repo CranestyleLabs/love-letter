@@ -1348,10 +1348,14 @@
         
         // create play object from target, card, and (optionally)options
         play = [Play playWithCard:card andTarget:target andOptions:[NSDictionary dictionaryWithDictionary:options]];
-        
+        for (Card* card in player.cardsInHand)
+        {
+            CCLOG(@"player %@ has card %@(number=%d)", player.playerid, card.name, card.cardNumber);
+        }
     }
     
     NSAssert(play != nil, @"Play cannot be nil");
+    NSAssert(play.card != nil, @"Card cannot be nil");
     
     return play;
     
