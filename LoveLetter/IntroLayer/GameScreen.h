@@ -26,17 +26,14 @@
     float indent;
     
     CCNode*   playStepDisplay;
+    CCMenu*   cardButtonOld;
+    CCMenu*   cardButtonNew;
     
     Play* play;
     
     CCLabelTTF* l;
+    NSArray*  playerSprites;
 }
-
-@property CCMenu*   cardButtonOld;
-@property CCMenu*   cardButtonNew;
-@property NSArray*  playerSprites;
-
-
 
 +(CCScene*)scene;
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;

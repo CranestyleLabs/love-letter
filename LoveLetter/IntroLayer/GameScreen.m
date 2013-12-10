@@ -122,15 +122,15 @@
             [self addChild:playerSprite];
         }
         // add playerSprite to Array
-        NSMutableArray* array = [NSMutableArray arrayWithArray:self.playerSprites];
+        NSMutableArray* array = [NSMutableArray arrayWithArray:playerSprites];
         [array addObject:playerSprite];
-        self.playerSprites = [NSArray arrayWithArray:array];
+        playerSprites = [NSArray arrayWithArray:array];
     }
 }
 
 -(void)updateUI
 {   
-    for (PlayerSprite* ps in self.playerSprites)
+    for (PlayerSprite* ps in playerSprites)
     {
         [ps cleanupUnusedSprites];
         [ps setTokens];
@@ -159,10 +159,10 @@
 
 -(void)updateCardsUI
 {
-    [self.cardButtonNew removeFromParentAndCleanup:YES];
-    [self.cardButtonOld removeFromParentAndCleanup:YES];
-    self.cardButtonNew = nil;
-    self.cardButtonOld = nil;
+    [cardButtonNew removeFromParentAndCleanup:YES];
+    [cardButtonOld removeFromParentAndCleanup:YES];
+    cardButtonNew = nil;
+    cardButtonOld = nil;
     
     LLPlayer* humanPlayer;
     for (LLPlayer* player in [GameModel sharedInstance].players)
@@ -176,17 +176,17 @@
     if (humanPlayer.cardsInHand.count > 1)
     {
         Card* new = (Card*)[humanPlayer.cardsInHand objectAtIndex:1];
-        self.cardButtonNew = [self createBadgeButton:new];
-        [self.cardButtonNew setPosition:cardButtonNewPos];
-        [self addChild:self.cardButtonNew];
+        cardButtonNew = [self createBadgeButton:new];
+        [cardButtonNew setPosition:cardButtonNewPos];
+        [self addChild:cardButtonNew];
     }
     
     if (humanPlayer.cardsInHand.count > 0)
     {
         Card* old = (Card*)[humanPlayer.cardsInHand objectAtIndex:0];
-        self.cardButtonOld = [self createBadgeButton:old];
-        [self.cardButtonOld setPosition:cardButtonOldPos];
-        [self addChild:self.cardButtonOld];
+        cardButtonOld = [self createBadgeButton:old];
+        [cardButtonOld setPosition:cardButtonOldPos];
+        [self addChild:cardButtonOld];
     }
 }
 
@@ -287,13 +287,6 @@
         playStepDisplay = displayNode;
         [playStepDisplay setPosition:chosenCardPos];
         [self addChild:playStepDisplay];
-//        for (CCNode* child in playStepDisplay.children)
-//        {
-//            for (CCNode* grandchild in child.children)
-//            {
-//                CCLOG(@"position of badge: %@", NSStringFromCGPoint([self convertToWorldSpace:grandchild.position]));
-//            }
-//        }
     }
 }
 
