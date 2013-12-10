@@ -596,6 +596,7 @@
 		B770FE591856277C00F138FE /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		B770FE641856686B00F138FE /* CCRadioMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRadioMenu.h; sourceTree = "<group>"; };
 		B770FE651856686B00F138FE /* CCRadioMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCRadioMenu.m; sourceTree = "<group>"; };
+		D84BB17D18568B1D008D4D32 /* PlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1187,6 +1188,7 @@
 				70BCBA6C1854173B00B99B7D /* IntroLayer.m */,
 				B770FE4E1856243600F138FE /* GameScreen.h */,
 				B770FE4F1856243600F138FE /* GameScreen.m */,
+				D84BB17D18568B1D008D4D32 /* PlayView.h */,
 			);
 			path = IntroLayer;
 			sourceTree = "<group>";

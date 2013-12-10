@@ -7,10 +7,11 @@
 //
 
 #import "cocos2d.h"
+#import "PlayView.h"
 
 @class GameModel;
 
-@interface GameScreen : CCLayer
+@interface GameScreen : CCLayer <PlayView>
 {
     CGPoint cardButtonOldPos;
     CGPoint cardButtonNewPos;

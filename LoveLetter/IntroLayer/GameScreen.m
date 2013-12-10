@@ -272,4 +272,14 @@
 }
 
 
+-(void)nextStep:(CCNode*)displayNode
+{
+    
+}
+
+-(void)previousStep:(CCNode*)displayNode
+{
+    
+}
+
 @end
