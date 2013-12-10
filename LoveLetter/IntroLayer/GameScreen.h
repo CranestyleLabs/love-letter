@@ -35,5 +35,6 @@
 
 +(CCScene*)scene;
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
+-(void)updateUI;
 
 @end
