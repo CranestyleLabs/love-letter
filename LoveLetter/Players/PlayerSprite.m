@@ -34,9 +34,9 @@
 //        }
         
         // colors
-        cyan   = ccc3(0, 150, 150);
-        orange = ccc3(0,0,0);
-        maroon = ccc3(0,0,0);
+        self.cyan   = ccc3(0, 150, 150);
+        self.orange = ccc3(255,165,0);
+        self.maroon = ccc3(139,0,0);
         
         
         // create sprites
@@ -74,7 +74,7 @@
 -(CCSprite*)createLabelBackground
 {
     CCSprite* sprite = [CCSprite spriteWithFile:@"playername-background.png"];
-    [sprite setColor:cyan];
+    [sprite setColor:self.cyan];
     [sprite setScaleX:0.65f * CC_CONTENT_SCALE_FACTOR()];
     [sprite setScaleY:0.40f * CC_CONTENT_SCALE_FACTOR()];
     return sprite;
