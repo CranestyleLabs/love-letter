@@ -210,94 +210,44 @@
                 Play* play = [Play playWithCard:card andView:self];
                 [playStepDisplay removeFromParentAndCleanup:YES];
                 playStepDisplay = [play nextStep];
-                
-                if (playStepDisplay != nil)
-                {
-                    [playStepDisplay setPosition:chosenCardPos];
-                    [self addChild:playStepDisplay];
-                }
             }
         }];
     return [CCMenu menuWithItems:toggle, nil];
 }
 
-//-(void)showSelectedCard:(Card*)card
-//{
-//    CCSprite* cardSprite = [card createCardSprite];
-//    self.chosenCardSprite = [CCSprite node];
-//    [self.chosenCardSprite addChild:cardSprite];
-//    [self.chosenCardSprite setPosition:chosenCardPos];
-//    [self addChild:self.chosenCardSprite];
-//    
-//    CCSprite* buttonPlayNormal   = [self buttonSprite:@"Play" selected:NO];
-//    CCSprite* buttonPlaySelected = [self buttonSprite:@"Play" selected:YES];
-//    CCSprite* buttonCancelNormal   = [self buttonSprite:@"Cancel" selected:NO];
-//    CCSprite* buttonCancelSelected = [self buttonSprite:@"Cancel" selected:YES];
-//    
-//    CCMenuItemSprite* buttonPlay = [CCMenuItemSprite itemWithNormalSprite:buttonPlayNormal selectedSprite:buttonPlaySelected block:^(id sender) {
-//        
-//        NSLog(@"PLAY!");
-//        
-//    }];
-//    
-//    CCMenuItemSprite* buttonCancel = [CCMenuItemSprite itemWithNormalSprite:buttonCancelNormal selectedSprite:buttonCancelSelected block:^(id sender) {
-//        
-//        NSLog(@"CANCEL");
-//        [toggle setSelectedIndex:0];
-//        [self.chosenCardSprite removeFromParentAndCleanup:YES];
-//        
-//    }];
-//    
-//    CCMenu* cardMenu = [CCMenu menuWithItems:buttonPlay, buttonCancel, nil];
-//    [cardMenu setPosition:CGPointMake(0, -cardSprite.contentSize.height/2 * cardSprite.scale - 40.0f)];
-//    [buttonCancel setPosition:CGPointMake(-buttonCancelNormal.contentSize.width/2 - 20.0f, 0)];
-//    [buttonPlay setPosition:CGPointMake(buttonPlayNormal.contentSize.width/2 + 20.0f, 0)];
-//    [self.chosenCardSprite addChild:cardMenu];
-//    
-//}
-//
-//-(CCSprite*)buttonSprite:(NSString*)text selected:(BOOL)isSelected
-//{
-//    CCSprite* sprite = [CCSprite spriteWithFile:@"card-button.png"];
-//    CCLabelBMFont* label = [CCLabelBMFont labelWithString:text fntFile:FONT_BIG];
-//    
-//    if (isSelected)
-//    {
-//        [sprite setColor:ccGRAY];
-//        [label setColor:ccBLACK];
-//    }
-//    else
-//    {
-//        [sprite setColor:ccBLACK];
-//        [label setColor:ccWHITE];
-//    }
-//    
-//    [label setPosition:CGPointMake(sprite.contentSize.width/2, sprite.contentSize.height/2)];
-//    [sprite addChild:label];
-//    
-//    return sprite;
-//}
-
-
 -(void)nextStep:(CCNode*)displayNode
 {
     CCLOG(@"next step on game screen");
+    [playStepDisplay removeFromParentAndCleanup:YES];
+    [playStepDisplay setPosition:chosenCardPos];
     if (displayNode == nil)
     {
-        [playStepDisplay removeFromParentAndCleanup:YES];
-        playStepDisplay = nil;
-        [toggle setSelectedIndex:0];
+        CCLOG(@"returned nil");
+        // play result handled here
+    }
+    else
+    {
+        CCLOG(@"returned something");
+        playStepDisplay = displayNode;
+        [playStepDisplay setPosition:chosenCardPos];
+        [self addChild:playStepDisplay];
     }
 }
 
 -(void)previousStep:(CCNode*)displayNode
 {
     CCLOG(@"previous step on game screen");
+    [playStepDisplay removeFromParentAndCleanup:YES];
+    playStepDisplay = nil;
     if (displayNode == nil)
     {
-        [playStepDisplay removeFromParentAndCleanup:YES];
-        playStepDisplay = nil;
         [toggle setSelectedIndex:0];
+    }
+    else
+    {
+        playStepDisplay = displayNode;
+        [playStepDisplay setPosition:chosenCardPos];
+        [self addChild:playStepDisplay];
     }
 }
 
