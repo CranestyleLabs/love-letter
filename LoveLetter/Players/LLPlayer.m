@@ -42,6 +42,11 @@
         [self setIsAI:YES];
         [self setScore:0];
         
+        [self setCardsInHand:[[NSArray alloc] init]];
+        [self setCardsPlayed:[[NSArray alloc] init]];
+        
+//        cardsPlayed
+        
 //        // make a score for testing
 //        NSString* playerID = self.playerid;
 //        NSString* playerIDNumber = [playerID substringFromIndex:[playerID length] -1];
@@ -177,6 +182,7 @@
     {
         Play* play = [AIUtilities makePlayForPlayer:self];
         [PlayResult player:self makesPlay:play];
+        [self endTurn];
     }
     
 }
@@ -187,6 +193,8 @@
     NSLog(@"[LLPlayer endTurn][%@]", self.playerid);
     
     // end turn
+    
+    [[GameModel sharedInstance] endTurn];
     
 }
 

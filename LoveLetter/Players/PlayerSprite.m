@@ -123,7 +123,7 @@
 {
     for (int i = 0; i < self.player.cardsPlayed.count; i++)
     {
-        CCSprite* sprite = [self.player.cardsPlayed[i] createCardSprite];
+        CCSprite* sprite = [self.player.cardsPlayed[i] createBadgeSpriteNormal];
         NSValue*  value  = [self.cardBadgePositions objectAtIndex:i];
         [sprite setPosition:[value CGPointValue]];
         [self addChild:sprite];

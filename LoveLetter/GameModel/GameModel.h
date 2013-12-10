@@ -33,5 +33,6 @@
 -(void)startRound;
 -(LLPlayer*)getCurrentPlayer;
 -(Card*)drawBurnedCard;
+-(void)endTurn;
 
 @end

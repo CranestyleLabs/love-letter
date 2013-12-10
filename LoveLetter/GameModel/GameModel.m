@@ -87,12 +87,12 @@ static GameModel* gameModel = nil;
     
     NSLog(@"[GameModel startRound]");
     
-    NSInteger max = self.playerCount - 1;
-    NSInteger min = 0;
-    [self setCurrentPlayerNumber:((arc4random() % (max-min+1)) + min)];
+//    NSInteger max = self.playerCount - 1;
+//    NSInteger min = 0;
+//    [self setCurrentPlayerNumber:((arc4random() % (max-min+1)) + min)];
     
     // set round number
-    [self setRoundNumber:self.roundNumber++];
+    [self setRoundNumber:self.roundNumber + 1];
     
     // refresh the deck
     if (self.deck == nil)
@@ -187,8 +187,6 @@ static GameModel* gameModel = nil;
     
     NSLog(@"[GameModel startTurn]");
     
-    // TODO: refresh ui
-    
     LLPlayer* nextPlayer = [self getNextPayer];
     [nextPlayer startTurn];
     
@@ -199,8 +197,8 @@ static GameModel* gameModel = nil;
     
     NSLog(@"[GameModel endturn]");
     
-    LLPlayer* currentPlayer = [self getCurrentPlayer];
-    [currentPlayer endTurn];
+//    LLPlayer* currentPlayer = [self getCurrentPlayer];
+//    [currentPlayer endTurn];
     
     if ([self isRoundOver])
     {
