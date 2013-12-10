@@ -68,7 +68,7 @@
     
     CCLabelBMFont* labelPlayed = [CCLabelBMFont labelWithString:@"Played" fntFile:FONT_BIG];
     [labelPlayed setAnchorPoint:CGPointZero];
-    [labelPlayed setPosition:ccp(indent + 10, 340)];
+    [labelPlayed setPosition:ccp(indent + 25, 325)];
     [self addChild:labelPlayed];
     [self updateCardsUI];
     
@@ -109,6 +109,10 @@
             [self addChild:playerSprite];
             CCLOG(@"created sprite for human player %@", player.playerid);
         }
+        // add playerSprite to Array
+        NSMutableArray* array = [NSMutableArray arrayWithArray:self.playerSprites];
+        [array addObject:playerSprite];
+        self.playerSprites = [NSArray arrayWithArray:array];
     }
 }
 
@@ -197,16 +201,16 @@
                                                                 }];
     
     
-    CCMenuItemToggle* toggle = [CCMenuItemToggle itemWithItems:
-                                [NSArray arrayWithObjects:normal, selected, nil]
-                                                         block:^(CCMenuItemToggle* sender) {
-                                                             
-                                                         [self.chosenCardSprite removeFromParentAndCleanup:YES];
-                                                         if (sender.selectedItem == selected)
-                                                         {
-                                                             [self showSelectedCard:card];
-                                                         }
-                                                     }];
+    toggle = [CCMenuItemToggle itemWithItems:[NSArray arrayWithObjects:normal, selected, nil] block:^(CCMenuItemToggle* sender) {
+        
+        [self.chosenCardSprite removeFromParentAndCleanup:YES];
+        if (sender.selectedItem == selected)
+            {
+                
+                [self showSelectedCard:card];
+                
+            }
+        }];
     return [CCMenu menuWithItems:toggle, nil];
 }
 
@@ -232,6 +236,8 @@
     CCMenuItemSprite* buttonCancel = [CCMenuItemSprite itemWithNormalSprite:buttonCancelNormal selectedSprite:buttonCancelSelected block:^(id sender) {
         
         NSLog(@"CANCEL");
+        [toggle setSelectedIndex:0];
+        [self.chosenCardSprite removeFromParentAndCleanup:YES];
         
     }];
     
@@ -265,5 +271,15 @@
     return sprite;
 }
 
+
+-(void)nextStep:(CCNode*)displayNode
+{
+    
+}
+
+-(void)previousStep:(CCNode*)displayNode
+{
+    
+}
 
 @end

@@ -9,7 +9,9 @@
 #import "Play.h"
 #import "LLPlayer.h"
 #import "Card.h"
+#import "Deck.h"
 #import "Constants.h"
+#import "GameModel.h"
 
 
 @interface Play ()
@@ -24,12 +26,26 @@
 
 @implementation Play
 
++(id)playWithCard:(Card*)card andView:(id <PlayView>)theView
+{
+    return [[self alloc] initWithCard:card andView:theView];
+}
+
 +(id)playWithCard:(Card*)card andTarget:(LLPlayer*)target andOptions:(NSDictionary*)options
 {
     return [[self alloc] initWithCard:card andTarget:target andOptions:options];
 }
 
-
+-(id)initWithCard:(Card*)card andView:(id<PlayView>)theView
+{
+    if (self = [super init])
+    {
+        self.state = PlayState_Start;
+        [self setCard:card];
+        view = theView;
+    }
+    return self;
+}
 
 -(id)initWithCard:(Card*)card andTarget:(LLPlayer*)target andOptions:(NSDictionary*)options
 {
@@ -52,10 +68,13 @@
         case PlayState_Start:
             // Allow the player to confirm a card
             self.state = PlayState_ConfirmCard;
-            return [self getConfirmCard];
+            node = [self getConfirmCard];
+            break;
         case PlayState_ConfirmCard:
+            node = [self processConfirmCard];
             break;
         case PlayState_ChooseTarget:
+            node = [self processChooseTarget];
             break;
         case PlayState_ChooseCardType:
             break;
@@ -63,7 +82,7 @@
             break;
     }
     
-    return nil;
+    return node;
 }
 
 -(CCNode*)previousStep
@@ -88,20 +107,60 @@
 -(CCNode*)getConfirmCard
 {
     CCSprite* chosenCardSprite;
-    chosenCardSprite = [self.card createCardSprite];
+    CCSprite* cardSprite = [self.card createCardSprite];
+    chosenCardSprite = [CCSprite node];
+    [chosenCardSprite addChild:cardSprite];
 //    [chosenCardSprite setPosition:chosenCardPos];
+//    [self addChild:self.chosenCardSprite];
     
-    CCMenu* cancelButton = [self cancelButton];
-//    [cancelButton setPosition:[chosenCardSprite ]];
-    [chosenCardSprite addChild:cancelButton];
+    CCSprite* buttonPlayNormal   = [self buttonSprite:@"Play" selected:NO];
+    CCSprite* buttonPlaySelected = [self buttonSprite:@"Play" selected:YES];
+    CCSprite* buttonCancelNormal   = [self buttonSprite:@"Cancel" selected:NO];
+    CCSprite* buttonCancelSelected = [self buttonSprite:@"Cancel" selected:YES];
     
-    CCMenu* playButton = [self playButton];
-    CGPoint playPos = ccp((cancelButton.contentSize.width / 2.0f) + cancelButton.position.x + (playButton.contentSize.width / 2.0f), playButton.position.y);
-    [playButton setPosition:playPos];
-    [chosenCardSprite addChild:playButton];
+    CCMenuItemSprite* buttonPlay = [CCMenuItemSprite itemWithNormalSprite:buttonPlayNormal selectedSprite:buttonPlaySelected block:^(id sender) {
+        
+        NSLog(@"PLAY!");
+        
+    }];
+    
+    CCMenuItemSprite* buttonCancel = [CCMenuItemSprite itemWithNormalSprite:buttonCancelNormal selectedSprite:buttonCancelSelected block:^(id sender) {
+        
+        NSLog(@"CANCEL");
+        
+    }];
+    
+    CCMenu* cardMenu = [CCMenu menuWithItems:buttonPlay, buttonCancel, nil];
+    [cardMenu setPosition:CGPointMake(0, -cardSprite.contentSize.height/2 * cardSprite.scale - 40.0f)];
+    [buttonCancel setPosition:CGPointMake(-buttonCancelNormal.contentSize.width/2 - 20.0f, 0)];
+    [buttonPlay setPosition:CGPointMake(buttonPlayNormal.contentSize.width/2 + 20.0f, 0)];
+    [chosenCardSprite addChild:cardMenu];
 
     return chosenCardSprite;
 }
+
+-(CCSprite*)buttonSprite:(NSString*)text selected:(BOOL)isSelected
+{
+    CCSprite* sprite = [CCSprite spriteWithFile:@"card-button.png"];
+    CCLabelBMFont* label = [CCLabelBMFont labelWithString:text fntFile:FONT_BIG];
+    
+    if (isSelected)
+    {
+        [sprite setColor:ccGRAY];
+        [label setColor:ccBLACK];
+    }
+    else
+    {
+        [sprite setColor:ccBLACK];
+        [label setColor:ccWHITE];
+    }
+    
+    [label setPosition:CGPointMake(sprite.contentSize.width/2, sprite.contentSize.height/2)];
+    [sprite addChild:label];
+    
+    return sprite;
+}
+
 
 -(CCMenu*)cancelButton
 {
@@ -142,6 +201,74 @@
     [sprite addChild:buttonBG];
     [sprite addChild:label];
     return sprite;
+}
+
+// Processes confirm card and returns the select target, if applicable
+-(CCNode*)processConfirmCard
+{
+    CCNode* node = nil;
+    
+    switch (self.card.cardValue)
+    {
+        case kCardValue_Guard:
+        case kCardValue_Priest:
+        case kCardValue_Baron:
+        case kCardValue_Prince:
+        case kCardValue_King:
+        case kCardValue_Countess:
+            node = [self getSelectTarget];
+            self.state = PlayState_ChooseTarget;
+            break;
+
+        case kCardValue_Handmaid:
+            self.state = PlayState_ShowResult;
+            self.target = [GameModel sharedInstance].players[0];
+            break;
+            
+        default:
+            CCLOG(@"Card not found!");
+            break;
+    }
+    
+    return node;
+}
+
+-(CCNode*)getSelectTarget
+{
+    return nil;
+}
+
+-(CCNode*)processChooseTarget
+{
+    CCNode* node = nil;
+    
+    switch (self.card.cardValue)
+    {
+        case kCardValue_Guard:
+        case kCardValue_Priest:
+        case kCardValue_Baron:
+        case kCardValue_Prince:
+        case kCardValue_King:
+        case kCardValue_Countess:
+            node = [self getSelectTarget];
+            self.state = PlayState_ShowResult;
+            break;
+            
+        case kCardValue_Handmaid:
+            CCLOG(@"ProcessTarget called on Handmaid, should not have reached this!");
+            break;
+            
+        default:
+            CCLOG(@"Card not found!");
+            break;
+    }
+    
+    return node;
+}
+
+-(void)showSelectedCard:(Card*)card
+{
+    
 }
 
 

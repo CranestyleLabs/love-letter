@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "PlayView.h"
 
 @class LLPlayer;
 @class Card;
@@ -22,7 +23,7 @@ enum playState {
 
 @interface Play : NSObject
 {
-    //
+    id <PlayView> view;
 }
 
 
@@ -34,6 +35,7 @@ enum playState {
 
 
 // selectors
++(id)playWithCard:(Card*)card andView:(id <PlayView>)theView;
 +(id)playWithCard:(Card*)card andTarget:(LLPlayer*)target andOptions:(NSDictionary*)options;
 
 // Advances to the next step.  Returns the next item to show. Nil if finished.

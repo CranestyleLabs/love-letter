@@ -207,7 +207,7 @@
 		B770FE3718561CEE00F138FE /* princess-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2818561CEE00F138FE /* princess-badge.png */; };
 		B770FE3818561CEE00F138FE /* alertbox-background-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2B18561CEE00F138FE /* alertbox-background-ipadhd.png */; };
 		B770FE3918561CEE00F138FE /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2C18561CEE00F138FE /* button.png */; };
-		B770FE3A18561CEE00F138FE /* playername-background-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2D18561CEE00F138FE /* playername-background-ipadhd.png */; };
+		B770FE3A18561CEE00F138FE /* playername-background.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2D18561CEE00F138FE /* playername-background.png */; };
 		B770FE3B18561CEE00F138FE /* token.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2E18561CEE00F138FE /* token.png */; };
 		B770FE461856216800F138FE /* avenirnext48_bold-ipad.fnt in Resources */ = {isa = PBXBuildFile; fileRef = B770FE3E1856216800F138FE /* avenirnext48_bold-ipad.fnt */; };
 		B770FE471856216800F138FE /* avenirnext48_bold-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE3F1856216800F138FE /* avenirnext48_bold-ipad.png */; };
@@ -580,7 +580,7 @@
 		B770FE2818561CEE00F138FE /* princess-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "princess-badge.png"; sourceTree = "<group>"; };
 		B770FE2B18561CEE00F138FE /* alertbox-background-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alertbox-background-ipadhd.png"; sourceTree = "<group>"; };
 		B770FE2C18561CEE00F138FE /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
-		B770FE2D18561CEE00F138FE /* playername-background-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playername-background-ipadhd.png"; sourceTree = "<group>"; };
+		B770FE2D18561CEE00F138FE /* playername-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playername-background.png"; sourceTree = "<group>"; };
 		B770FE2E18561CEE00F138FE /* token.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = token.png; sourceTree = "<group>"; };
 		B770FE3E1856216800F138FE /* avenirnext48_bold-ipad.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "avenirnext48_bold-ipad.fnt"; sourceTree = "<group>"; };
 		B770FE3F1856216800F138FE /* avenirnext48_bold-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avenirnext48_bold-ipad.png"; sourceTree = "<group>"; };
@@ -598,6 +598,7 @@
 		B770FE591856277C00F138FE /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		B770FE641856686B00F138FE /* CCRadioMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRadioMenu.h; sourceTree = "<group>"; };
 		B770FE651856686B00F138FE /* CCRadioMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCRadioMenu.m; sourceTree = "<group>"; };
+		D84BB17D18568B1D008D4D32 /* PlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1189,6 +1190,7 @@
 				70BCBA6C1854173B00B99B7D /* IntroLayer.m */,
 				B770FE4E1856243600F138FE /* GameScreen.h */,
 				B770FE4F1856243600F138FE /* GameScreen.m */,
+				D84BB17D18568B1D008D4D32 /* PlayView.h */,
 			);
 			path = IntroLayer;
 			sourceTree = "<group>";
@@ -1296,7 +1298,7 @@
 			children = (
 				B770FE2B18561CEE00F138FE /* alertbox-background-ipadhd.png */,
 				B770FE2C18561CEE00F138FE /* button.png */,
-				B770FE2D18561CEE00F138FE /* playername-background-ipadhd.png */,
+				B770FE2D18561CEE00F138FE /* playername-background.png */,
 				B770FE2E18561CEE00F138FE /* token.png */,
 			);
 			path = ipadhd;
@@ -1469,7 +1471,7 @@
 				70BCBA3E185414F700B99B7D /* Icon-76@2x.png in Resources */,
 				B770FE3918561CEE00F138FE /* button.png in Resources */,
 				70BCBA46185414F700B99B7D /* iTunesArtwork in Resources */,
-				B770FE3A18561CEE00F138FE /* playername-background-ipadhd.png in Resources */,
+				B770FE3A18561CEE00F138FE /* playername-background.png in Resources */,
 				B770FE3118561CEE00F138FE /* countess-badge.png in Resources */,
 				70BCBA43185414F700B99B7D /* Icon-spotlight@2x.png in Resources */,
 				70B846D31856733600C1BBBF /* 7_countess-ipad.png in Resources */,
