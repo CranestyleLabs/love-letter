@@ -138,6 +138,10 @@
         {
             [ps.labelBackground setColor:ps.maroon];
         }
+        else
+        {
+            [ps.labelBackground setColor:ps.cyan];
+        }
         
         LLPlayer* p1 = (LLPlayer*)[[GameModel sharedInstance].players objectAtIndex:0];
         LLPlayer* p2 = (LLPlayer*)[[GameModel sharedInstance].players objectAtIndex:1];
