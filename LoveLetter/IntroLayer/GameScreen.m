@@ -137,6 +137,8 @@
 {
     [self.cardButtonNew removeFromParentAndCleanup:YES];
     [self.cardButtonOld removeFromParentAndCleanup:YES];
+    self.cardButtonNew = nil;
+    self.cardButtonOld = nil;
     
     LLPlayer* humanPlayer;
     for (LLPlayer* player in [GameModel sharedInstance].players)

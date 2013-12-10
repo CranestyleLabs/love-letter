@@ -32,7 +32,6 @@
 
 @property CCMenu*   cardButtonOld;
 @property CCMenu*   cardButtonNew;
-//@property CCSprite* chosenCardSprite;
 @property NSArray*  playerSprites;
 
 
