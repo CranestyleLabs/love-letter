@@ -216,7 +216,6 @@
                     [playStepDisplay setPosition:chosenCardPos];
                     [self addChild:playStepDisplay];
                 }
-                
             }
         }];
     return [CCMenu menuWithItems:toggle, nil];
@@ -282,13 +281,24 @@
 
 -(void)nextStep:(CCNode*)displayNode
 {
-    
-    
+    CCLOG(@"next step on game screen");
+    if (displayNode == nil)
+    {
+        [playStepDisplay removeFromParentAndCleanup:YES];
+        playStepDisplay = nil;
+        [toggle setSelectedIndex:0];
+    }
 }
 
 -(void)previousStep:(CCNode*)displayNode
 {
-    
+    CCLOG(@"previous step on game screen");
+    if (displayNode == nil)
+    {
+        [playStepDisplay removeFromParentAndCleanup:YES];
+        playStepDisplay = nil;
+        [toggle setSelectedIndex:0];
+    }
 }
 
 @end
