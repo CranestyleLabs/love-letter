@@ -1146,7 +1146,14 @@
             {
                 
                 // play handmaid
-                card = (Card*)[player.cardsInHand lastObject];
+                [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                    
+                    if (cardInHand.cardValue == kCardValue_Handmaid)
+                    {
+                        card = cardInHand;
+                    }
+                    
+                }];
                 
                 // can only play handmaid on self
                 target = player;
@@ -1160,7 +1167,14 @@
         {
             
             // play handmaid
-            card = (Card*)[player.cardsInHand lastObject];
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Handmaid)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
             
             // can only play handmaid on self
             target = player;
@@ -1172,7 +1186,14 @@
         {
             
             // play handmaid
-            card = (Card*)[player.cardsInHand lastObject];
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Handmaid)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
             
             // can only play handmaid on self
             target = player;
@@ -1184,7 +1205,14 @@
         {
             
             // play handmaid
-            card = (Card*)[player.cardsInHand lastObject];
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Handmaid)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
             
             // can only play handmaid on self
             target = player;
