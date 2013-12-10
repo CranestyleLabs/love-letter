@@ -23,7 +23,6 @@
         [self setAnchorPoint:CGPointZero];
         [self setCardBadgePositions:[self determineCardBadgePositions]];
         
-
 //        for (NSValue* val in self.cardBadgePositions)
 //        {
 //            CGPoint pos = [val CGPointValue];
@@ -34,7 +33,10 @@
 //        }
         
         // colors
-        cyan = ccc3(0, 150, 150);
+        cyan   = ccc3(0, 150, 150);
+        orange = ccc3(0,0,0);
+        maroon = ccc3(0,0,0);
+        
         
         // create sprites
         self.label = [self createLabel];
@@ -72,8 +74,8 @@
 {
     CCSprite* sprite = [CCSprite spriteWithFile:@"playername-background.png"];
     [sprite setColor:cyan];
-    [sprite setScaleX:0.65f];
-    [sprite setScaleY:0.4f];
+    [sprite setScaleX:0.65f * CC_CONTENT_SCALE_FACTOR()];
+    [sprite setScaleY:0.40f * CC_CONTENT_SCALE_FACTOR()];
     return sprite;
 }
 
@@ -110,6 +112,7 @@
             CGPoint pos     = ccpAdd(startingPosition, ccpMult(offset, i));
             [token setPosition:pos];
             [token setAnchorPoint:CGPointZero];
+            [token setScale:1.0f * CC_CONTENT_SCALE_FACTOR()];
             [self addChild:token];
             CCLOG(@"added token sprite %d", i+1);
         }

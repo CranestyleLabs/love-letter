@@ -14,6 +14,7 @@
 #import "GameModel.h"
 #import "LLPlayer.h"
 #import "Deck.h"
+#import "Play.h"
 
 @implementation GameScreen
 
@@ -155,7 +156,7 @@
     for (int i = 0; i < cardStackCount; i++)
     {
         CCSprite* card = [Deck getBackCardSprite];
-        card.scale = 0.2f;
+        card.scale = 0.2f * CC_CONTENT_SCALE_FACTOR();
         float pointX = self.contentSize.width - (card.contentSize.width * card.scale / 2.0f) - 35.0f + ((float)i * 5.0f);
         float pointY = (card.contentSize.height * card.scale / 2.0f) + 35.0f - ((float)i * 5.0f);
         CGPoint cardPos = ccp(pointX, pointY);
@@ -171,7 +172,7 @@
     float cardCountScale = 2.0f;
     [drawDeckCount setString:[NSString stringWithFormat:@"%i", cardCount]];
     drawDeckCount.scale = cardCountScale;
-    float pointX = self.contentSize.width - (drawDeckCount.contentSize.width * drawDeckCount.scale / 2.0f) - 55.0f;
+    float pointX = self.contentSize.width - ((drawDeckCount.contentSize.width * drawDeckCount.scale) / 2.0f) - 55.0f;
     float pointY = (drawDeckCount.contentSize.height * drawDeckCount.scale / 2.0f) + 35.0f;
     CGPoint countPos = ccp(pointX, pointY);
     
@@ -203,77 +204,85 @@
     
     toggle = [CCMenuItemToggle itemWithItems:[NSArray arrayWithObjects:normal, selected, nil] block:^(CCMenuItemToggle* sender) {
         
-        [self.chosenCardSprite removeFromParentAndCleanup:YES];
+        [playStepDisplay removeFromParentAndCleanup:YES];
         if (sender.selectedItem == selected)
             {
+                Play* play = [Play playWithCard:card andView:self];
+                [playStepDisplay removeFromParentAndCleanup:YES];
+                playStepDisplay = [play nextStep];
                 
-                [self showSelectedCard:card];
+                if (playStepDisplay != nil)
+                {
+                    [playStepDisplay setPosition:chosenCardPos];
+                    [self addChild:playStepDisplay];
+                }
                 
             }
         }];
     return [CCMenu menuWithItems:toggle, nil];
 }
 
--(void)showSelectedCard:(Card*)card
-{
-    CCSprite* cardSprite = [card createCardSprite];
-    self.chosenCardSprite = [CCSprite node];
-    [self.chosenCardSprite addChild:cardSprite];
-    [self.chosenCardSprite setPosition:chosenCardPos];
-    [self addChild:self.chosenCardSprite];
-    
-    CCSprite* buttonPlayNormal   = [self buttonSprite:@"Play" selected:NO];
-    CCSprite* buttonPlaySelected = [self buttonSprite:@"Play" selected:YES];
-    CCSprite* buttonCancelNormal   = [self buttonSprite:@"Cancel" selected:NO];
-    CCSprite* buttonCancelSelected = [self buttonSprite:@"Cancel" selected:YES];
-    
-    CCMenuItemSprite* buttonPlay = [CCMenuItemSprite itemWithNormalSprite:buttonPlayNormal selectedSprite:buttonPlaySelected block:^(id sender) {
-        
-        NSLog(@"PLAY!");
-        
-    }];
-    
-    CCMenuItemSprite* buttonCancel = [CCMenuItemSprite itemWithNormalSprite:buttonCancelNormal selectedSprite:buttonCancelSelected block:^(id sender) {
-        
-        NSLog(@"CANCEL");
-        [toggle setSelectedIndex:0];
-        [self.chosenCardSprite removeFromParentAndCleanup:YES];
-        
-    }];
-    
-    CCMenu* cardMenu = [CCMenu menuWithItems:buttonPlay, buttonCancel, nil];
-    [cardMenu setPosition:CGPointMake(0, -cardSprite.contentSize.height/2 * cardSprite.scale - 40.0f)];
-    [buttonCancel setPosition:CGPointMake(-buttonCancelNormal.contentSize.width/2 - 20.0f, 0)];
-    [buttonPlay setPosition:CGPointMake(buttonPlayNormal.contentSize.width/2 + 20.0f, 0)];
-    [self.chosenCardSprite addChild:cardMenu];
-    
-}
-
--(CCSprite*)buttonSprite:(NSString*)text selected:(BOOL)isSelected
-{
-    CCSprite* sprite = [CCSprite spriteWithFile:@"card-button.png"];
-    CCLabelBMFont* label = [CCLabelBMFont labelWithString:text fntFile:FONT_BIG];
-    
-    if (isSelected)
-    {
-        [sprite setColor:ccGRAY];
-        [label setColor:ccBLACK];
-    }
-    else
-    {
-        [sprite setColor:ccBLACK];
-        [label setColor:ccWHITE];
-    }
-    
-    [label setPosition:CGPointMake(sprite.contentSize.width/2, sprite.contentSize.height/2)];
-    [sprite addChild:label];
-    
-    return sprite;
-}
+//-(void)showSelectedCard:(Card*)card
+//{
+//    CCSprite* cardSprite = [card createCardSprite];
+//    self.chosenCardSprite = [CCSprite node];
+//    [self.chosenCardSprite addChild:cardSprite];
+//    [self.chosenCardSprite setPosition:chosenCardPos];
+//    [self addChild:self.chosenCardSprite];
+//    
+//    CCSprite* buttonPlayNormal   = [self buttonSprite:@"Play" selected:NO];
+//    CCSprite* buttonPlaySelected = [self buttonSprite:@"Play" selected:YES];
+//    CCSprite* buttonCancelNormal   = [self buttonSprite:@"Cancel" selected:NO];
+//    CCSprite* buttonCancelSelected = [self buttonSprite:@"Cancel" selected:YES];
+//    
+//    CCMenuItemSprite* buttonPlay = [CCMenuItemSprite itemWithNormalSprite:buttonPlayNormal selectedSprite:buttonPlaySelected block:^(id sender) {
+//        
+//        NSLog(@"PLAY!");
+//        
+//    }];
+//    
+//    CCMenuItemSprite* buttonCancel = [CCMenuItemSprite itemWithNormalSprite:buttonCancelNormal selectedSprite:buttonCancelSelected block:^(id sender) {
+//        
+//        NSLog(@"CANCEL");
+//        [toggle setSelectedIndex:0];
+//        [self.chosenCardSprite removeFromParentAndCleanup:YES];
+//        
+//    }];
+//    
+//    CCMenu* cardMenu = [CCMenu menuWithItems:buttonPlay, buttonCancel, nil];
+//    [cardMenu setPosition:CGPointMake(0, -cardSprite.contentSize.height/2 * cardSprite.scale - 40.0f)];
+//    [buttonCancel setPosition:CGPointMake(-buttonCancelNormal.contentSize.width/2 - 20.0f, 0)];
+//    [buttonPlay setPosition:CGPointMake(buttonPlayNormal.contentSize.width/2 + 20.0f, 0)];
+//    [self.chosenCardSprite addChild:cardMenu];
+//    
+//}
+//
+//-(CCSprite*)buttonSprite:(NSString*)text selected:(BOOL)isSelected
+//{
+//    CCSprite* sprite = [CCSprite spriteWithFile:@"card-button.png"];
+//    CCLabelBMFont* label = [CCLabelBMFont labelWithString:text fntFile:FONT_BIG];
+//    
+//    if (isSelected)
+//    {
+//        [sprite setColor:ccGRAY];
+//        [label setColor:ccBLACK];
+//    }
+//    else
+//    {
+//        [sprite setColor:ccBLACK];
+//        [label setColor:ccWHITE];
+//    }
+//    
+//    [label setPosition:CGPointMake(sprite.contentSize.width/2, sprite.contentSize.height/2)];
+//    [sprite addChild:label];
+//    
+//    return sprite;
+//}
 
 
 -(void)nextStep:(CCNode*)displayNode
 {
+    
     
 }
 

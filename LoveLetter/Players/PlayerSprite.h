@@ -13,6 +13,8 @@
 @interface PlayerSprite : CCSprite
 {
     ccColor3B cyan;
+    ccColor3B orange;
+    ccColor3B maroon;
 }
 
 @property CCLabelBMFont* label;
