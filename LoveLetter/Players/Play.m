@@ -392,13 +392,15 @@
     {
         CCSprite* cardSprite = [c createBadgeSpriteNormal];
         CCSprite* cardSpriteSelected = [c createBadgeSpriteSelected];
-        CCMenuItemSprite* cardMI = [CCMenuItemImage itemWithNormalSprite:cardSprite selectedSprite:cardSpriteSelected block:^(id sender) {
+        CCMenuItemSprite* cardMI = [CCMenuItemSprite itemWithNormalSprite:cardSprite selectedSprite:cardSpriteSelected block:^(id sender) {
             CCLOG(@"w00t!");
             [self badgeClicked:c];
         }];
         
         [badges addObject:cardMI];
     }
+    
+    NSLog(@"Badge count: %i", badges.count);
     
     CCMenu* menu = [CCMenu menuWithArray:badges];
     [menu alignItemsHorizontally];
@@ -414,7 +416,7 @@
     
     float height = (label.position.y + label.contentSize.height / 2.0f) - (leftMost.position.y - (leftMost.contentSize.height / 2.0f));
     
-    node.contentSize = CGSizeMake(width, height);
+//    node.contentSize = CGSizeMake(width, height);
     
     return node;
 }
