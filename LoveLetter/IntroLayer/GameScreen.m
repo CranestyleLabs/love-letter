@@ -130,7 +130,7 @@
     {
         [ps setTokens];
         [ps positionPlayedCards];
-        if (ps.player.cardsInHand == 0)
+        if (ps.player.cardsInHand.count == 0)
         {
             [ps.labelBackground setColor:ps.maroon];
         }
