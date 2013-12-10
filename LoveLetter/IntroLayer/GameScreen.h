@@ -28,6 +28,8 @@
     CCNode*   playStepDisplay;
     
     Play* play;
+    
+    CCLabelTTF* l;
 }
 
 @property CCMenu*   cardButtonOld;
