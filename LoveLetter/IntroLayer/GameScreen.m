@@ -241,6 +241,13 @@
         playStepDisplay = displayNode;
         [playStepDisplay setPosition:chosenCardPos];
         [self addChild:playStepDisplay];
+//        for (CCNode* child in playStepDisplay.children)
+//        {
+//            for (CCNode* grandchild in child.children)
+//            {
+//                CCLOG(@"position of badge: %@", NSStringFromCGPoint([self convertToWorldSpace:grandchild.position]));
+//            }
+//        }
     }
 }
 

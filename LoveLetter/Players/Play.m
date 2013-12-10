@@ -13,7 +13,7 @@
 #import "Constants.h"
 #import "GameModel.h"
 #import "CHCSVParser.h"
-#import "CCMenu.h";
+#import "CCMenu.h"
 
 
 @interface Play ()
@@ -197,11 +197,11 @@
         case kCardValue_Baron:
         case kCardValue_Prince:
         case kCardValue_King:
-        case kCardValue_Countess:
             node = [self getSelectTarget];
             self.state = PlayState_ChooseTarget;
             break;
             
+        case kCardValue_Countess:
         case kCardValue_Handmaid:
             self.state = PlayState_ShowResult;
             self.target = [GameModel sharedInstance].players[0];
@@ -226,12 +226,12 @@
     CCSprite* p3SpriteNormal   = [CCSprite spriteWithFile:@"portrait-background.png"];
     CCSprite* p3SpriteSelected = [CCSprite spriteWithFile:@"portrait-background.png"];
     
-    CCLabelBMFont* p1LabelNormal   = [CCLabelBMFont labelWithString:@"1" fntFile:FONT_BIG];
-    CCLabelBMFont* p1LabelSelected = [CCLabelBMFont labelWithString:@"1" fntFile:FONT_BIG];
-    CCLabelBMFont* p2LabelNormal   = [CCLabelBMFont labelWithString:@"2" fntFile:FONT_BIG];
-    CCLabelBMFont* p2LabelSelected = [CCLabelBMFont labelWithString:@"2" fntFile:FONT_BIG];
-    CCLabelBMFont* p3LabelNormal   = [CCLabelBMFont labelWithString:@"3" fntFile:FONT_BIG];
-    CCLabelBMFont* p3LabelSelected = [CCLabelBMFont labelWithString:@"3" fntFile:FONT_BIG];
+    CCLabelBMFont* p1LabelNormal   = [CCLabelBMFont labelWithString:@"2" fntFile:FONT_BIG];
+    CCLabelBMFont* p1LabelSelected = [CCLabelBMFont labelWithString:@"2" fntFile:FONT_BIG];
+    CCLabelBMFont* p2LabelNormal   = [CCLabelBMFont labelWithString:@"3" fntFile:FONT_BIG];
+    CCLabelBMFont* p2LabelSelected = [CCLabelBMFont labelWithString:@"3" fntFile:FONT_BIG];
+    CCLabelBMFont* p3LabelNormal   = [CCLabelBMFont labelWithString:@"4" fntFile:FONT_BIG];
+    CCLabelBMFont* p3LabelSelected = [CCLabelBMFont labelWithString:@"4" fntFile:FONT_BIG];
     
     [p1LabelNormal   setPosition:CGPointMake(p1SpriteNormal.contentSize.width/2 - 5, p1SpriteNormal.contentSize.height/2)];
     [p1LabelSelected setPosition:CGPointMake(p1SpriteNormal.contentSize.width/2 - 5, p1SpriteNormal.contentSize.height/2)];
@@ -390,34 +390,47 @@
     
     for(Card *c in dict.allValues)
     {
-        CCSprite* cardSprite = [c createBadgeSpriteNormal];
-        CCSprite* cardSpriteSelected = [c createBadgeSpriteSelected];
-        CCMenuItemSprite* cardMI = [CCMenuItemSprite itemWithNormalSprite:cardSprite selectedSprite:cardSpriteSelected block:^(id sender) {
-            CCLOG(@"w00t!");
-            [self badgeClicked:c];
-        }];
-        
-        [badges addObject:cardMI];
+        if (c.cardValue != kCardValue_Guard)
+        {
+            CCSprite* cardSprite = [c createBadgeSpriteNormal];
+            CCSprite* cardSpriteSelected = [c createBadgeSpriteSelected];
+            CCMenuItemSprite* cardMI = [CCMenuItemSprite itemWithNormalSprite:cardSprite selectedSprite:cardSpriteSelected block:^(id sender) {
+                CCLOG(@"w00t!");
+                [self badgeClicked:c];
+            }];
+            
+            [badges addObject:cardMI];
+        }
     }
     
     NSLog(@"Badge count: %i", badges.count);
     
     CCMenu* menu = [CCMenu menuWithArray:badges];
     [menu alignItemsHorizontally];
-    CCNode* leftMost = [menu.children objectAtIndex:0];
-    CCNode* rightMost = [menu.children lastObject];
-    float width = (rightMost.position.x + (rightMost.contentSize.width / 2.0f)) - (leftMost.position.x - (leftMost.contentSize.width / 2.0f) );
-    
+    [menu setPosition:CGPointZero];
+    CCNode* leftMost  = [menu.children objectAtIndex:0];
+//    CCNode* rightMost = [menu.children lastObject];
+//    float width = (rightMost.position.x + (rightMost.contentSize.width / 2.0f)) - (leftMost.position.x - (leftMost.contentSize.width / 2.0f) );
+    [menu alignItemsInColumns:
+     [NSNumber numberWithInt:4],
+     [NSNumber numberWithInt:3],
+      nil];
     CCNode* node = [CCNode node];
     CCLabelBMFont* label = [CCLabelBMFont labelWithString:@"Select a card type:" fntFile:FONT_BIG];
     [node addChild:label];
-    label.position = ccp(0.0f, leftMost.position.y + leftMost.contentSize.height / 2.0f);
+    label.position = ccp(0.0f, leftMost.position.y + leftMost.contentSize.height / 2.0f + label.contentSize.height);
     [node addChild:menu];
     
-    float height = (label.position.y + label.contentSize.height / 2.0f) - (leftMost.position.y - (leftMost.contentSize.height / 2.0f));
+    CCSprite* bg = [CCSprite spriteWithFile:@"dialog-background.png"];
+    [bg setScaleX:1.3f];
+    [bg setScaleY:2.0f];
+    [bg setPosition:ccp(0, 20)];
+    [node addChild:bg z:-1];
+    
+//    float height = (label.position.y + label.contentSize.height / 2.0f) - (leftMost.position.y - (leftMost.contentSize.height / 2.0f));
     
 //    node.contentSize = CGSizeMake(width, height);
-    
+    CCLOG(@"children on node = %d", menu.children.count);
     return node;
 }
 

@@ -20,10 +20,12 @@
 @property CCLabelBMFont* label;
 @property CCSprite*      labelBackground;
 @property CCSprite*      tokenSprites;
-@property CCSprite*      playedCardSprites;
 @property LLPlayer*      player;
 @property NSArray*       cardBadgePositions;
 
 -(id)initWithPlayer:(LLPlayer*)player;
+
+-(void)setTokens;
+-(void)positionPlayedCards;
 
 @end
