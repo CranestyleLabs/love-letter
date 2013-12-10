@@ -276,7 +276,7 @@
     __block NSInteger count = 0;
     [[GameModel sharedInstance].players enumerateObjectsUsingBlock:^(LLPlayer* player, NSUInteger idx, BOOL *stop) {
         
-        if (player.cardsInHand.count >= 0)
+        if (player.cardsInHand.count > 0)
         {
             switch (idx)
             {

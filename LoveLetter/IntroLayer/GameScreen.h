@@ -9,6 +9,8 @@
 #import "cocos2d.h"
 #import "PlayView.h"
 
+@class Play;
+
 @class GameModel;
 
 @interface GameScreen : CCLayer <PlayView>
@@ -24,6 +26,8 @@
     float indent;
     
     CCNode*   playStepDisplay;
+    
+    Play* play;
 }
 
 @property CCMenu*   cardButtonOld;

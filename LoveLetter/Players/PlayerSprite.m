@@ -115,7 +115,6 @@
             [token setAnchorPoint:CGPointZero];
             [token setScale:1.0f * CC_CONTENT_SCALE_FACTOR()];
             [self addChild:token];
-            CCLOG(@"added token sprite %d", i+1);
         }
     }
 }

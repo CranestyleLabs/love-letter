@@ -10,6 +10,7 @@
 
 @class Deck;
 @class Card;
+@class LLPlayer;
 
 @interface GameModel : NSObject
 {
@@ -30,7 +31,7 @@
 // selectors
 +(GameModel*)sharedInstance;
 -(void)startRound;
-
+-(LLPlayer*)getCurrentPlayer;
 -(Card*)drawBurnedCard;
 
 @end

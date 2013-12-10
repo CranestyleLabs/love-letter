@@ -85,6 +85,8 @@ static GameModel* gameModel = nil;
 -(void)startRound
 {
     
+    NSLog(@"[GameModel startRound]");
+    
     NSInteger max = self.playerCount - 1;
     NSInteger min = 0;
     [self setCurrentPlayerNumber:((arc4random() % (max-min+1)) + min)];
@@ -112,10 +114,15 @@ static GameModel* gameModel = nil;
         
     }];
     
+    LLPlayer* currentPlayer = [self getCurrentPlayer];
+    [currentPlayer startTurn];
+    
 }
 
 -(void)endRound
 {
+    
+    NSLog(@"[GameModel endRound]");
     
     // see who still has cards in their hand
     NSMutableArray* playersWithCards = [self.players mutableCopy];
@@ -178,6 +185,8 @@ static GameModel* gameModel = nil;
 -(void)startTurn
 {
     
+    NSLog(@"[GameModel startTurn]");
+    
     // TODO: refresh ui
     
     LLPlayer* nextPlayer = [self getNextPayer];
@@ -187,6 +196,9 @@ static GameModel* gameModel = nil;
 
 -(void)endTurn
 {
+    
+    NSLog(@"[GameModel endturn]");
+    
     LLPlayer* currentPlayer = [self getCurrentPlayer];
     [currentPlayer endTurn];
     

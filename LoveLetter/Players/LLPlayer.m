@@ -164,6 +164,7 @@
 -(void)startTurn
 {
     
+    NSLog(@"[LLPlayer startTurn][%@]", self.playerid);
     
     // start turn
     [self setIsProtected:NO];
@@ -183,12 +184,16 @@
 -(void)endTurn
 {
     
+    NSLog(@"[LLPlayer endTurn][%@]", self.playerid);
+    
     // end turn
     
 }
 
 -(void)startRound
 {
+    
+    NSLog(@"[LLPlayer startRound][%@]", self.playerid);
     
     // draw a card
     [self addCard:[[GameModel sharedInstance].deck drawCard]];
@@ -197,6 +202,8 @@
 
 -(void)endRound
 {
+    
+    NSLog(@"[LLPlayer endRound][%@]", self.playerid);
     
     // ditch cards in hand
     NSMutableArray* ditchCardsInHand = [self.cardsInHand mutableCopy];

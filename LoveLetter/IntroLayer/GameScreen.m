@@ -15,6 +15,7 @@
 #import "LLPlayer.h"
 #import "Deck.h"
 #import "Play.h"
+#import "PlayResult.h"
 
 
 @interface GameScreen ()
@@ -100,7 +101,6 @@
     CGPoint offset = ccp(0, -190);
     
     int counter = 0;
-    CCLOG(@"game model contains %d players", [GameModel sharedInstance].players.count);
     for (LLPlayer* player in [GameModel sharedInstance].players)
     {
         PlayerSprite* playerSprite = [[PlayerSprite alloc] initWithPlayer:player];
@@ -108,14 +108,12 @@
         {
             [playerSprite setPosition:ccpAdd(startingPosition, ccpMult(offset, counter))];
             [self addChild:playerSprite];
-            CCLOG(@"created sprite for ai player %@", player.playerid);
             counter++;
         }
         else
         {
             [playerSprite setPosition:ccp(indent, 300)];
             [self addChild:playerSprite];
-            CCLOG(@"created sprite for human player %@", player.playerid);
         }
         // add playerSprite to Array
         NSMutableArray* array = [NSMutableArray arrayWithArray:self.playerSprites];
@@ -214,7 +212,7 @@
         [playStepDisplay removeFromParentAndCleanup:YES];
         if (sender.selectedItem == selected)
             {
-                Play* play = [Play playWithCard:card andView:self];
+                play = [Play playWithCard:card andView:self];
                 [playStepDisplay removeFromParentAndCleanup:YES];
                 playStepDisplay = [play nextStep];
             }
@@ -231,6 +229,15 @@
     {
         CCLOG(@"returned nil");
         // play result handled here
+        
+        LLPlayer* currentPlayer = [[GameModel sharedInstance] getCurrentPlayer];
+        
+        if (play != nil)
+        {
+            [PlayResult player:currentPlayer makesPlay:play];
+        }
+        
+        [currentPlayer endTurn];
         
         // once the card is done being played, unselect it
         [toggle setSelectedIndex:0];
