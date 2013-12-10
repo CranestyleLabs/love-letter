@@ -24,6 +24,15 @@
     Card* card            = play.card;
     NSDictionary* options = play.options;
     
+
+    __block NSString* cardListString = @"";
+    [player.cardsInHand enumerateObjectsUsingBlock:^(Card* c, NSUInteger idx, BOOL *stop) {
+        
+        cardListString = [cardListString stringByAppendingString:[NSString stringWithFormat:@"%@,", [self cardNamefromValue:c.cardValue]]];
+        
+    }];
+    cardListString = [cardListString substringToIndex:cardListString.length-1];
+    
     
     // is it a valid card?
     if ([self isValidPlay:player playsCard:card onPlayer:target withOptions:options] == NO)
@@ -31,6 +40,9 @@
         NSAssert(true, @"");
         return;
     }
+    
+    // remove played card from players hand and into theit played cards
+    [player playCard:card];
     
     // if you chose a protected player then its a wasted play
     if (target.isProtected == NO)
@@ -74,11 +86,57 @@
         
     }
     
+    NSString* msg = [NSString stringWithFormat:@"\n-DEBUG INFO:--------\nPlayer %@ has cards: %@\n", player.playerid, cardListString];
+    msg = [msg stringByAppendingString:[NSString stringWithFormat:@"They chose card %@\nAnd target %@\n--------------------\n", [self cardNamefromValue:play.card.cardValue], play.target.playerid]];
+    NSLog(@"%@", msg);
     
-    // remove played card from players hand and into theit played cards
-    [player playCard:card];
+    NSAssert(player.cardsInHand.count == 1, @"Player should have played card %@", [self cardNamefromValue:card.cardValue]);
     
 }
+
++(NSString*)cardNamefromValue:(NSInteger)value
+{
+    switch (value)
+    {
+            
+        case 1:
+            return @"Guard";
+            break;
+            
+        case 2:
+            return @"Guard";
+            break;
+            
+        case 3:
+            return @"Guard";
+            break;
+            
+        case 4:
+            return @"Guard";
+            break;
+            
+        case 5:
+            return @"Guard";
+            break;
+            
+        case 6:
+            return @"Guard";
+            break;
+            
+        case 7:
+            return @"Guard";
+            break;
+            
+        case 8:
+            return @"Guard";
+            break;
+            
+        default:
+            return @"Undefined";
+            break;
+    }
+}
+
 
 
 
@@ -134,11 +192,13 @@
         {
             // player wins
             [target removeCard:targetsCard];
+            NSAssert(target.cardsInHand.count == 0, @"Target should have discarded card in hand");
         }
         else if (playersOtherCard.cardValue < targetsCard.cardValue)
         {
             // target wins
             [player removeCard:playersOtherCard];
+            NSAssert(player.cardsInHand.count == 0, @"Player should have discarded card in hand");
         }
         else
         {
@@ -148,6 +208,8 @@
             
             [player addSecret:playersSecret];
             [target addSecret:targetsSecret];
+            
+            NSAssert((player.cardsInHand.count == 0 && target.cardsInHand.count == 0), @"No one should have discarded a card");
         }
         
     }
@@ -174,6 +236,7 @@
     // target discards card in hand
     Card* targetsCardInHand = (Card*)[target.cardsInHand lastObject];
     [target playCard:targetsCardInHand];
+    NSAssert(target.cardsInHand.count == 0, @"Target of prince should have ditched the only card in their hand.");
     
     // if the target's discarded card was a princess then they don't draw a new card
     if (targetsCardInHand.cardValue == kCardValue_Princess)
@@ -185,6 +248,7 @@
     if ([GameModel sharedInstance].deck.cards.count > 0)
     {
         [target addCard:[[GameModel sharedInstance].deck drawCard]];
+        NSAssert(target.cardsInHand.count == 1, @"Target of prince should have drawn a card to replace the one they played");
     }
     else
     {

@@ -61,7 +61,7 @@
         
         l = [CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:20.0f];
         [l setPosition:WIN_CENTER];
-//        [self addChild:l];
+        [self addChild:l];
         
         [self schedule:@selector(updateUI)];
 
@@ -84,7 +84,7 @@
     CCLabelBMFont* labelPlayed = [CCLabelBMFont labelWithString:@"Played" fntFile:FONT_BIG];
     [labelPlayed setAnchorPoint:CGPointZero];
     [labelPlayed setPosition:ccp(indent + 25, 325)];
-    [self addChild:labelPlayed];
+    //[self addChild:labelPlayed];
     [self updateCardsUI];
     
     [self layoutDrawDeck];

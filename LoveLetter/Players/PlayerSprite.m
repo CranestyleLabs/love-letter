@@ -136,14 +136,15 @@
     NSMutableArray* toRemove = [[NSMutableArray alloc] init];
     for (CCNode* child in self.children)
     {
-        CCLOG(@"node with tag %d", child.tag);
+
         if (child.tag == 75 ||
             child.tag == 76)
         {
             [toRemove addObject:child];
         }
+        
     }
-    CCLOG(@"removing %d unused sprites", toRemove.count);
+
     for (CCNode* node in toRemove)
     {
         [self removeChild:node cleanup:YES];
