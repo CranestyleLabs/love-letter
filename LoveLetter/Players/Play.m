@@ -108,7 +108,7 @@
     }
     
     [view previousStep:node];
-
+    
     return node;
 }
 
@@ -118,8 +118,8 @@
     CCSprite* cardSprite = [self.card createCardSprite];
     chosenCardSprite = [CCSprite node];
     [chosenCardSprite addChild:cardSprite];
-//    [chosenCardSprite setPosition:chosenCardPos];
-//    [self addChild:self.chosenCardSprite];
+    //    [chosenCardSprite setPosition:chosenCardPos];
+    //    [self addChild:self.chosenCardSprite];
     
     CCSprite* buttonPlayNormal   = [self buttonSprite:@"Play" selected:NO];
     CCSprite* buttonPlaySelected = [self buttonSprite:@"Play" selected:YES];
@@ -145,7 +145,7 @@
     [buttonCancel setPosition:CGPointMake(-buttonCancelNormal.contentSize.width/2 - 20.0f, 0)];
     [buttonPlay setPosition:CGPointMake(buttonPlayNormal.contentSize.width/2 + 20.0f, 0)];
     [chosenCardSprite addChild:cardMenu];
-
+    
     return chosenCardSprite;
 }
 
@@ -200,7 +200,7 @@
             node = [self getSelectTarget];
             self.state = PlayState_ChooseTarget;
             break;
-
+            
         case kCardValue_Handmaid:
             self.state = PlayState_ShowResult;
             self.target = [GameModel sharedInstance].players[0];
@@ -272,7 +272,7 @@
             }
         }
     }
-
+    
     NSMutableArray* badges = [NSMutableArray array];
     
     for(Card *c in dict.allValues)
@@ -285,10 +285,10 @@
         
         [badges addObject:cardMI];
     }
-
+    
     CCMenu* menu = [CCMenu menuWithArray:badges];
     [menu alignItemsHorizontally];
-
+    
     return menu;
 }
 
