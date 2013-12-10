@@ -219,11 +219,13 @@
 {
     CCLOG(@"next step on game screen");
     [playStepDisplay removeFromParentAndCleanup:YES];
-    [playStepDisplay setPosition:chosenCardPos];
+    playStepDisplay = nil;
     if (displayNode == nil)
     {
         CCLOG(@"returned nil");
         // play result handled here
+        
+        [toggle setSelectedIndex:0];
     }
     else
     {
@@ -241,10 +243,12 @@
     playStepDisplay = nil;
     if (displayNode == nil)
     {
+        CCLOG(@"returned nil");
         [toggle setSelectedIndex:0];
     }
     else
     {
+        CCLOG(@"returned something");
         playStepDisplay = displayNode;
         [playStepDisplay setPosition:chosenCardPos];
         [self addChild:playStepDisplay];
