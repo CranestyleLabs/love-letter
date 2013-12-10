@@ -133,15 +133,14 @@
 -(void)cleanupUnusedSprites
 {
     // remove old sprites
-    NSArray* toRemove = [[NSArray alloc] init];
+    NSMutableArray* toRemove = [[NSMutableArray alloc] init];
     for (CCNode* child in self.children)
     {
+        CCLOG(@"node with tag %d", child.tag);
         if (child.tag == 75 ||
             child.tag == 76)
         {
-            NSMutableArray* arr = [NSMutableArray arrayWithArray:arr];
-            [arr addObject:child];
-            toRemove = [NSArray arrayWithArray:arr];
+            [toRemove addObject:child];
         }
     }
     CCLOG(@"removing %d unused sprites", toRemove.count);
