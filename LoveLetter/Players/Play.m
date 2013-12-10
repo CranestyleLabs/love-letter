@@ -197,11 +197,11 @@
         case kCardValue_Baron:
         case kCardValue_Prince:
         case kCardValue_King:
-        case kCardValue_Countess:
             node = [self getSelectTarget];
             self.state = PlayState_ChooseTarget;
             break;
             
+        case kCardValue_Countess:
         case kCardValue_Handmaid:
             self.state = PlayState_ShowResult;
             self.target = [GameModel sharedInstance].players[0];
