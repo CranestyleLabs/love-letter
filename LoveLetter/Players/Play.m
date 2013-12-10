@@ -217,7 +217,116 @@
 
 -(CCNode*)getSelectTarget
 {
-    return nil;
+    CCSprite* sprite = [CCSprite spriteWithFile:@"dialog-background.png"];
+    
+    CCSprite* p1SpriteNormal   = [CCSprite spriteWithFile:@"portrait-background.png"];
+    CCSprite* p1SpriteSelected = [CCSprite spriteWithFile:@"portrait-background.png"];
+    CCSprite* p2SpriteNormal   = [CCSprite spriteWithFile:@"portrait-background.png"];
+    CCSprite* p2SpriteSelected = [CCSprite spriteWithFile:@"portrait-background.png"];
+    CCSprite* p3SpriteNormal   = [CCSprite spriteWithFile:@"portrait-background.png"];
+    CCSprite* p3SpriteSelected = [CCSprite spriteWithFile:@"portrait-background.png"];
+    
+    CCLabelBMFont* p1LabelNormal   = [CCLabelBMFont labelWithString:@"1" fntFile:FONT_BIG];
+    CCLabelBMFont* p1LabelSelected = [CCLabelBMFont labelWithString:@"1" fntFile:FONT_BIG];
+    CCLabelBMFont* p2LabelNormal   = [CCLabelBMFont labelWithString:@"2" fntFile:FONT_BIG];
+    CCLabelBMFont* p2LabelSelected = [CCLabelBMFont labelWithString:@"2" fntFile:FONT_BIG];
+    CCLabelBMFont* p3LabelNormal   = [CCLabelBMFont labelWithString:@"3" fntFile:FONT_BIG];
+    CCLabelBMFont* p3LabelSelected = [CCLabelBMFont labelWithString:@"3" fntFile:FONT_BIG];
+    
+    [p1LabelNormal   setPosition:CGPointMake(p1SpriteNormal.contentSize.width/2 - 5, p1SpriteNormal.contentSize.height/2)];
+    [p1LabelSelected setPosition:CGPointMake(p1SpriteNormal.contentSize.width/2 - 5, p1SpriteNormal.contentSize.height/2)];
+    [p2LabelNormal   setPosition:CGPointMake(p2SpriteNormal.contentSize.width/2 - 5, p2SpriteNormal.contentSize.height/2)];
+    [p2LabelSelected setPosition:CGPointMake(p2SpriteNormal.contentSize.width/2 - 5, p2SpriteNormal.contentSize.height/2)];
+    [p3LabelNormal   setPosition:CGPointMake(p3SpriteNormal.contentSize.width/2 - 5, p3SpriteNormal.contentSize.height/2)];
+    [p3LabelSelected setPosition:CGPointMake(p3SpriteNormal.contentSize.width/2 - 5, p3SpriteNormal.contentSize.height/2)];
+    
+    [p1SpriteNormal   addChild:p1LabelNormal];
+    [p1SpriteSelected addChild:p1LabelSelected];
+    [p2SpriteNormal   addChild:p2LabelNormal];
+    [p2SpriteSelected addChild:p2LabelSelected];
+    [p3SpriteNormal   addChild:p3LabelNormal];
+    [p3SpriteSelected addChild:p3LabelSelected];
+    
+    CCMenuItemSprite* p1MenuItem = [CCMenuItemSprite itemWithNormalSprite:p1SpriteNormal selectedSprite:p1SpriteSelected block:^(id sender) {
+        
+        [self setTarget:[[GameModel sharedInstance].players objectAtIndex:1]];
+        [self nextStep];
+        
+    }];
+    
+    CCMenuItemSprite* p2MenuItem = [CCMenuItemSprite itemWithNormalSprite:p2SpriteNormal selectedSprite:p2SpriteSelected block:^(id sender) {
+        
+        [self setTarget:[[GameModel sharedInstance].players objectAtIndex:2]];
+        [self nextStep];
+        
+    }];
+    
+    CCMenuItemSprite* p3MenuItem = [CCMenuItemSprite itemWithNormalSprite:p3SpriteNormal selectedSprite:p3SpriteSelected block:^(id sender) {
+        
+        [self setTarget:[[GameModel sharedInstance].players objectAtIndex:3]];
+        [self nextStep];
+        
+    }];
+    
+    
+    CGPoint menuPosition = CGPointMake(p1SpriteNormal.contentSize.width/2 + 10, sprite.contentSize.height/2 - 5);
+    CGFloat xOffset = p1SpriteNormal.contentSize.width + 10;
+    CCMenu* menu = [[CCMenu alloc] init];
+    [menu setPosition:CGPointMake(30, -10)];
+    __block NSInteger count = 0;
+    [[GameModel sharedInstance].players enumerateObjectsUsingBlock:^(LLPlayer* player, NSUInteger idx, BOOL *stop) {
+        
+        if (player.cardsInHand.count >= 0)
+        {
+            switch (idx)
+            {
+                    
+                case 1:
+                    [menu addChild:p1MenuItem];
+                    [p1MenuItem setPosition:CGPointMake(menuPosition.x + (xOffset * count++), menuPosition.y)];
+                    
+                    break;
+                    
+                case 2:
+                    [menu addChild:p2MenuItem];
+                    [p2MenuItem setPosition:CGPointMake(menuPosition.x + (xOffset * count++), menuPosition.y)];
+                    break;
+                    
+                case 3:
+                    [menu addChild:p3MenuItem];
+                    [p3MenuItem setPosition:CGPointMake(menuPosition.x + (xOffset * count++), menuPosition.y)];
+                    break;
+                    
+                default:
+                    break;
+                    
+            }
+            
+            NSLog(@"count = %d", count);
+        }
+        
+    }];
+    
+    CCLabelBMFont* labelTitle = [CCLabelBMFont labelWithString:@"Select target player" fntFile:FONT_BIG];
+    [labelTitle setScale:0.85f];
+    [labelTitle setPosition:CGPointMake(sprite.contentSize.width/2, sprite.contentSize.height - 25.0f)];
+    [sprite addChild:labelTitle];
+    
+    
+    CCLabelBMFont* labelNext = [CCLabelBMFont labelWithString:@"Cancel" fntFile:FONT_BIG];
+    CCMenuItemFont* btnNext  = [CCMenuItemFont itemWithLabel:labelNext block:^(id sender) {
+        
+        [self previousStep];
+        
+    }];
+    
+    [btnNext setPosition:CGPointMake(sprite.contentSize.width - labelNext.contentSize.width - 5, labelNext.contentSize.height + 5)];
+    [menu addChild:btnNext];
+    
+    [sprite addChild:menu];
+    
+    return sprite;
+    
 }
 
 -(CCNode*)processChooseTarget
