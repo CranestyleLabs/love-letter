@@ -336,12 +336,15 @@
     switch (self.card.cardValue)
     {
         case kCardValue_Guard:
+            node = [self getSelectCardType];
+            self.state = PlayState_ChooseCardType;
+            break;
         case kCardValue_Priest:
         case kCardValue_Baron:
         case kCardValue_Prince:
         case kCardValue_King:
         case kCardValue_Countess:
-            node = [self getSelectTarget];
+            //node = [self getSelectTarget];
             self.state = PlayState_ShowResult;
             break;
             
@@ -387,9 +390,9 @@
     
     for(Card *c in dict.allValues)
     {
-        CCSprite* cardSprite = [c badgeSprite];
-        CCSprite* cardSpriteSelected = [c badgeSprite];
-        CCMenuItemImage* cardMI = [CCMenuItemImage itemWithNormalSprite:cardSprite selectedSprite:cardSpriteSelected block:^(id sender) {
+        CCSprite* cardSprite = [c createBadgeSpriteNormal];
+        CCSprite* cardSpriteSelected = [c createBadgeSpriteSelected];
+        CCMenuItemSprite* cardMI = [CCMenuItemImage itemWithNormalSprite:cardSprite selectedSprite:cardSpriteSelected block:^(id sender) {
             CCLOG(@"w00t!");
             [self badgeClicked:c];
         }];

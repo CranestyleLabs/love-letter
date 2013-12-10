@@ -13,8 +13,6 @@
     //
 }
 
-@property CCMenu*   badgeButton;
-@property CCSprite* badgeSprite;
 @property int       cardNumber;
 @property int       cardValue;
 @property NSString* name;
