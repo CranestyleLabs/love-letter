@@ -144,7 +144,7 @@
         }
         
     }
-
+    
     for (CCNode* node in toRemove)
     {
         [self removeChild:node cleanup:YES];

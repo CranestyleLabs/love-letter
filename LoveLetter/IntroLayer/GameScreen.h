@@ -15,28 +15,28 @@
 
 @interface GameScreen : CCLayer <PlayView>
 {
-    CGPoint cardButtonOldPos;
-    CGPoint cardButtonNewPos;
-    CGPoint chosenCardPos;
-    CGPoint cancelButtonPos;
-    CGPoint playButtonPos;
+    CGPoint             cardButtonOldPos;
+    CGPoint             cardButtonNewPos;
+    CGPoint             chosenCardPos;
+    CGPoint             cancelButtonPos;
+    CGPoint             playButtonPos;
     
-    CCLabelBMFont* drawDeckCount;
-    CCMenuItemToggle* toggle;
-    float indent;
+    CCLabelBMFont*      drawDeckCount;
+    CCLabelTTF*         l;
     
-    CCNode*   playStepDisplay;
+    CCMenu*             cardButtonNew;
+    CCMenu*             cardButtonOld;
+    CCMenuItemToggle*   toggle;
     
-    Play* play;
+    CCNode*             playStepDisplay;
     
-    CCLabelTTF* l;
+    float               indent;
+    
+    NSArray*            playerSprites;
+    
+    Play*               play;
+    
 }
-
-@property CCMenu*   cardButtonOld;
-@property CCMenu*   cardButtonNew;
-@property NSArray*  playerSprites;
-
-
 
 +(CCScene*)scene;
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
