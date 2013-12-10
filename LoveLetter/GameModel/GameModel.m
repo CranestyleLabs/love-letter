@@ -247,6 +247,7 @@ static GameModel* gameModel = nil;
 
 -(LLPlayer*)getNextPayer
 {
+    
     if (self.currentPlayerNumber == self.players.count - 1)
     {
         [self setCurrentPlayerNumber:0];
@@ -256,7 +257,17 @@ static GameModel* gameModel = nil;
         [self setCurrentPlayerNumber:self.currentPlayerNumber + 1];
     }
     
-    return [self getCurrentPlayer];
+    LLPlayer* currentPlayer = [self getCurrentPlayer];
+    
+    if (currentPlayer.cardsInHand.count > 0)
+    {
+        return currentPlayer;
+    }
+    else
+    {
+        return [self getNextPayer];
+    }
+    
 }
 
 @end

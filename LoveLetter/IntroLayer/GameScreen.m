@@ -59,6 +59,10 @@
         [bg setPosition:WIN_CENTER];
         [self addChild:bg z:0];
         
+        l = [CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:20.0f];
+        [l setPosition:WIN_CENTER];
+        [self addChild:l];
+        
         [self schedule:@selector(updateUI)];
 
     }
@@ -134,6 +138,14 @@
         {
             [ps.labelBackground setColor:ps.maroon];
         }
+        
+        LLPlayer* p1 = (LLPlayer*)[[GameModel sharedInstance].players objectAtIndex:0];
+        LLPlayer* p2 = (LLPlayer*)[[GameModel sharedInstance].players objectAtIndex:1];
+        LLPlayer* p3 = (LLPlayer*)[[GameModel sharedInstance].players objectAtIndex:2];
+        LLPlayer* p4 = (LLPlayer*)[[GameModel sharedInstance].players objectAtIndex:3];
+        
+        NSString* s = [NSString stringWithFormat:@"%d, %d, %d, %d", p1.cardsInHand.count, p2.cardsInHand.count, p3.cardsInHand.count, p4.cardsInHand.count];
+        [l setString:s];
     }
 }
 
