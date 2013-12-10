@@ -124,6 +124,15 @@
     }
 }
 
+-(void)updateUI
+{
+    for (PlayerSprite* ps in self.playerSprites)
+    {
+        [ps setTokens];
+        [ps positionPlayedCards];
+    }
+}
+
 -(void)updateCardsUI
 {
     [self.cardButtonNew removeFromParentAndCleanup:YES];
