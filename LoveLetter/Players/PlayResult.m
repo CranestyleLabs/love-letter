@@ -28,6 +28,7 @@
     // is it a valid card?
     if ([self isValidPlay:player playsCard:card onPlayer:target withOptions:options] == NO)
     {
+        NSAssert(true, @"");
         return;
     }
     
@@ -256,9 +257,9 @@
     BOOL isValidTarget = NO;
     if (target.cardsInHand.count > 0)
     {
-        if (card.cardValue == kCardValue_Handmaid && card.cardValue == kCardValue_Countess)
+        if (card.cardValue == kCardValue_Handmaid || card.cardValue == kCardValue_Countess)
         {
-            
+            isValidTarget = YES;
         }
         else
         {

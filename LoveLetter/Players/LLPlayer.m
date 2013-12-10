@@ -94,10 +94,14 @@
         [self setCardsInHand:[NSArray arrayWithArray:copyCardsInHand]];
     }
     
+    NSInteger cardsPlayedCount = self.cardsPlayed.count;
+    
     // put card into cards played
     NSMutableArray* copyCardsPlayed = [self.cardsPlayed mutableCopy];
     [copyCardsPlayed addObject:card];
     [self setCardsPlayed:[NSArray arrayWithArray:copyCardsPlayed]];
+    
+    NSLog(@"%@ cardsplayed.count = [%d, %d]", self.playerid, cardsPlayedCount, self.cardsPlayed.count);
     
 }
 
