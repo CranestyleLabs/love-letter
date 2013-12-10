@@ -114,7 +114,7 @@
             [token setPosition:pos];
             [token setAnchorPoint:CGPointZero];
             [token setScale:1.0f * CC_CONTENT_SCALE_FACTOR()];
-            [self addChild:token];
+            [self addChild:token z:0 tag:75];
         }
     }
 }
@@ -144,6 +144,7 @@
             toRemove = [NSArray arrayWithArray:arr];
         }
     }
+    CCLOG(@"removing %d unused sprites", toRemove.count);
     for (CCNode* node in toRemove)
     {
         [self removeChild:node cleanup:YES];

@@ -61,7 +61,7 @@
         
         l = [CCLabelTTF labelWithString:@"" fontName:@"Marker Felt" fontSize:20.0f];
         [l setPosition:WIN_CENTER];
-        [self addChild:l];
+//        [self addChild:l];
         
         [self schedule:@selector(updateUI)];
 
