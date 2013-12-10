@@ -20,6 +20,7 @@
 @property (readwrite) Card* burnedCard;
 @property (readwrite) NSInteger roundNumber;
 @property (readwrite) BOOL isGameOver;
+@property (readwrite) NSInteger currentPlayerNumber;
 
 @end
 
@@ -74,12 +75,19 @@ static GameModel* gameModel = nil;
             self.players = [NSArray arrayWithArray:newPlayers];
         }
         
+        // set current player number
+        [self setCurrentPlayerNumber:0];
+        
     }
     return self;
 }
 
 -(void)startRound
 {
+    
+    NSInteger max = self.playerCount - 1;
+    NSInteger min = 0;
+    [self setCurrentPlayerNumber:((arc4random() % (max-min+1)) + min)];
     
     // set round number
     [self setRoundNumber:self.roundNumber++];
@@ -154,13 +162,49 @@ static GameModel* gameModel = nil;
         
         if (player.score == winningScore)
         {
-            [self  setIsGameOver:YES];
+            [self setIsGameOver:YES];
             [self gameOver:player];
         }
         
     }];
+    
+    if (!self.isGameOver)
+    {
+        [self startRound];
+    }
 
 }
+
+-(void)startTurn
+{
+    
+    // TODO: refresh ui
+    
+    LLPlayer* nextPlayer = [self getNextPayer];
+    [nextPlayer startTurn];
+    
+}
+
+-(void)endTurn
+{
+    LLPlayer* currentPlayer = [self getCurrentPlayer];
+    [currentPlayer endTurn];
+    
+    if ([self isRoundOver])
+    {
+        [self endRound];
+    }
+    else
+    {
+        [self startTurn];
+    }
+}
+
+-(BOOL)isRoundOver
+{
+    return !(self.deck.cards.count > 0);
+}
+
 
 -(Card*)drawBurnedCard
 {
@@ -173,8 +217,28 @@ static GameModel* gameModel = nil;
 -(void)gameOver:(LLPlayer*)winner
 {
     
-    //
+    NSLog(@"GAME OVER!");
+    NSLog(@"%@ won", winner.playerid);
     
+}
+
+-(LLPlayer*)getCurrentPlayer
+{
+    return (LLPlayer*)[self.players objectAtIndex:self.currentPlayerNumber];
+}
+
+-(LLPlayer*)getNextPayer
+{
+    if (self.currentPlayerNumber == self.players.count - 1)
+    {
+        [self setCurrentPlayerNumber:0];
+    }
+    else
+    {
+        [self setCurrentPlayerNumber:self.currentPlayerNumber + 1];
+    }
+    
+    return [self getCurrentPlayer];
 }
 
 @end

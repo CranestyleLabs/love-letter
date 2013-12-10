@@ -24,6 +24,7 @@
 @property (readonly) Card* burnedCard;
 @property (readonly) NSInteger roundNumber;
 @property (readonly) BOOL isGameOver;
+@property (readonly) NSInteger currentPlayerNumber;
 
 
 // selectors

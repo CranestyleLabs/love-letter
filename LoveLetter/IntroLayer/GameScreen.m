@@ -16,6 +16,14 @@
 #import "Deck.h"
 #import "Play.h"
 
+
+@interface GameScreen ()
+
+@property (readwrite) NSInteger currentPlayerNumber;
+
+@end
+
+
 @implementation GameScreen
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
