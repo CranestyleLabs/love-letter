@@ -226,12 +226,12 @@
     CCSprite* p3SpriteNormal   = [CCSprite spriteWithFile:@"portrait-background.png"];
     CCSprite* p3SpriteSelected = [CCSprite spriteWithFile:@"portrait-background.png"];
     
-    CCLabelBMFont* p1LabelNormal   = [CCLabelBMFont labelWithString:@"1" fntFile:FONT_BIG];
-    CCLabelBMFont* p1LabelSelected = [CCLabelBMFont labelWithString:@"1" fntFile:FONT_BIG];
-    CCLabelBMFont* p2LabelNormal   = [CCLabelBMFont labelWithString:@"2" fntFile:FONT_BIG];
-    CCLabelBMFont* p2LabelSelected = [CCLabelBMFont labelWithString:@"2" fntFile:FONT_BIG];
-    CCLabelBMFont* p3LabelNormal   = [CCLabelBMFont labelWithString:@"3" fntFile:FONT_BIG];
-    CCLabelBMFont* p3LabelSelected = [CCLabelBMFont labelWithString:@"3" fntFile:FONT_BIG];
+    CCLabelBMFont* p1LabelNormal   = [CCLabelBMFont labelWithString:@"2" fntFile:FONT_BIG];
+    CCLabelBMFont* p1LabelSelected = [CCLabelBMFont labelWithString:@"2" fntFile:FONT_BIG];
+    CCLabelBMFont* p2LabelNormal   = [CCLabelBMFont labelWithString:@"3" fntFile:FONT_BIG];
+    CCLabelBMFont* p2LabelSelected = [CCLabelBMFont labelWithString:@"3" fntFile:FONT_BIG];
+    CCLabelBMFont* p3LabelNormal   = [CCLabelBMFont labelWithString:@"4" fntFile:FONT_BIG];
+    CCLabelBMFont* p3LabelSelected = [CCLabelBMFont labelWithString:@"4" fntFile:FONT_BIG];
     
     [p1LabelNormal   setPosition:CGPointMake(p1SpriteNormal.contentSize.width/2 - 5, p1SpriteNormal.contentSize.height/2)];
     [p1LabelSelected setPosition:CGPointMake(p1SpriteNormal.contentSize.width/2 - 5, p1SpriteNormal.contentSize.height/2)];
