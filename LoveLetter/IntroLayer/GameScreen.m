@@ -134,6 +134,7 @@
         {
             [ps.labelBackground setColor:ps.maroon];
         }
+        [self updateDrawDeckCardCount];
     }
 }
 
