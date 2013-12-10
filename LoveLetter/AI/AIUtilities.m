@@ -571,6 +571,22 @@
                 }
                 
             }
+            else
+            {
+                
+                [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                    
+                    if (cardInHand.cardValue == kCardValue_Priest)
+                    {
+                        card = cardInHand;
+                    }
+                    
+                }];
+                
+                // find non-secreted top scoring players and set one as the target
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[player nonSecretedPlayers] excluding:player]];
+                
+            }
             
         }
         
