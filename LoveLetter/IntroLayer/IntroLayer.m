@@ -48,6 +48,7 @@
         
         CCLabelBMFont* name = [CCLabelBMFont labelWithString:@"Love Letter" fntFile:FONT_BIG];
         [name setPosition:ccpAdd(cardBack.position, ccp(0, -200))];
+        [name setScale:2.0f];
         [self addChild:name];
 	}
 	

@@ -186,15 +186,15 @@
 		70BCBA8918542A5C00B99B7D /* AIUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA8818542A5C00B99B7D /* AIUtilities.m */; };
 		70BCBA8D18542DEC00B99B7D /* GameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA8C18542DEC00B99B7D /* GameModel.m */; };
 		70BCBA90185632A500B99B7D /* PlayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BCBA8F185632A500B99B7D /* PlayResult.m */; };
-		92A1F9921856AF220011769D /* background-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F9891856AF220011769D /* background-badge.png */; };
-		92A1F9931856AF220011769D /* baron-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F98A1856AF220011769D /* baron-badge.png */; };
-		92A1F9941856AF220011769D /* countess-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F98B1856AF220011769D /* countess-badge.png */; };
-		92A1F9951856AF220011769D /* guard-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F98C1856AF220011769D /* guard-badge.png */; };
-		92A1F9961856AF220011769D /* handmaid-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F98D1856AF220011769D /* handmaid-badge.png */; };
-		92A1F9971856AF220011769D /* king-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F98E1856AF220011769D /* king-badge.png */; };
-		92A1F9981856AF220011769D /* priest-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F98F1856AF220011769D /* priest-badge.png */; };
-		92A1F9991856AF220011769D /* prince-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F9901856AF220011769D /* prince-badge.png */; };
-		92A1F99A1856AF220011769D /* princess-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F9911856AF220011769D /* princess-badge.png */; };
+		92A1F9921856AF220011769D /* background-badge-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F9891856AF220011769D /* background-badge-ipad.png */; };
+		92A1F9931856AF220011769D /* baron-badge-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F98A1856AF220011769D /* baron-badge-ipad.png */; };
+		92A1F9941856AF220011769D /* countess-badge-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F98B1856AF220011769D /* countess-badge-ipad.png */; };
+		92A1F9951856AF220011769D /* guard-badge-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F98C1856AF220011769D /* guard-badge-ipad.png */; };
+		92A1F9961856AF220011769D /* handmaid-badge-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F98D1856AF220011769D /* handmaid-badge-ipad.png */; };
+		92A1F9971856AF220011769D /* king-badge-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F98E1856AF220011769D /* king-badge-ipad.png */; };
+		92A1F9981856AF220011769D /* priest-badge-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F98F1856AF220011769D /* priest-badge-ipad.png */; };
+		92A1F9991856AF220011769D /* prince-badge-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F9901856AF220011769D /* prince-badge-ipad.png */; };
+		92A1F99A1856AF220011769D /* princess-badge-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 92A1F9911856AF220011769D /* princess-badge-ipad.png */; };
 		B770FE1518561CE100F138FE /* back-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE0C18561CE100F138FE /* back-card.png */; };
 		B770FE1618561CE100F138FE /* baron-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE0D18561CE100F138FE /* baron-card.png */; };
 		B770FE1718561CE100F138FE /* countess-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE0E18561CE100F138FE /* countess-card.png */; };
@@ -204,15 +204,15 @@
 		B770FE1B18561CE100F138FE /* priest-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE1218561CE100F138FE /* priest-card.png */; };
 		B770FE1C18561CE100F138FE /* prince-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE1318561CE100F138FE /* prince-card.png */; };
 		B770FE1D18561CE100F138FE /* princess-card.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE1418561CE100F138FE /* princess-card.png */; };
-		B770FE2F18561CEE00F138FE /* background-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2018561CEE00F138FE /* background-badge.png */; };
-		B770FE3018561CEE00F138FE /* baron-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2118561CEE00F138FE /* baron-badge.png */; };
-		B770FE3118561CEE00F138FE /* countess-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2218561CEE00F138FE /* countess-badge.png */; };
-		B770FE3218561CEE00F138FE /* guard-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2318561CEE00F138FE /* guard-badge.png */; };
-		B770FE3318561CEE00F138FE /* handmaid-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2418561CEE00F138FE /* handmaid-badge.png */; };
-		B770FE3418561CEE00F138FE /* king-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2518561CEE00F138FE /* king-badge.png */; };
-		B770FE3518561CEE00F138FE /* priest-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2618561CEE00F138FE /* priest-badge.png */; };
-		B770FE3618561CEE00F138FE /* prince-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2718561CEE00F138FE /* prince-badge.png */; };
-		B770FE3718561CEE00F138FE /* princess-badge.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2818561CEE00F138FE /* princess-badge.png */; };
+		B770FE2F18561CEE00F138FE /* background-badge-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2018561CEE00F138FE /* background-badge-ipadhd.png */; };
+		B770FE3018561CEE00F138FE /* baron-badge-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2118561CEE00F138FE /* baron-badge-ipadhd.png */; };
+		B770FE3118561CEE00F138FE /* countess-badge-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2218561CEE00F138FE /* countess-badge-ipadhd.png */; };
+		B770FE3218561CEE00F138FE /* guard-badge-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2318561CEE00F138FE /* guard-badge-ipadhd.png */; };
+		B770FE3318561CEE00F138FE /* handmaid-badge-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2418561CEE00F138FE /* handmaid-badge-ipadhd.png */; };
+		B770FE3418561CEE00F138FE /* king-badge-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2518561CEE00F138FE /* king-badge-ipadhd.png */; };
+		B770FE3518561CEE00F138FE /* priest-badge-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2618561CEE00F138FE /* priest-badge-ipadhd.png */; };
+		B770FE3618561CEE00F138FE /* prince-badge-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2718561CEE00F138FE /* prince-badge-ipadhd.png */; };
+		B770FE3718561CEE00F138FE /* princess-badge-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2818561CEE00F138FE /* princess-badge-ipadhd.png */; };
 		B770FE3818561CEE00F138FE /* alertbox-background-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2B18561CEE00F138FE /* alertbox-background-ipadhd.png */; };
 		B770FE3918561CEE00F138FE /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2C18561CEE00F138FE /* button.png */; };
 		B770FE3A18561CEE00F138FE /* playername-background.png in Resources */ = {isa = PBXBuildFile; fileRef = B770FE2D18561CEE00F138FE /* playername-background.png */; };
@@ -567,15 +567,15 @@
 		70BCBA8C18542DEC00B99B7D /* GameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameModel.m; sourceTree = "<group>"; };
 		70BCBA8E185632A500B99B7D /* PlayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayResult.h; sourceTree = "<group>"; };
 		70BCBA8F185632A500B99B7D /* PlayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayResult.m; sourceTree = "<group>"; };
-		92A1F9891856AF220011769D /* background-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-badge.png"; sourceTree = "<group>"; };
-		92A1F98A1856AF220011769D /* baron-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baron-badge.png"; sourceTree = "<group>"; };
-		92A1F98B1856AF220011769D /* countess-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "countess-badge.png"; sourceTree = "<group>"; };
-		92A1F98C1856AF220011769D /* guard-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guard-badge.png"; sourceTree = "<group>"; };
-		92A1F98D1856AF220011769D /* handmaid-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handmaid-badge.png"; sourceTree = "<group>"; };
-		92A1F98E1856AF220011769D /* king-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "king-badge.png"; sourceTree = "<group>"; };
-		92A1F98F1856AF220011769D /* priest-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "priest-badge.png"; sourceTree = "<group>"; };
-		92A1F9901856AF220011769D /* prince-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prince-badge.png"; sourceTree = "<group>"; };
-		92A1F9911856AF220011769D /* princess-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "princess-badge.png"; sourceTree = "<group>"; };
+		92A1F9891856AF220011769D /* background-badge-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-badge-ipad.png"; sourceTree = "<group>"; };
+		92A1F98A1856AF220011769D /* baron-badge-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baron-badge-ipad.png"; sourceTree = "<group>"; };
+		92A1F98B1856AF220011769D /* countess-badge-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "countess-badge-ipad.png"; sourceTree = "<group>"; };
+		92A1F98C1856AF220011769D /* guard-badge-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guard-badge-ipad.png"; sourceTree = "<group>"; };
+		92A1F98D1856AF220011769D /* handmaid-badge-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handmaid-badge-ipad.png"; sourceTree = "<group>"; };
+		92A1F98E1856AF220011769D /* king-badge-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "king-badge-ipad.png"; sourceTree = "<group>"; };
+		92A1F98F1856AF220011769D /* priest-badge-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "priest-badge-ipad.png"; sourceTree = "<group>"; };
+		92A1F9901856AF220011769D /* prince-badge-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prince-badge-ipad.png"; sourceTree = "<group>"; };
+		92A1F9911856AF220011769D /* princess-badge-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "princess-badge-ipad.png"; sourceTree = "<group>"; };
 		B770FE0C18561CE100F138FE /* back-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-card.png"; sourceTree = "<group>"; };
 		B770FE0D18561CE100F138FE /* baron-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baron-card.png"; sourceTree = "<group>"; };
 		B770FE0E18561CE100F138FE /* countess-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "countess-card.png"; sourceTree = "<group>"; };
@@ -585,15 +585,15 @@
 		B770FE1218561CE100F138FE /* priest-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "priest-card.png"; sourceTree = "<group>"; };
 		B770FE1318561CE100F138FE /* prince-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prince-card.png"; sourceTree = "<group>"; };
 		B770FE1418561CE100F138FE /* princess-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "princess-card.png"; sourceTree = "<group>"; };
-		B770FE2018561CEE00F138FE /* background-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-badge.png"; sourceTree = "<group>"; };
-		B770FE2118561CEE00F138FE /* baron-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baron-badge.png"; sourceTree = "<group>"; };
-		B770FE2218561CEE00F138FE /* countess-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "countess-badge.png"; sourceTree = "<group>"; };
-		B770FE2318561CEE00F138FE /* guard-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guard-badge.png"; sourceTree = "<group>"; };
-		B770FE2418561CEE00F138FE /* handmaid-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handmaid-badge.png"; sourceTree = "<group>"; };
-		B770FE2518561CEE00F138FE /* king-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "king-badge.png"; sourceTree = "<group>"; };
-		B770FE2618561CEE00F138FE /* priest-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "priest-badge.png"; sourceTree = "<group>"; };
-		B770FE2718561CEE00F138FE /* prince-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prince-badge.png"; sourceTree = "<group>"; };
-		B770FE2818561CEE00F138FE /* princess-badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "princess-badge.png"; sourceTree = "<group>"; };
+		B770FE2018561CEE00F138FE /* background-badge-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-badge-ipadhd.png"; sourceTree = "<group>"; };
+		B770FE2118561CEE00F138FE /* baron-badge-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baron-badge-ipadhd.png"; sourceTree = "<group>"; };
+		B770FE2218561CEE00F138FE /* countess-badge-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "countess-badge-ipadhd.png"; sourceTree = "<group>"; };
+		B770FE2318561CEE00F138FE /* guard-badge-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guard-badge-ipadhd.png"; sourceTree = "<group>"; };
+		B770FE2418561CEE00F138FE /* handmaid-badge-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "handmaid-badge-ipadhd.png"; sourceTree = "<group>"; };
+		B770FE2518561CEE00F138FE /* king-badge-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "king-badge-ipadhd.png"; sourceTree = "<group>"; };
+		B770FE2618561CEE00F138FE /* priest-badge-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "priest-badge-ipadhd.png"; sourceTree = "<group>"; };
+		B770FE2718561CEE00F138FE /* prince-badge-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prince-badge-ipadhd.png"; sourceTree = "<group>"; };
+		B770FE2818561CEE00F138FE /* princess-badge-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "princess-badge-ipadhd.png"; sourceTree = "<group>"; };
 		B770FE2B18561CEE00F138FE /* alertbox-background-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alertbox-background-ipadhd.png"; sourceTree = "<group>"; };
 		B770FE2C18561CEE00F138FE /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		B770FE2D18561CEE00F138FE /* playername-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playername-background.png"; sourceTree = "<group>"; };
@@ -1262,15 +1262,15 @@
 		92A1F9881856AF220011769D /* ipad */ = {
 			isa = PBXGroup;
 			children = (
-				92A1F9891856AF220011769D /* background-badge.png */,
-				92A1F98A1856AF220011769D /* baron-badge.png */,
-				92A1F98B1856AF220011769D /* countess-badge.png */,
-				92A1F98C1856AF220011769D /* guard-badge.png */,
-				92A1F98D1856AF220011769D /* handmaid-badge.png */,
-				92A1F98E1856AF220011769D /* king-badge.png */,
-				92A1F98F1856AF220011769D /* priest-badge.png */,
-				92A1F9901856AF220011769D /* prince-badge.png */,
-				92A1F9911856AF220011769D /* princess-badge.png */,
+				92A1F9891856AF220011769D /* background-badge-ipad.png */,
+				92A1F98A1856AF220011769D /* baron-badge-ipad.png */,
+				92A1F98B1856AF220011769D /* countess-badge-ipad.png */,
+				92A1F98C1856AF220011769D /* guard-badge-ipad.png */,
+				92A1F98D1856AF220011769D /* handmaid-badge-ipad.png */,
+				92A1F98E1856AF220011769D /* king-badge-ipad.png */,
+				92A1F98F1856AF220011769D /* priest-badge-ipad.png */,
+				92A1F9901856AF220011769D /* prince-badge-ipad.png */,
+				92A1F9911856AF220011769D /* princess-badge-ipad.png */,
 			);
 			path = ipad;
 			sourceTree = "<group>";
@@ -1303,15 +1303,15 @@
 		B770FE1F18561CEE00F138FE /* ipadhd */ = {
 			isa = PBXGroup;
 			children = (
-				B770FE2018561CEE00F138FE /* background-badge.png */,
-				B770FE2118561CEE00F138FE /* baron-badge.png */,
-				B770FE2218561CEE00F138FE /* countess-badge.png */,
-				B770FE2318561CEE00F138FE /* guard-badge.png */,
-				B770FE2418561CEE00F138FE /* handmaid-badge.png */,
-				B770FE2518561CEE00F138FE /* king-badge.png */,
-				B770FE2618561CEE00F138FE /* priest-badge.png */,
-				B770FE2718561CEE00F138FE /* prince-badge.png */,
-				B770FE2818561CEE00F138FE /* princess-badge.png */,
+				B770FE2018561CEE00F138FE /* background-badge-ipadhd.png */,
+				B770FE2118561CEE00F138FE /* baron-badge-ipadhd.png */,
+				B770FE2218561CEE00F138FE /* countess-badge-ipadhd.png */,
+				B770FE2318561CEE00F138FE /* guard-badge-ipadhd.png */,
+				B770FE2418561CEE00F138FE /* handmaid-badge-ipadhd.png */,
+				B770FE2518561CEE00F138FE /* king-badge-ipadhd.png */,
+				B770FE2618561CEE00F138FE /* priest-badge-ipadhd.png */,
+				B770FE2718561CEE00F138FE /* prince-badge-ipadhd.png */,
+				B770FE2818561CEE00F138FE /* princess-badge-ipadhd.png */,
 			);
 			path = ipadhd;
 			sourceTree = "<group>";
@@ -1436,44 +1436,44 @@
 				70BCBA42185414F700B99B7D /* Icon-spotlight.png in Resources */,
 				70B846C91856733600C1BBBF /* 2_priest-ipad.png in Resources */,
 				70B846CF1856733600C1BBBF /* 5_prince-ipad.png in Resources */,
-				92A1F9991856AF220011769D /* prince-badge.png in Resources */,
+				92A1F9991856AF220011769D /* prince-badge-ipad.png in Resources */,
 				70B846CA1856733600C1BBBF /* 2_priest-ipadhd.png in Resources */,
 				70BCBA35185414F700B99B7D /* Default-Portrait@2x~ipad.png in Resources */,
 				70BCBA3A185414F700B99B7D /* Icon-120.png in Resources */,
-				B770FE2F18561CEE00F138FE /* background-badge.png in Resources */,
+				B770FE2F18561CEE00F138FE /* background-badge-ipadhd.png in Resources */,
 				70BCBA31185414F700B99B7D /* Default-568@2x.png in Resources */,
 				B770FE1518561CE100F138FE /* back-card.png in Resources */,
 				B770FE1718561CE100F138FE /* countess-card.png in Resources */,
 				70B846DB18567C5700C1BBBF /* card-button-ipadhd.png in Resources */,
-				92A1F9971856AF220011769D /* king-badge.png in Resources */,
+				92A1F9971856AF220011769D /* king-badge-ipad.png in Resources */,
 				70BCBA41185414F700B99B7D /* Icon-Small@2x.png in Resources */,
 				B770FE1D18561CE100F138FE /* princess-card.png in Resources */,
 				70B846C61856733600C1BBBF /* 0_back-ipadhd.png in Resources */,
 				70BCBA45185414F700B99B7D /* Icon@2x.png in Resources */,
-				92A1F9941856AF220011769D /* countess-badge.png in Resources */,
+				92A1F9941856AF220011769D /* countess-badge-ipad.png in Resources */,
 				70BCBA3D185414F700B99B7D /* Icon-76.png in Resources */,
 				70AE9B8F18540B15003017C2 /* ChangeLog in Resources */,
-				92A1F9931856AF220011769D /* baron-badge.png in Resources */,
+				92A1F9931856AF220011769D /* baron-badge-ipad.png in Resources */,
 				70BCBA3F185414F700B99B7D /* Icon-Small-50.png in Resources */,
-				92A1F9951856AF220011769D /* guard-badge.png in Resources */,
+				92A1F9951856AF220011769D /* guard-badge-ipad.png in Resources */,
 				B770FE3818561CEE00F138FE /* alertbox-background-ipadhd.png in Resources */,
 				70BCBA5A1854163400B99B7D /* LICENSE in Resources */,
 				B770FE1918561CE100F138FE /* handmaid-card.png in Resources */,
 				70B846CC1856733600C1BBBF /* 3_baron-ipadhd.png in Resources */,
 				B770FE4C1856216800F138FE /* avenirnext60_bold-ipadhd.fnt in Resources */,
 				70B846CE1856733600C1BBBF /* 4_handmaid-ipadhd.png in Resources */,
-				B770FE3318561CEE00F138FE /* handmaid-badge.png in Resources */,
+				B770FE3318561CEE00F138FE /* handmaid-badge-ipadhd.png in Resources */,
 				B770FE1B18561CE100F138FE /* priest-card.png in Resources */,
 				B770FE1A18561CE100F138FE /* king-card.png in Resources */,
 				70BCBA38185414F700B99B7D /* Default@2x.png in Resources */,
-				92A1F9921856AF220011769D /* background-badge.png in Resources */,
+				92A1F9921856AF220011769D /* background-badge-ipad.png in Resources */,
 				B770FE4B1856216800F138FE /* avenirnext60_bold-ipad.png in Resources */,
-				B770FE3218561CEE00F138FE /* guard-badge.png in Resources */,
-				92A1F99A1856AF220011769D /* princess-badge.png in Resources */,
+				B770FE3218561CEE00F138FE /* guard-badge-ipadhd.png in Resources */,
+				92A1F99A1856AF220011769D /* princess-badge-ipad.png in Resources */,
 				B770FE461856216800F138FE /* avenirnext48_bold-ipad.fnt in Resources */,
 				70B846D11856733600C1BBBF /* 6_king-ipad.png in Resources */,
 				70B846CB1856733600C1BBBF /* 3_baron-ipad.png in Resources */,
-				B770FE3018561CEE00F138FE /* baron-badge.png in Resources */,
+				B770FE3018561CEE00F138FE /* baron-badge-ipadhd.png in Resources */,
 				70B846CD1856733600C1BBBF /* 4_handmaid-ipad.png in Resources */,
 				70BCBA7C185417E800B99B7D /* love_letter_deck.csv in Resources */,
 				B770FE491856216800F138FE /* avenirnext48_bold-ipadhd.png in Resources */,
@@ -1486,14 +1486,14 @@
 				70B846D51856733600C1BBBF /* 8_princess-ipad.png in Resources */,
 				70BCBA3B185414F700B99B7D /* Icon-72.png in Resources */,
 				B770FE3B18561CEE00F138FE /* token.png in Resources */,
-				B770FE3418561CEE00F138FE /* king-badge.png in Resources */,
+				B770FE3418561CEE00F138FE /* king-badge-ipadhd.png in Resources */,
 				70B846D61856733600C1BBBF /* 8_princess-ipadhd.png in Resources */,
-				B770FE3618561CEE00F138FE /* prince-badge.png in Resources */,
+				B770FE3618561CEE00F138FE /* prince-badge-ipadhd.png in Resources */,
 				70B846B01856709C00C1BBBF /* llbg-ipad.png in Resources */,
-				92A1F9981856AF220011769D /* priest-badge.png in Resources */,
+				92A1F9981856AF220011769D /* priest-badge-ipad.png in Resources */,
 				70BCBA37185414F700B99B7D /* Default.png in Resources */,
 				70BCBA47185414F700B99B7D /* iTunesArtwork@2x in Resources */,
-				B770FE3718561CEE00F138FE /* princess-badge.png in Resources */,
+				B770FE3718561CEE00F138FE /* princess-badge-ipadhd.png in Resources */,
 				70BCBA36185414F700B99B7D /* Default-Portrait~ipad.png in Resources */,
 				70B846DA18567C5700C1BBBF /* card-button-ipad.png in Resources */,
 				70BCBA44185414F700B99B7D /* Icon.png in Resources */,
@@ -1501,7 +1501,7 @@
 				70BCBA40185414F700B99B7D /* Icon-Small.png in Resources */,
 				70BCBA32185414F700B99B7D /* Default-568h@2x.png in Resources */,
 				70BCBA33185414F700B99B7D /* Default-Landscape@2x~ipad.png in Resources */,
-				B770FE3518561CEE00F138FE /* priest-badge.png in Resources */,
+				B770FE3518561CEE00F138FE /* priest-badge-ipadhd.png in Resources */,
 				70BCBA39185414F700B99B7D /* Icon-100.png in Resources */,
 				70B846D41856733600C1BBBF /* 7_countess-ipadhd.png in Resources */,
 				70B846C71856733600C1BBBF /* 1_guard-ipad.png in Resources */,
@@ -1511,12 +1511,12 @@
 				B770FE3918561CEE00F138FE /* button.png in Resources */,
 				70BCBA46185414F700B99B7D /* iTunesArtwork in Resources */,
 				B770FE3A18561CEE00F138FE /* playername-background.png in Resources */,
-				B770FE3118561CEE00F138FE /* countess-badge.png in Resources */,
+				B770FE3118561CEE00F138FE /* countess-badge-ipadhd.png in Resources */,
 				70BCBA43185414F700B99B7D /* Icon-spotlight@2x.png in Resources */,
 				70B846D31856733600C1BBBF /* 7_countess-ipad.png in Resources */,
 				70B846D01856733600C1BBBF /* 5_prince-ipadhd.png in Resources */,
 				70BCBA3C185414F700B99B7D /* Icon-72@2x.png in Resources */,
-				92A1F9961856AF220011769D /* handmaid-badge.png in Resources */,
+				92A1F9961856AF220011769D /* handmaid-badge-ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

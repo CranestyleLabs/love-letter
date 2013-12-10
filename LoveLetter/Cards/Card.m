@@ -21,10 +21,6 @@
         self.cardNumber  = [[cardData objectAtIndex:0] intValue];
         self.name        = [cardData objectAtIndex:1];
         self.cardValue   = [[cardData objectAtIndex:2] intValue];
-        
-//        self.cardSprite  = [self createCardSprite];
-//        self.badgeSprite = [self createBadgeSprite];
-//        self.badgeButton = [self createBadgeButton];
     }
     return self;
 }
@@ -42,26 +38,23 @@
 {
     NSString* fileName = [NSString stringWithFormat:@"%@-badge.png", [self.name lowercaseString]];
     CCSprite* sprite   = [CCSprite spriteWithFile:fileName];
-    float scale        = 0.5 * CC_CONTENT_SCALE_FACTOR();
-    [sprite setContentSize:CGSizeMake(sprite.contentSize.width * CC_CONTENT_SCALE_FACTOR(), sprite.contentSize.height * CC_CONTENT_SCALE_FACTOR())];
-    [sprite setScale:scale];
+    [sprite setContentSize:CGSizeMake(sprite.contentSize.width, sprite.contentSize.height)];
     return sprite;
 }
 
 -(CCSprite*)createBadgeSpriteSelected
 {
+    CCSprite* sprite = [self createBadgeSpriteNormal];
+    
     CCSprite* glow = [CCSprite spriteWithFile:@"background-badge.png"];
     [glow setColor:ccc3(150, 0, 150)];
-    float scale    = 0.6 * CC_CONTENT_SCALE_FACTOR();
-    [glow setContentSize:CGSizeMake(glow.contentSize.width * CC_CONTENT_SCALE_FACTOR(), glow.contentSize.height * CC_CONTENT_SCALE_FACTOR())];
-    [glow setScale:scale];
+    [glow setScale:1.2];
+    [glow setContentSize:CGSizeMake(glow.contentSize.width, glow.contentSize.height)];
+    [glow setZOrder:-1];
+    [glow setPosition:ccp(sprite.contentSize.width/2, sprite.contentSize.height/2)];
+    [sprite addChild:glow];
     
-    CCSprite* sprite = [self createBadgeSpriteNormal];
-    [sprite setScale:0.8333];
-    [sprite setPosition:ccp(glow.contentSize.width/2, glow.contentSize.height/2)];
-    [glow addChild:sprite];
-    
-    return  glow;
+    return  sprite;
 }
 
 @end

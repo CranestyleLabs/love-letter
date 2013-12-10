@@ -40,10 +40,8 @@
     {
         indent = 20.0f;
         
-        cardButtonOldPos = ccp(WIN_CENTER.x + 120, 150);
-        cardButtonNewPos = ccp(WIN_CENTER.x - 120, 150);
-        cardButtonOldPos = ccp(WIN_CENTER.x + 100, 150);
-        cardButtonNewPos = ccp(WIN_CENTER.x - 100, 150);
+        cardButtonOldPos = ccp(WIN_CENTER.x + 90, 100);
+        cardButtonNewPos = ccp(WIN_CENTER.x - 90, 100);
         chosenCardPos    = ccp(WIN_CENTER.x, WIN_CENTER.y + 100);
         cancelButtonPos  = ccp(WIN_CENTER.x - 120, 300);
         playButtonPos    = ccp(WIN_CENTER.x + 120, 300);
@@ -225,6 +223,7 @@
         CCLOG(@"returned nil");
         // play result handled here
         
+        // once the card is done being played, unselect it
         [toggle setSelectedIndex:0];
     }
     else
