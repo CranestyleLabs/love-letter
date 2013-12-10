@@ -12,6 +12,8 @@
 #import "Deck.h"
 #import "Constants.h"
 #import "GameModel.h"
+#import "CHCSVParser.h"
+#import "CCMenu.h";
 
 
 @interface Play ()
@@ -77,16 +79,21 @@
             node = [self processChooseTarget];
             break;
         case PlayState_ChooseCardType:
+            self.state = PlayState_ShowResult;
             break;
         case PlayState_ShowResult:
             break;
     }
+    
+    [view nextStep:node];
     
     return node;
 }
 
 -(CCNode*)previousStep
 {
+    CCNode* node = nil;
+    
     switch (self.state)
     {
         case PlayState_Start:
@@ -100,8 +107,10 @@
         case PlayState_ShowResult:
             break;
     }
-
-    return nil;
+    
+    [view previousStep:node];
+    
+    return node;
 }
 
 -(CCNode*)getConfirmCard
@@ -110,8 +119,8 @@
     CCSprite* cardSprite = [self.card createCardSprite];
     chosenCardSprite = [CCSprite node];
     [chosenCardSprite addChild:cardSprite];
-//    [chosenCardSprite setPosition:chosenCardPos];
-//    [self addChild:self.chosenCardSprite];
+    //    [chosenCardSprite setPosition:chosenCardPos];
+    //    [self addChild:self.chosenCardSprite];
     
     CCSprite* buttonPlayNormal   = [self buttonSprite:@"Play" selected:NO];
     CCSprite* buttonPlaySelected = [self buttonSprite:@"Play" selected:YES];
@@ -121,12 +130,14 @@
     CCMenuItemSprite* buttonPlay = [CCMenuItemSprite itemWithNormalSprite:buttonPlayNormal selectedSprite:buttonPlaySelected block:^(id sender) {
         
         NSLog(@"PLAY!");
+        [self nextStep];
         
     }];
     
     CCMenuItemSprite* buttonCancel = [CCMenuItemSprite itemWithNormalSprite:buttonCancelNormal selectedSprite:buttonCancelSelected block:^(id sender) {
         
         NSLog(@"CANCEL");
+        [self previousStep];
         
     }];
     
@@ -135,7 +146,7 @@
     [buttonCancel setPosition:CGPointMake(-buttonCancelNormal.contentSize.width/2 - 20.0f, 0)];
     [buttonPlay setPosition:CGPointMake(buttonPlayNormal.contentSize.width/2 + 20.0f, 0)];
     [chosenCardSprite addChild:cardMenu];
-
+    
     return chosenCardSprite;
 }
 
@@ -159,35 +170,6 @@
     [sprite addChild:label];
     
     return sprite;
-}
-
-
--(CCMenu*)cancelButton
-{
-    CCSprite* normal     = [self buttonSprite:@"Cancel"];
-    CCSprite* selected   = [self buttonSprite:@"Cancel"];
-    
-    CCMenuItemSprite* button = [CCMenuItemSprite itemWithNormalSprite:normal
-                                                       selectedSprite:selected
-                                                                block:^(id sender) {
-                                                                    CCLOG(@"cancel button clicked");
-                                                                    [self previousStep];
-                                                                }];
-    return [CCMenu menuWithItems:button, nil];
-}
-
--(CCMenu*)playButton
-{
-    CCSprite* normal     = [self buttonSprite:@"Play"];
-    CCSprite* selected   = [self buttonSprite:@"Play"];
-    
-    CCMenuItemSprite* button = [CCMenuItemSprite itemWithNormalSprite:normal
-                                                       selectedSprite:selected
-                                                                block:^(id sender) {
-                                                                    CCLOG(@"play button clicked");
-                                                                    [self nextStep];
-                                                                }];
-    return [CCMenu menuWithItems:button, nil];
 }
 
 -(CCSprite*)buttonSprite:(NSString*)text
@@ -219,7 +201,7 @@
             node = [self getSelectTarget];
             self.state = PlayState_ChooseTarget;
             break;
-
+            
         case kCardValue_Handmaid:
             self.state = PlayState_ShowResult;
             self.target = [GameModel sharedInstance].players[0];
@@ -375,10 +357,91 @@
     return node;
 }
 
--(void)showSelectedCard:(Card*)card
+-(CCNode*)getSelectCardType
 {
+    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
     
+    // refresh the deck from the config file
+    // ** wipes out existing deck
+    for (NSBundle* bundle in [NSBundle allBundles])
+    {
+        if ([bundle pathForResource:@"love_letter_deck" ofType:@"csv"] != nil)
+        {
+            
+            NSString* path = [bundle pathForResource:@"love_letter_deck" ofType:@"csv"];
+            NSArray*  rows =  [self parseCSV:path];
+            
+            for (NSArray* row in rows)
+            {
+                Card* c = [[Card alloc] initWithCardData:row];
+                
+                if ([dict objectForKey:c.name] == nil)
+                {
+                    [dict setObject:c forKey:c.name];
+                }
+            }
+        }
+    }
+    
+    NSMutableArray* badges = [NSMutableArray array];
+    
+    for(Card *c in dict.allValues)
+    {
+        CCSprite* cardSprite = [c badgeSprite];
+        CCSprite* cardSpriteSelected = [c badgeSprite];
+        CCMenuItemImage* cardMI = [CCMenuItemImage itemWithNormalSprite:cardSprite selectedSprite:cardSpriteSelected block:^(id sender) {
+            CCLOG(@"w00t!");
+            [self badgeClicked:c];
+        }];
+        
+        [badges addObject:cardMI];
+    }
+    
+    CCMenu* menu = [CCMenu menuWithArray:badges];
+    [menu alignItemsHorizontally];
+    CCNode* leftMost = [menu.children objectAtIndex:0];
+    CCNode* rightMost = [menu.children lastObject];
+    float width = (rightMost.position.x + (rightMost.contentSize.width / 2.0f)) - (leftMost.position.x - (leftMost.contentSize.width / 2.0f) );
+    
+    CCNode* node = [CCNode node];
+    CCLabelBMFont* label = [CCLabelBMFont labelWithString:@"Select a card type:" fntFile:FONT_BIG];
+    [node addChild:label];
+    label.position = ccp(0.0f, leftMost.position.y + leftMost.contentSize.height / 2.0f);
+    [node addChild:menu];
+    
+    float height = (label.position.y + label.contentSize.height / 2.0f) - (leftMost.position.y - (leftMost.contentSize.height / 2.0f));
+    
+    node.contentSize = CGSizeMake(width, height);
+    
+    return node;
 }
 
+-(void)badgeClicked:(Card*)onCard
+{
+    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+    
+    NSNumber *cardVal = [NSNumber numberWithInt:onCard.cardValue];
+    [dict setObject:cardVal forKey:@"guardCardTarget"];
+    
+    self.options = [NSDictionary dictionaryWithDictionary:dict];
+    
+    [self nextStep];
+}
+
+-(NSArray*)parseCSV:(NSString*)path
+{
+    
+    NSArray* rows = [NSArray arrayWithContentsOfCSVFile:path];
+    if (rows == nil)
+    {
+        
+        //something went wrong; log the error and exit
+        NSLog(@"error parsing file");
+        return nil;
+        
+    }
+    
+    return rows;
+}
 
 @end

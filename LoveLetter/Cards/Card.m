@@ -43,6 +43,7 @@
     NSString* fileName = [NSString stringWithFormat:@"%@-badge.png", [self.name lowercaseString]];
     CCSprite* sprite   = [CCSprite spriteWithFile:fileName];
     float scale        = 0.5 * CC_CONTENT_SCALE_FACTOR();
+    [sprite setContentSize:CGSizeMake(sprite.contentSize.width * CC_CONTENT_SCALE_FACTOR(), sprite.contentSize.height * CC_CONTENT_SCALE_FACTOR())];
     [sprite setScale:scale];
     return sprite;
 }
@@ -52,10 +53,11 @@
     CCSprite* glow = [CCSprite spriteWithFile:@"background-badge.png"];
     [glow setColor:ccc3(150, 0, 150)];
     float scale    = 0.6 * CC_CONTENT_SCALE_FACTOR();
+    [glow setContentSize:CGSizeMake(glow.contentSize.width * CC_CONTENT_SCALE_FACTOR(), glow.contentSize.height * CC_CONTENT_SCALE_FACTOR())];
     [glow setScale:scale];
     
     CCSprite* sprite = [self createBadgeSpriteNormal];
-    [sprite setScale:0.8];
+    [sprite setScale:0.8333];
     [sprite setPosition:ccp(glow.contentSize.width/2, glow.contentSize.height/2)];
     [glow addChild:sprite];
     

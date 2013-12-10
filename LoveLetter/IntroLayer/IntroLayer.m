@@ -42,7 +42,7 @@
 	if( (self=[super init]) )
     {
         CCSprite* cardBack = [CCSprite spriteWithFile:@"back-card.png"];
-        [cardBack setScale:0.9];
+        [cardBack setScale:0.9f * CC_CONTENT_SCALE_FACTOR()];
         [cardBack setPosition:ccp(self.contentSize.width/2, self.contentSize.height/2)];
         [self addChild:cardBack];
         
