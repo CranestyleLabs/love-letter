@@ -803,6 +803,23 @@
                 }
                 
             }
+            else
+            {
+                
+                // play handmaid
+                [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                    
+                    if (cardInHand.cardValue == kCardValue_Handmaid)
+                    {
+                        card = cardInHand;
+                    }
+                    
+                }];
+                
+                // can only play handmaid on self
+                target = player;
+                
+            }
             
         }
         
@@ -1025,6 +1042,22 @@
                 }
                 
             }
+            else
+            {
+                
+                // baron a random person
+                [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                    
+                    if (cardInHand.cardValue == kCardValue_Baron)
+                    {
+                        card = cardInHand;
+                    }
+                    
+                }];
+                
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                
+            }
             
         }
         
@@ -1158,6 +1191,15 @@
         if ([cardPattern isEqualToString:@"00001100"])
         {
             
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Prince)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
+            
             // do you know that someone has the princess? If so, prince that player
             __block BOOL somoneHasPrincess = NO;
             if (player.secrets.count > 0)
@@ -1170,14 +1212,6 @@
                         
                         somoneHasPrincess = YES;
                         target = secret.player;
-                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
-                            
-                            if (cardInHand.cardValue == kCardValue_Prince)
-                            {
-                                card = cardInHand;
-                            }
-                            
-                        }];
                         
                     }
                     
@@ -1217,6 +1251,15 @@
         if ([cardPattern isEqualToString:@"00001001"])
         {
             
+            [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                
+                if (cardInHand.cardValue == kCardValue_Prince)
+                {
+                    card = cardInHand;
+                }
+                
+            }];
+            
             // do you know that someone has the princess? If so, prince that player
             __block BOOL somoneHasPrincess = NO;
             if (player.secrets.count > 0)
@@ -1229,14 +1272,6 @@
                         
                         somoneHasPrincess = YES;
                         target = secret.player;
-                        [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
-                            
-                            if (cardInHand.cardValue == kCardValue_Prince)
-                            {
-                                card = cardInHand;
-                            }
-                            
-                        }];
                         
                     }
                     
@@ -1348,6 +1383,11 @@
         
         // create play object from target, card, and (optionally)options
         play = [Play playWithCard:card andTarget:target andOptions:[NSDictionary dictionaryWithDictionary:options]];
+        
+        NSLog(@"%@", cardPattern);
+        NSLog(@"cardValue = %d", card.cardValue);
+        NSLog(@"targetid = %@", target.playerid);
+        NSLog(@"");
         
     }
     

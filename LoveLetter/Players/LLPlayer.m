@@ -44,6 +44,7 @@
         
         [self setCardsInHand:[[NSArray alloc] init]];
         [self setCardsPlayed:[[NSArray alloc] init]];
+        [self setSecrets:[[NSArray alloc] init]];
         
 //        cardsPlayed
         
@@ -177,12 +178,16 @@
     // draw a card
     [self addCard:[[GameModel sharedInstance].deck drawCard]];
     
-    
     if (self.isAI)
     {
         Play* play = [AIUtilities makePlayForPlayer:self];
         [PlayResult player:self makesPlay:play];
+        NSLog(@"");
         [self endTurn];
+    }
+    else
+    {
+        NSLog(@"");
     }
     
 }
