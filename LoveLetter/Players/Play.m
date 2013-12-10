@@ -390,14 +390,17 @@
     
     for(Card *c in dict.allValues)
     {
-        CCSprite* cardSprite = [c createBadgeSpriteNormal];
-        CCSprite* cardSpriteSelected = [c createBadgeSpriteSelected];
-        CCMenuItemSprite* cardMI = [CCMenuItemSprite itemWithNormalSprite:cardSprite selectedSprite:cardSpriteSelected block:^(id sender) {
-            CCLOG(@"w00t!");
-            [self badgeClicked:c];
-        }];
-        
-        [badges addObject:cardMI];
+        if (c.cardValue != kCardValue_Guard)
+        {
+            CCSprite* cardSprite = [c createBadgeSpriteNormal];
+            CCSprite* cardSpriteSelected = [c createBadgeSpriteSelected];
+            CCMenuItemSprite* cardMI = [CCMenuItemSprite itemWithNormalSprite:cardSprite selectedSprite:cardSpriteSelected block:^(id sender) {
+                CCLOG(@"w00t!");
+                [self badgeClicked:c];
+            }];
+            
+            [badges addObject:cardMI];
+        }
     }
     
     NSLog(@"Badge count: %i", badges.count);
@@ -408,11 +411,9 @@
     CCNode* leftMost  = [menu.children objectAtIndex:0];
     CCNode* rightMost = [menu.children lastObject];
     float width = (rightMost.position.x + (rightMost.contentSize.width / 2.0f)) - (leftMost.position.x - (leftMost.contentSize.width / 2.0f) );
-    [menu alignItemsInRows:
-     [NSNumber numberWithInt:2],
-     [NSNumber numberWithInt:2],
-     [NSNumber numberWithInt:2],
-     [NSNumber numberWithInt:2],
+    [menu alignItemsInColumns:
+     [NSNumber numberWithInt:4],
+     [NSNumber numberWithInt:3],
       nil];
     CCNode* node = [CCNode node];
     CCLabelBMFont* label = [CCLabelBMFont labelWithString:@"Select a card type:" fntFile:FONT_BIG];
