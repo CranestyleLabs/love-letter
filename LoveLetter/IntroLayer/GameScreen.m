@@ -252,6 +252,8 @@
         
         [currentPlayer endTurn];
         
+        [self updateCardsUI];
+        
         // once the card is done being played, unselect it
         [toggle setSelectedIndex:0];
     }
