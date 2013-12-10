@@ -124,9 +124,12 @@
     // remove old sprites
     for (CCSprite* child in self.children)
     {
-        if (child.tag == 76)
+        if(child != nil)
         {
-            [self removeChild:child cleanup:YES];
+            if (child.tag == 76)
+            {
+                [self removeChild:child cleanup:YES];
+            }
         }
     }
     
