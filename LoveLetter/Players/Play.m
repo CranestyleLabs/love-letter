@@ -290,8 +290,21 @@
     
     CCMenu* menu = [CCMenu menuWithArray:badges];
     [menu alignItemsHorizontally];
+    CCNode* leftMost = [menu.children objectAtIndex:0];
+    CCNode* rightMost = [menu.children lastObject];
+    float width = (rightMost.position.x + (rightMost.contentSize.width / 2.0f)) - (leftMost.position.x - (leftMost.contentSize.width / 2.0f) );
     
-    return menu;
+    CCNode* node = [CCNode node];
+    CCLabelBMFont* label = [CCLabelBMFont labelWithString:@"Select a card type:" fntFile:FONT_BIG];
+    [node addChild:label];
+    label.position = ccp(0.0f, leftMost.position.y + leftMost.contentSize.height / 2.0f);
+    [node addChild:menu];
+    
+    float height = (label.position.y + label.contentSize.height / 2.0f) - (leftMost.position.y - (leftMost.contentSize.height / 2.0f));
+    
+    node.contentSize = CGSizeMake(width, height);
+    
+    return node;
 }
 
 -(void)badgeClicked:(Card*)onCard
