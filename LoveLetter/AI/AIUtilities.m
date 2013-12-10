@@ -944,6 +944,22 @@
                 }
                 
             }
+            else
+            {
+                
+                // baron a random person
+                [player.cardsInHand enumerateObjectsUsingBlock:^(Card* cardInHand, NSUInteger idx, BOOL *stop) {
+                    
+                    if (cardInHand.cardValue == kCardValue_Baron)
+                    {
+                        card = cardInHand;
+                    }
+                    
+                }];
+                
+                target = [self randomPlayerFromArray:[self playersWithMostPointsFromList:[GameModel sharedInstance].players excluding:player]];
+                
+            }
             
         }
         
