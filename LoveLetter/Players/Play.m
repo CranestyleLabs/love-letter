@@ -279,7 +279,8 @@
     for(Card *c in dict.allValues)
     {
         CCSprite* cardSprite = [c badgeSprite];
-        CCMenuItemImage* cardMI = [CCMenuItemImage itemWithNormalSprite:cardSprite selectedSprite:cardSprite block:^(id sender) {
+        CCSprite* cardSpriteSelected = [c badgeSprite];
+        CCMenuItemImage* cardMI = [CCMenuItemImage itemWithNormalSprite:cardSprite selectedSprite:cardSpriteSelected block:^(id sender) {
             CCLOG(@"w00t!");
             [self badgeClicked:c];
         }];
