@@ -121,25 +121,32 @@
 
 -(void)positionPlayedCards
 {
-    // remove old sprites
-    for (CCSprite* child in self.children)
-    {
-        if(child != nil)
-        {
-            if (child.tag == 76)
-            {
-                [self removeChild:child cleanup:YES];
-            }
-        }
-    }
-    
-    // place new sprites
     for (int i = 0; i < self.player.cardsPlayed.count; i++)
     {
         CCSprite* sprite = [self.player.cardsPlayed[i] createBadgeSpriteNormal];
         NSValue*  value  = [self.cardBadgePositions objectAtIndex:i];
         [sprite setPosition:[value CGPointValue]];
         [self addChild:sprite z:0 tag:76];
+    }
+}
+
+-(void)cleanupUnusedSprites
+{
+    // remove old sprites
+    NSArray* toRemove = [[NSArray alloc] init];
+    for (CCNode* child in self.children)
+    {
+        if (child.tag == 75 ||
+            child.tag == 76)
+        {
+            NSMutableArray* arr = [NSMutableArray arrayWithArray:arr];
+            [arr addObject:child];
+            toRemove = [NSArray arrayWithArray:arr];
+        }
+    }
+    for (CCNode* node in toRemove)
+    {
+        [self removeChild:node cleanup:YES];
     }
 }
 

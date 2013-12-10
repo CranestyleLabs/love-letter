@@ -29,5 +29,6 @@
 
 -(void)setTokens;
 -(void)positionPlayedCards;
+-(void)cleanupUnusedSprites;
 
 @end

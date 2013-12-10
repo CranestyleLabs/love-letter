@@ -125,9 +125,10 @@
 }
 
 -(void)updateUI
-{
+{   
     for (PlayerSprite* ps in self.playerSprites)
     {
+        [ps cleanupUnusedSprites];
         [ps setTokens];
         [ps positionPlayedCards];
         if (ps.player.cardsInHand == 0)
