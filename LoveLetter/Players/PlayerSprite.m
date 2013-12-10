@@ -8,6 +8,7 @@
 
 #import "PlayerSprite.h"
 
+#import "Card.h"
 #import "Constants.h"
 #import "LLPlayer.h"
 
@@ -116,6 +117,17 @@
             [self addChild:token];
             CCLOG(@"added token sprite %d", i+1);
         }
+    }
+}
+
+-(void)positionPlayedCards
+{
+    for (int i = 0; i < self.player.cardsPlayed.count; i++)
+    {
+        CCSprite* sprite = [self.player.cardsPlayed[i] createCardSprite];
+        NSValue*  value  = [self.cardBadgePositions objectAtIndex:i];
+        [sprite setPosition:[value CGPointValue]];
+        [self addChild:sprite];
     }
 }
 

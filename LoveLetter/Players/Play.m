@@ -409,8 +409,8 @@
     [menu alignItemsHorizontally];
     [menu setPosition:CGPointZero];
     CCNode* leftMost  = [menu.children objectAtIndex:0];
-    CCNode* rightMost = [menu.children lastObject];
-    float width = (rightMost.position.x + (rightMost.contentSize.width / 2.0f)) - (leftMost.position.x - (leftMost.contentSize.width / 2.0f) );
+//    CCNode* rightMost = [menu.children lastObject];
+//    float width = (rightMost.position.x + (rightMost.contentSize.width / 2.0f)) - (leftMost.position.x - (leftMost.contentSize.width / 2.0f) );
     [menu alignItemsInColumns:
      [NSNumber numberWithInt:4],
      [NSNumber numberWithInt:3],
@@ -421,7 +421,13 @@
     label.position = ccp(0.0f, leftMost.position.y + leftMost.contentSize.height / 2.0f + label.contentSize.height);
     [node addChild:menu];
     
-    float height = (label.position.y + label.contentSize.height / 2.0f) - (leftMost.position.y - (leftMost.contentSize.height / 2.0f));
+    CCSprite* bg = [CCSprite spriteWithFile:@"dialog-background.png"];
+    [bg setScaleX:1.3f];
+    [bg setScaleY:2.0f];
+    [bg setPosition:ccp(0, 20)];
+    [node addChild:bg z:-1];
+    
+//    float height = (label.position.y + label.contentSize.height / 2.0f) - (leftMost.position.y - (leftMost.contentSize.height / 2.0f));
     
 //    node.contentSize = CGSizeMake(width, height);
     CCLOG(@"children on node = %d", menu.children.count);
