@@ -188,7 +188,15 @@ static GameModel* gameModel = nil;
     NSLog(@"[GameModel startTurn]");
     
     LLPlayer* nextPlayer = [self getNextPayer];
-    [nextPlayer startTurn];
+    if (nextPlayer.cardsInHand > 0)
+    {
+        [nextPlayer startTurn];
+    }
+    else
+    {
+        CCLOG(@"player %@ is out of the game!", nextPlayer.playerid);
+        [self startTurn];
+    }
     
 }
 
