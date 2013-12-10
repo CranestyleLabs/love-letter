@@ -151,6 +151,12 @@
 		70B846DA18567C5700C1BBBF /* card-button-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B846D818567C5700C1BBBF /* card-button-ipad.png */; };
 		70B846DB18567C5700C1BBBF /* card-button-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B846D918567C5700C1BBBF /* card-button-ipadhd.png */; };
 		70B846DD185687B300C1BBBF /* badge-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B846DC185687B300C1BBBF /* badge-background.png */; };
+		70B846E51856A00E00C1BBBF /* dialog-background-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B846DF1856A00E00C1BBBF /* dialog-background-ipad.png */; };
+		70B846E61856A00E00C1BBBF /* dialog-background-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B846E01856A00E00C1BBBF /* dialog-background-ipadhd.png */; };
+		70B846E71856A00E00C1BBBF /* dialog-button-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B846E11856A00E00C1BBBF /* dialog-button-ipad.png */; };
+		70B846E81856A00E00C1BBBF /* dialog-button-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B846E21856A00E00C1BBBF /* dialog-button-ipadhd.png */; };
+		70B846E91856A00E00C1BBBF /* portrait-background-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B846E31856A00E00C1BBBF /* portrait-background-ipad.png */; };
+		70B846EA1856A00E00C1BBBF /* portrait-background-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B846E41856A00E00C1BBBF /* portrait-background-ipadhd.png */; };
 		70BCBA31185414F700B99B7D /* Default-568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA1A185414F700B99B7D /* Default-568@2x.png */; };
 		70BCBA32185414F700B99B7D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA1B185414F700B99B7D /* Default-568h@2x.png */; };
 		70BCBA33185414F700B99B7D /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BCBA1C185414F700B99B7D /* Default-Landscape@2x~ipad.png */; };
@@ -513,6 +519,12 @@
 		70B846D818567C5700C1BBBF /* card-button-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card-button-ipad.png"; sourceTree = "<group>"; };
 		70B846D918567C5700C1BBBF /* card-button-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card-button-ipadhd.png"; sourceTree = "<group>"; };
 		70B846DC185687B300C1BBBF /* badge-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "badge-background.png"; sourceTree = "<group>"; };
+		70B846DF1856A00E00C1BBBF /* dialog-background-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog-background-ipad.png"; sourceTree = "<group>"; };
+		70B846E01856A00E00C1BBBF /* dialog-background-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog-background-ipadhd.png"; sourceTree = "<group>"; };
+		70B846E11856A00E00C1BBBF /* dialog-button-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog-button-ipad.png"; sourceTree = "<group>"; };
+		70B846E21856A00E00C1BBBF /* dialog-button-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog-button-ipadhd.png"; sourceTree = "<group>"; };
+		70B846E31856A00E00C1BBBF /* portrait-background-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portrait-background-ipad.png"; sourceTree = "<group>"; };
+		70B846E41856A00E00C1BBBF /* portrait-background-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "portrait-background-ipadhd.png"; sourceTree = "<group>"; };
 		70BCBA1A185414F700B99B7D /* Default-568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568@2x.png"; sourceTree = "<group>"; };
 		70BCBA1B185414F700B99B7D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		70BCBA1C185414F700B99B7D /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
@@ -695,6 +707,7 @@
 		70AE9A1F18540B14003017C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				70B846DE1856A00E00C1BBBF /* dialogs */,
 				70BCBA6F185417E800B99B7D /* config */,
 				B770FE3C1856216800F138FE /* fonts */,
 				70BCBA71185417E800B99B7D /* sprites */,
@@ -1111,6 +1124,20 @@
 			path = "card-buttons";
 			sourceTree = "<group>";
 		};
+		70B846DE1856A00E00C1BBBF /* dialogs */ = {
+			isa = PBXGroup;
+			children = (
+				70B846DF1856A00E00C1BBBF /* dialog-background-ipad.png */,
+				70B846E01856A00E00C1BBBF /* dialog-background-ipadhd.png */,
+				70B846E11856A00E00C1BBBF /* dialog-button-ipad.png */,
+				70B846E21856A00E00C1BBBF /* dialog-button-ipadhd.png */,
+				70B846E31856A00E00C1BBBF /* portrait-background-ipad.png */,
+				70B846E41856A00E00C1BBBF /* portrait-background-ipadhd.png */,
+			);
+			name = dialogs;
+			path = Resources/sprites/dialogs;
+			sourceTree = "<group>";
+		};
 		70BCBA19185414F700B99B7D /* device-assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -1402,6 +1429,7 @@
 				70B846C81856733600C1BBBF /* 1_guard-ipadhd.png in Resources */,
 				B770FE1618561CE100F138FE /* baron-card.png in Resources */,
 				70BCBA42185414F700B99B7D /* Icon-spotlight.png in Resources */,
+				70B846E81856A00E00C1BBBF /* dialog-button-ipadhd.png in Resources */,
 				70B846DD185687B300C1BBBF /* badge-background.png in Resources */,
 				70B846C91856733600C1BBBF /* 2_priest-ipad.png in Resources */,
 				70B846CF1856733600C1BBBF /* 5_prince-ipad.png in Resources */,
@@ -1419,9 +1447,12 @@
 				70BCBA45185414F700B99B7D /* Icon@2x.png in Resources */,
 				70BCBA3D185414F700B99B7D /* Icon-76.png in Resources */,
 				70AE9B8F18540B15003017C2 /* ChangeLog in Resources */,
+				70B846E51856A00E00C1BBBF /* dialog-background-ipad.png in Resources */,
 				70BCBA3F185414F700B99B7D /* Icon-Small-50.png in Resources */,
 				B770FE3818561CEE00F138FE /* alertbox-background-ipadhd.png in Resources */,
 				70BCBA5A1854163400B99B7D /* LICENSE in Resources */,
+				70B846E61856A00E00C1BBBF /* dialog-background-ipadhd.png in Resources */,
+				70B846EA1856A00E00C1BBBF /* portrait-background-ipadhd.png in Resources */,
 				B770FE1918561CE100F138FE /* handmaid-card.png in Resources */,
 				70B846CC1856733600C1BBBF /* 3_baron-ipadhd.png in Resources */,
 				B770FE4C1856216800F138FE /* avenirnext60_bold-ipadhd.fnt in Resources */,
@@ -1459,6 +1490,7 @@
 				70B846DA18567C5700C1BBBF /* card-button-ipad.png in Resources */,
 				70BCBA44185414F700B99B7D /* Icon.png in Resources */,
 				B770FE471856216800F138FE /* avenirnext48_bold-ipad.png in Resources */,
+				70B846E71856A00E00C1BBBF /* dialog-button-ipad.png in Resources */,
 				70BCBA40185414F700B99B7D /* Icon-Small.png in Resources */,
 				70BCBA32185414F700B99B7D /* Default-568h@2x.png in Resources */,
 				70BCBA33185414F700B99B7D /* Default-Landscape@2x~ipad.png in Resources */,
@@ -1470,6 +1502,7 @@
 				B770FE4D1856216800F138FE /* avenirnext60_bold-ipadhd.png in Resources */,
 				70BCBA3E185414F700B99B7D /* Icon-76@2x.png in Resources */,
 				B770FE3918561CEE00F138FE /* button.png in Resources */,
+				70B846E91856A00E00C1BBBF /* portrait-background-ipad.png in Resources */,
 				70BCBA46185414F700B99B7D /* iTunesArtwork in Resources */,
 				B770FE3A18561CEE00F138FE /* playername-background.png in Resources */,
 				B770FE3118561CEE00F138FE /* countess-badge.png in Resources */,
