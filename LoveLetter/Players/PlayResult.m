@@ -172,7 +172,7 @@
     
     // target discards card in hand
     Card* targetsCardInHand = (Card*)[target.cardsInHand lastObject];
-    [target playCard:card];
+    [target playCard:targetsCardInHand];
     
     // if the target's discarded card was a princess then they don't draw a new card
     if (targetsCardInHand.cardValue == kCardValue_Princess)
