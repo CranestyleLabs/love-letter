@@ -79,6 +79,7 @@
             node = [self processChooseTarget];
             break;
         case PlayState_ChooseCardType:
+            self.state = PlayState_ShowResult;
             break;
         case PlayState_ShowResult:
             break;
@@ -294,7 +295,14 @@
 
 -(void)badgeClicked:(Card*)onCard
 {
-    //[self ]
+    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+    
+    NSNumber *cardVal = [NSNumber numberWithInt:onCard.cardValue];
+    [dict setObject:cardVal forKey:@"guardCardTarget"];
+    
+    self.options = [NSDictionary dictionaryWithDictionary:dict];
+    
+    [self nextStep];
 }
 
 -(NSArray*)parseCSV:(NSString*)path
